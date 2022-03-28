@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="@color/primaryGreen"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageLogo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="@dimen/distance_12"
+        android:src="@drawable/logo_maros"
+        app:layout_constraintEnd_toStartOf="@+id/textTitleAplikasiTopBar"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textTitleAplikasiTopBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/distance_24"
+        android:textSize="@dimen/textSizeHeader"
+        android:layout_marginStart="@dimen/distance_12"
+        android:fontFamily="@font/intersemibold"
+        android:text="@string/aplikasi"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageLogo" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textTitleDesaTenrigangkaeTopBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/intersemibold"
+        android:text="@string/desa_tenrigangkae"
+        android:textSize="@dimen/textSizeHeader"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@+id/textTitleAplikasiTopBar"
+        app:layout_constraintTop_toBottomOf="@+id/textTitleAplikasiTopBar" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

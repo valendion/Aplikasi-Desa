@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    tools:showIn="navigation_view">
+
+    <item android:title="@string/masyarakat">
+        <menu>
+            <group>
+                <item
+                    android:id="@+id/nav_village"
+                    android:icon="@drawable/ic_baseline_surat"
+                    android:title="@string/pengajuan_pengantar_dusun" />
+                <item
+                    android:id="@+id/nav_status"
+                    android:icon="@drawable/ic_baseline_status"
+                    android:title="@string/status_pengajuan_surat" />
+                <item
+                    android:id="@+id/nav_social_assistance"
+                    android:icon="@drawable/ic_baseline_bantuan"
+                    android:title="@string/penerimaan_bantuan_sosial" />
+
+            </group>
+
+        </menu>
+    </item>
+
+
+    <item android:title="@string/aparatur_desa">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_loginActivity"
+                    android:icon="@drawable/ic_baseline_forward_24"
+                    android:title="@string/login" />
+
+            </group>
+        </menu>
+    </item>
+
+</menu>

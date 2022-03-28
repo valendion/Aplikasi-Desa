@@ -12,7 +12,7 @@
         android:id="@+id/imageLogo"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:src="@drawable/maros"
+        android:src="@drawable/logo_maros"
         app:layout_constraintBottom_toTopOf="@+id/textTitleAplikasi"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

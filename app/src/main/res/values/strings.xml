@@ -5,4 +5,34 @@
     <string name="desa_tenrigangkae">Desa Tenrigangkae</string>
     <string name="aplikasi">Aplikasi</string>
     <string name="developed_by">Developed by</string>
+    <string name="form_login">Form Login</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="masyarakat">Masyarakat</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="pengajuan_pengantar_dusun">Pengajuan Pengantar Dusun</string>
+    <string name="status_pengajuan_surat">Status Pengajuan Surat</string>
+    <string name="penerimaan_bantuan_sosial">Penerimaan Bantuan sosial</string>
+    <string name="login">Login</string>
+    <string name="aparatur_desa">Aparatur Desa</string>
+    <string name="form_pengajuan_n_surat_pengantar_dusun">Form Pengajuan\n Surat Pengantar Dusun</string>
+    <string name="masukkan_nomor_nik">Masukkan Nomor NIK</string>
+    <string name="pilih_jenis_surat">Pilih Jenis Surat</string>
+    <string name="masukkan_alasan_mengurus_surat">Masukkan Alasan Mengurus Surat</string>
+    <string name="file_ktp_anda_akan_terhapus_otomatis_jika_surat_pengantar_telah_diterbitkan_data_anda_tetap_aman">File KTP anda akan terhapus otomatis jika surat pengantar telah diterbitkan, data anda tetap aman.</string>
+    <string name="kirim_data">Kirim Data</string>
+    <string name="lihat_status_disini">Lihat Status Disini</string>
+    <string name="pengajuan_n_surat_pengantar_dusun_n_berhasil_dilakukan">Pengajuan\n Surat Pengantar Dusun\n Berhasil Dilakukan</string>
+    <string name="daftar_pengajuan_surat">Daftar Pengajuan Surat</string>
+    <string name="daftar_penerima_bantuan_sosial">Daftar Penerima Bantuan Sosial</string>
 </resources>
