@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardBackgroundColor="@color/primaryGreen"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="5dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imagePhoto"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginVertical="@dimen/distance_16"
+            android:layout_marginHorizontal="@dimen/distance_24"
+            android:src="@color/grey"
+            app:layout_constraintBottom_toTopOf="@+id/btnDownload"
+            app:layout_constraintEnd_toStartOf="@+id/textName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textName"
+            style="@style/TextRegular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mustahiq_s_adm"
+            android:textAlignment="center"
+            android:layout_marginStart="@dimen/distance_24"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toEndOf="@+id/imagePhoto"
+            app:layout_constraintTop_toTopOf="@+id/imagePhoto" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textNIP"
+            style="@style/TextRegular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_8"
+            android:text="@string/nip_197905062010011007"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="@+id/textName"
+            app:layout_constraintTop_toBottomOf="@+id/textName" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textNIK"
+            style="@style/TextRegular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_8"
+            android:text="@string/nik_5201140506790001"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="@+id/textNIP"
+            app:layout_constraintTop_toBottomOf="@+id/textNIP" />
+
+        <FrameLayout
+            android:id="@+id/btnDownload"
+            style="@style/ButtonSecondary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_16"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textNIK">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/TextRegular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginVertical="@dimen/distance_16"
+                android:text="@string/sekretaris_desa"
+                android:textColor="@color/white" />
+        </FrameLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

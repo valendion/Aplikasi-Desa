@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/distance_16"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.backwood.ApproveFragment">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textTitleApprpve"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextTitle"
+        android:text="@string/terimakasih_ntelah_senantiasa_mengabdi_nuntuk_masyarakat_desa_tenrigangkae"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageApprove"
+        android:layout_width="250dp"
+        android:layout_marginTop="@dimen/distance_40"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_illustrator_approve"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textTitleApprpve" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textDescribeApprpve"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextRegular2"
+        android:text="@string/surat_pengantar_dusun_telah_dibuat_nuntuk_proses_selanjutnya_nmasyarakat_dapat_mengunjungi_nkantor_desa_untuk_mencetak_surat"
+        android:textAlignment="center"
+        android:layout_marginTop="@dimen/distance_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageApprove" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnBackDashboard"
+        android:layout_width="match_parent"
+        style="@style/ButtonPrimary"
+        android:layout_marginTop="@dimen/distance_40"
+        android:text="@string/ok_kembali_ke_dashboard"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/textDescribeApprpve"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,25 +7,25 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.desaa.ui.home.HomeFragment"
+        android:name="com.example.desaa.ui.user.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
-    <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.desaa.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+<!--    <fragment-->
+<!--        android:id="@+id/nav_gallery"-->
+<!--        android:name="com.example.desaa.ui.gallery.GalleryFragment"-->
+<!--        android:label="@string/menu_gallery"-->
+<!--        tools:layout="@layout/fragment_gallery" />-->
 
-    <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.desaa.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+<!--    <fragment-->
+<!--        android:id="@+id/nav_slideshow"-->
+<!--        android:name="com.example.desaa.ui.slideshow.SlideshowFragment"-->
+<!--        android:label="@string/menu_slideshow"-->
+<!--        tools:layout="@layout/fragment_slideshow" />-->
     <fragment
         android:id="@+id/nav_village"
 
-        android:name="com.example.desaa.ui.village_introduction_submission.VillageIntroductionSubmissionFragment"
+        android:name="com.example.desaa.ui.user.village_introduction_submission.VillageIntroductionSubmissionFragment"
         android:label="fragment_village_introduction_submission"
         tools:layout="@layout/fragment_village_introduction_submission">
         <action
@@ -41,17 +41,17 @@
 
     <fragment
         android:id="@+id/nav_social_assistance"
-        android:name="com.example.desaa.ui.social_assistance_recipient.SocialAssistanceRecipientFragment"
+        android:name="com.example.desaa.ui.user.social_assistance_recipient.SocialAssistanceRecipientFragment"
         android:label="fragment_social_assistance_recipient"
         tools:layout="@layout/fragment_social_assistance_recipient" />
     <fragment
         android:id="@+id/nav_status"
-        android:name="com.example.desaa.ui.letter_submission_status.LetterSubmissionStatusFragment"
+        android:name="com.example.desaa.ui.user.letter_submission_status.LetterSubmissionStatusFragment"
         android:label="fragment_letter_submission_status"
         tools:layout="@layout/fragment_letter_submission_status" />
     <fragment
         android:id="@+id/nav_success_send"
-        android:name="com.example.desaa.ui.success_send.SuccessSendFragment"
+        android:name="com.example.desaa.ui.user.success_send.SuccessSendFragment"
         android:label="fragment_success_send"
         tools:layout="@layout/fragment_success_send" />
     <activity

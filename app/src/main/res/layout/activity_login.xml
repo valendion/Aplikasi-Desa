@@ -23,11 +23,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/distance_24"
-        android:textSize="@dimen/textSizeHeader"
+        style="@style/TextTitleToolbarPrimary"
         android:layout_marginStart="@dimen/distance_12"
-        android:fontFamily="@font/intersemibold"
         android:text="@string/aplikasi"
-        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageLogo" />
@@ -36,10 +34,8 @@
         android:id="@+id/textTitleDesaTenrigangkaeTopBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/intersemibold"
         android:text="@string/desa_tenrigangkae"
-        android:textSize="@dimen/textSizeHeader"
-        android:textColor="@color/white"
+        style="@style/TextTitleToolbarPrimary"
         app:layout_constraintStart_toStartOf="@+id/textTitleAplikasiTopBar"
         app:layout_constraintTop_toBottomOf="@+id/textTitleAplikasiTopBar" />
 
@@ -141,15 +137,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:background="@color/darkGreen"
         android:paddingHorizontal="91dp"
         android:paddingVertical="@dimen/distance_16"
         android:text="@string/login"
-        android:textColor="@color/white"
+        style="@style/ButtonSecondary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardInput" />
-
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textView8"

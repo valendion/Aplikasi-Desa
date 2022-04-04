@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/distance_16"
-    tools:context=".ui.form_village_introduction_submission.FormVillageIntroductionSubmissionFragment">
+    tools:context=".ui.user.form_village_introduction_submission.FormVillageIntroductionSubmissionFragment">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textTitleFormVillageIntroductionSubmission"

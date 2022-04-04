@@ -4,5 +4,6 @@
     <dimen name="textSizeHigh">16sp</dimen>
     <dimen name="textSizeHeader">18sp</dimen>
     <dimen name="textSizeHeaderBig">24sp</dimen>
+    <dimen name="textSizeHeaderLarge">34sp</dimen>
 
 </resources>

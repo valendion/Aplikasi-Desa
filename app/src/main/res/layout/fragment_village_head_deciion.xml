@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:padding="@dimen/distance_16"
+    android:layout_height="match_parent"
+    tools:context=".ui.headman.village_head_decision.VillageHeadDeciionFragment">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textVillageRulesHeadman"
+        style="@style/TextTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dashboard_n_kepala_desa"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textVillage"
+        style="@style/TextTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tenrigangkae"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textVillageRulesHeadman" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textNameHeadman"
+        style="@style/TextTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/wahyu_febri"
+        app:layout_constraintBottom_toTopOf="@+id/textVillage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textVillageRulesHeadman" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textTitleVillageRules"
+        style="@style/TextTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/distance_12"
+        android:text="@string/keputusan_kepala_desa"
+        android:textSize="@dimen/textSizeHeader"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textVillage" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listVillageRules"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/distance_16"
+        android:layout_height="0dp"
+        tools:listitem="@layout/layout_village_rules_list"
+        app:layout_constraintTop_toBottomOf="@+id/textTitleVillageRules"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

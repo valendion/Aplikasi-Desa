@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/distance_16"
+    tools:context=".ui.backwood.detail_backwood.DetailBackwoodFragment">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textTitleVillageDetailBackwood"
+        style="@style/TextTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/distance_12"
+        android:text="@string/pemeriksaan_data_nsurat_pengantar_dusun"
+        android:textAlignment="center"
+        android:textSize="@dimen/textSizeHeader"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/frameDetailBackwood"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/layout_border_black"
+       android:layout_marginTop="@dimen/distance_16"
+        android:padding="@dimen/distance_16"
+        app:layout_constraintTop_toBottomOf="@+id/textTitleVillageDetailBackwood">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textTitleDetailNik"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextTitle"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/nomor_nik_pemohon"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textValueDetailNik"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextRegular2"
+            app:layout_constraintTop_toBottomOf="@+id/textTitleDetailNik"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/_78467563474746856"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textTitleDetailApplicantName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextTitle"
+            android:layout_marginTop="@dimen/distance_16"
+            app:layout_constraintTop_toBottomOf="@+id/textValueDetailNik"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/nama_pemohon"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textValueDetailApplicantName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextRegular2"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/textTitleDetailApplicantName"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/bambang_sutejo"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textTitleDetailManagedMail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextTitle"
+            android:layout_marginTop="@dimen/distance_16"
+            app:layout_constraintTop_toBottomOf="@+id/textValueDetailApplicantName"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/surat_yang_akan_diurus"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textValueDetailManagedMail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextRegular2"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/textTitleDetailManagedMail"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/surat_keterangan_usaha"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textTitleDetailDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextTitle"
+            android:layout_marginTop="@dimen/distance_16"
+            app:layout_constraintTop_toBottomOf="@+id/textValueDetailManagedMail"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/keterangan"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textValueDetailDescription"
+            style="@style/TextRegular2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/saya_ingin_mengurus_surat_keterangan_untuk_usaha_saya_bang_mohon_dibantu_surat_pengantarnya"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textTitleDetailDescription" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textTitleDetailImageKTP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextTitle"
+            android:layout_marginTop="@dimen/distance_16"
+            app:layout_constraintTop_toBottomOf="@+id/textValueDetailDescription"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/foto_ktp"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageKTP"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="8dp"
+            android:src="@color/grey"
+            app:layout_constraintTop_toBottomOf="@+id/textTitleDetailImageKTP"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textConfirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/frameDetailBackwood"
+        style="@style/TextSmall"
+        android:layout_marginTop="@dimen/distance_8"
+        android:textColor="@color/darkBlue"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/tekan_tombol_dibawah_ini_jika_data_telah_anda_setujui"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnCOnfirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/ButtonPrimary"
+        android:text="@string/buatkan_surat_pengantar"
+        android:textColor="@color/white"
+        android:layout_marginTop="@dimen/distance_16"
+        app:layout_constraintTop_toBottomOf="@+id/textConfirm"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

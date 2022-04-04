@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation_headman"
+    app:startDestination="@+id/nav_dashboard_headman">
+    
+    <fragment
+        android:id="@+id/nav_dashboard_headman"
+        android:name="com.example.desaa.ui.headman.dashboard.DashboardFragment"
+        android:label="fragment_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+    <fragment
+        android:id="@+id/nav_village_rules_fragment"
+        android:name="com.example.desaa.ui.headman.village_rules.VillageRulesFragment"
+        android:label="fragment_village_rules"
+        tools:layout="@layout/fragment_village_rules" />
+    <fragment
+        android:id="@+id/nav_village_government_officials_fragment"
+        android:name="com.example.desaa.ui.headman.village_government_officials.VillageGovernmentOfficialsFragment"
+        android:label="fragment_village_government_officials"
+        tools:layout="@layout/fragment_village_government_officials" />
+    <fragment
+        android:id="@+id/nav_village_head_decision_fragment"
+        android:name="com.example.desaa.ui.headman.village_head_decision.VillageHeadDeciionFragment"
+        android:label="fragment_village_head_deciion"
+        tools:layout="@layout/fragment_village_head_deciion" />
+</navigation>

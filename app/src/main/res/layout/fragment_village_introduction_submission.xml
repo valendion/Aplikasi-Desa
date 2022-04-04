@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/distance_16"
-    tools:context=".ui.village_introduction_submission.VillageIntroductionSubmissionFragment">
+    tools:context=".ui.user.village_introduction_submission.VillageIntroductionSubmissionFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,10 +15,9 @@
         android:id="@+id/textTitleFormVillageIntroductionSubmission"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/interbold"
         android:text="@string/form_pengajuan_n_surat_pengantar_dusun"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        style="@style/TextTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -113,11 +112,10 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/distance_16"
-        android:fontFamily="@font/interregular"
         android:text="@string/file_ktp_anda_akan_terhapus_otomatis_jika_surat_pengantar_telah_diterbitkan_data_anda_tetap_aman"
         android:textAlignment="center"
         android:textColor="@color/red"
-        android:textSize="@dimen/textSizeSmall"
+        style="@style/TextSmall"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintAddPhoto" />
@@ -127,11 +125,10 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/distance_24"
-        android:fontFamily="@font/interregular"
-        android:text="Tekan tombol dibawah ini jika data telah lengkap terinput"
+        android:text="@string/tekan_tombol_dibawah_ini_jika_data_telah_lengkap_terinput"
         android:textAlignment="center"
+        style="@style/TextSmall"
         android:textColor="@color/darkBlue"
-        android:textSize="@dimen/textSizeSmall"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textDescritionPhoto" />

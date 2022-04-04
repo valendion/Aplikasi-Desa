@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity">
+    tools:context=".ui.user.HomeUserActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -37,10 +37,8 @@
                     android:id="@+id/textTitleAplikasiTopBar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/textSizeSmall"
-                    android:fontFamily="@font/intersemibold"
                     android:text="@string/aplikasi"
-                    android:textColor="@color/white"
+                    style="@style/TextTitleToolbarSecondary"
                     android:layout_marginStart="@dimen/distance_12"
                     app:layout_constraintTop_toTopOf="@+id/imageLogo"
                     app:layout_constraintStart_toEndOf="@id/imageLogo"/>
@@ -49,10 +47,8 @@
                     android:id="@+id/textTitleDesaTenrigangkaeTopBar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/intersemibold"
+                    style="@style/TextTitleToolbarSecondary"
                     android:text="@string/desa_tenrigangkae"
-                    android:textSize="@dimen/textSizeSmall"
-                    android:textColor="@color/white"
                     app:layout_constraintStart_toStartOf="@+id/textTitleAplikasiTopBar"
                     app:layout_constraintTop_toBottomOf="@+id/textTitleAplikasiTopBar" />
 

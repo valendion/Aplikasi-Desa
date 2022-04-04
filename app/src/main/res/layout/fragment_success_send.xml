@@ -5,17 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/distance_16"
-    tools:context=".ui.success_send.SuccessSendFragment">
+    tools:context=".ui.user.success_send.SuccessSendFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textTitleSuccessSend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/interbold"
+        style="@style/TextTitle"
         android:text="@string/pengajuan_n_surat_pengantar_dusun_n_berhasil_dilakukan"
         android:textAlignment="center"
-        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -32,9 +31,8 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnSeeStatus"
         android:layout_width="match_parent"
+        style="@style/ButtonPrimary"
         android:text="@string/lihat_status_disini"
-        android:textColor="@color/black"
-        android:background="@color/primaryGreen"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/imageSuccessSend"/>
 

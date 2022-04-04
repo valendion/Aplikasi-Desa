@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/distance_16"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.backwood.DashboardBackwoodFragment">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textVillageBackwood"
+        style="@style/TextTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dashboard_n_kepala_desa"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textVillage"
+        style="@style/TextTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tenrigangkae"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textVillageBackwood" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textNameBackwood"
+        style="@style/TextTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/wahyu_febri"
+        app:layout_constraintBottom_toTopOf="@+id/textVillage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textVillageBackwood" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textTitleVillageBackwood"
+        style="@style/TextTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/distance_12"
+        android:text="@string/daftar_pengajuan_nsurat_pengantar_dusun"
+        android:textSize="@dimen/textSizeHeader"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textVillage" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listBackwoods"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/distance_16"
+        android:layout_height="0dp"
+        tools:listitem="@layout/layout_confirm_check_list"
+        app:layout_constraintTop_toBottomOf="@+id/textTitleVillageBackwood"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

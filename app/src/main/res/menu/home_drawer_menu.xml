@@ -6,18 +6,18 @@
 
     <item android:title="@string/masyarakat">
         <menu>
-            <group>
+            <group android:checkableBehavior="single">
                 <item
                     android:id="@+id/nav_village"
-                    android:icon="@drawable/ic_baseline_surat"
+                    android:icon="@drawable/ic_document"
                     android:title="@string/pengajuan_pengantar_dusun" />
                 <item
                     android:id="@+id/nav_status"
-                    android:icon="@drawable/ic_baseline_status"
+                    android:icon="@drawable/ic_news_paper"
                     android:title="@string/status_pengajuan_surat" />
                 <item
                     android:id="@+id/nav_social_assistance"
-                    android:icon="@drawable/ic_baseline_bantuan"
+                    android:icon="@drawable/ic_open_book"
                     android:title="@string/penerimaan_bantuan_sosial" />
 
             </group>

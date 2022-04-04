@@ -3,29 +3,51 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/file/DesaApp/app/src/main/res/drawable/drawer_item.xml" value="0.138" />
         <entry key="..\:/file/DesaApp/app/src/main/res/drawable/ic_baseline_back.xml" value="0.1605" />
         <entry key="..\:/file/DesaApp/app/src/main/res/drawable/layout_bg_radius.xml" value="0.1595" />
-        <entry key="..\:/file/DesaApp/app/src/main/res/layout/activity_home.xml" value="0.25" />
+        <entry key="..\:/file/DesaApp/app/src/main/res/drawable/layout_border_black.xml" value="0.152" />
+        <entry key="..\:/file/DesaApp/app/src/main/res/drawable/rounded_border.xml" value="0.1335" />
+        <entry key="..\:/file/DesaApp/app/src/main/res/layout/activity_backwood.xml" value="0.4" />
+        <entry key="..\:/file/DesaApp/app/src/main/res/layout/activity_home.xml" value="0.176" />
+        <entry key="..\:/file/DesaApp/app/src/main/res/layout/activity_home_headman.xml" value="0.10400000000000001" />
         <entry key="..\:/file/DesaApp/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/file/DesaApp/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/file/DesaApp/app/src/main/res/layout/activity_splash.xml" value="0.264" />
-        <entry key="..\:/file/DesaApp/app/src/main/res/layout/app_bar_home.xml" value="0.25" />
-        <entry key="..\:/file/DesaApp/app/src/main/res/layout/content_home.xml" value="0.25" />
+        <entry key="..\:/file/DesaApp/app/src/main/res/layout/app_bar_home.xml" value="0.12" />
+        <entry key="..\:/file/DesaApp/app/src/main/res/layout/app_bar_home_headman.xml" value="0.1" />
+        <entry key="..\:/file/DesaApp/app/src/main/res/layout/content_home.xml" value="0.1" />
+        <entry key="..\:/file/DesaApp/app/src/main/res/layout/content_home_headman.xml" value="0.1" />
+        <entry key="..\:/file/DesaApp/app/src/main/res/layout/fragment_approve.xml" value="0.264" />
+        <entry key="..\:/file/DesaApp/app/src/main/res/layout/fragment_dashboard.xml" value="0.264" />
+        <entry key="..\:/file/DesaApp/app/src/main/res/layout/fragment_dashboard_backwood.xml" value="0.4321608040201005" />
+        <entry key="..\:/file/DesaApp/app/src/main/res/layout/fragment_detail_backwood.xml" value="0.264" />
         <entry key="..\:/file/DesaApp/app/src/main/res/layout/fragment_form_village_introduction_submission.xml" value="0.264" />
         <entry key="..\:/file/DesaApp/app/src/main/res/layout/fragment_home.xml" value="0.25" />
-        <entry key="..\:/file/DesaApp/app/src/main/res/layout/fragment_letter_submission_status.xml" value="0.25" />
-        <entry key="..\:/file/DesaApp/app/src/main/res/layout/fragment_social_assistance_recipient.xml" value="0.25" />
+        <entry key="..\:/file/DesaApp/app/src/main/res/layout/fragment_home_headman.xml" value="0.25" />
+        <entry key="..\:/file/DesaApp/app/src/main/res/layout/fragment_letter_submission_status.xml" value="0.264" />
+        <entry key="..\:/file/DesaApp/app/src/main/res/layout/fragment_social_assistance_recipient.xml" value="0.4" />
         <entry key="..\:/file/DesaApp/app/src/main/res/layout/fragment_success_send.xml" value="0.2" />
+        <entry key="..\:/file/DesaApp/app/src/main/res/layout/fragment_village_government_officials.xml" value="0.264" />
+        <entry key="..\:/file/DesaApp/app/src/main/res/layout/fragment_village_head_deciion.xml" value="0.264" />
         <entry key="..\:/file/DesaApp/app/src/main/res/layout/fragment_village_introduction_submission.xml" value="0.4" />
+        <entry key="..\:/file/DesaApp/app/src/main/res/layout/fragment_village_rules.xml" value="0.25" />
+        <entry key="..\:/file/DesaApp/app/src/main/res/layout/layout_confirm_accept_list.xml" value="0.25" />
+        <entry key="..\:/file/DesaApp/app/src/main/res/layout/layout_confirm_check_list.xml" value="0.4" />
         <entry key="..\:/file/DesaApp/app/src/main/res/layout/layout_develop_by.xml" value="0.25" />
+        <entry key="..\:/file/DesaApp/app/src/main/res/layout/layout_government_officials_list.xml" value="0.15551537070524413" />
         <entry key="..\:/file/DesaApp/app/src/main/res/layout/layout_input_login.xml" value="0.25" />
+        <entry key="..\:/file/DesaApp/app/src/main/res/layout/layout_social_assistance_list.xml" value="0.25" />
         <entry key="..\:/file/DesaApp/app/src/main/res/layout/layout_tollbar_all.xml" value="0.25" />
         <entry key="..\:/file/DesaApp/app/src/main/res/layout/layout_top_bar.xml" value="0.536" />
         <entry key="..\:/file/DesaApp/app/src/main/res/layout/layout_top_bar_login.xml" value="0.264" />
+        <entry key="..\:/file/DesaApp/app/src/main/res/layout/layout_village_rules_list.xml" value="0.4" />
         <entry key="..\:/file/DesaApp/app/src/main/res/layout/nav_header_home.xml" value="0.2" />
+        <entry key="..\:/file/DesaApp/app/src/main/res/layout/nav_header_home_headman.xml" value="0.25" />
         <entry key="..\:/file/DesaApp/app/src/main/res/menu/activity_main_drawer.xml" value="0.25" />
         <entry key="..\:/file/DesaApp/app/src/main/res/menu/home.xml" value="0.25" />
-        <entry key="..\:/file/DesaApp/app/src/main/res/menu/home_drawer_menu.xml" value="0.25" />
+        <entry key="..\:/file/DesaApp/app/src/main/res/menu/home_drawer_menu.xml" value="0.264" />
+        <entry key="..\:/file/DesaApp/app/src/main/res/menu/home_headman.xml" value="0.25" />
       </map>
     </option>
   </component>

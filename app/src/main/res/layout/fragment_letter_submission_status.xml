@@ -1,24 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/distance_16"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.letter_submission_status.LetterSubmissionStatusFragment">
+    tools:context=".ui.user.letter_submission_status.LetterSubmissionStatusFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textTitleLetterSubmissionStatus"
+        style="@style/TextTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/interbold"
         android:text="@string/daftar_pengajuan_surat"
         android:textAlignment="center"
-        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textTitleVillageIntroductionCertificate"
+        style="@style/TextTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/distance_24"
+        android:fontFamily="@font/interbold"
+        android:text="@string/surat_keterangan_pengantar_desa"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textTitleLetterSubmissionStatus" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listVillageIntroductionCertificate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/distance_16"
+        tools:itemCount="3"
+        tools:listitem="@layout/layout_confirm_accept_list"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textTitleVillageIntroductionCertificate" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textTitleBusinessCertificate"
+        style="@style/TextTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/distance_24"
+        android:fontFamily="@font/interbold"
+        android:text="@string/surat_keterangan_usaha"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listVillageIntroductionCertificate" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listBusinessCertificate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textTitleBusinessCertificate"
+            tools:itemCount="3"
+            tools:listitem="@layout/layout_confirm_accept_list" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textTitleDummy1Certificate"
+        style="@style/TextTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/distance_24"
+        android:fontFamily="@font/interbold"
+        android:text="@string/surat_pengantar_dusun_abc"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listBusinessCertificate" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listtextTitleDummy1Certificate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/distance_16"
+        tools:itemCount="3"
+        tools:listitem="@layout/layout_confirm_accept_list"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textTitleDummy1Certificate" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textTitleDummy2Certificate"
+            style="@style/TextTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_24"
+            android:fontFamily="@font/interbold"
+            android:text="@string/surat_pengantar_dusun_abc"
+            android:textAlignment="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listtextTitleDummy1Certificate" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listtextTit2eDummy1Certificate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_16"
+            tools:itemCount="3"
+            tools:listitem="@layout/layout_confirm_accept_list"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textTitleDummy2Certificate" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

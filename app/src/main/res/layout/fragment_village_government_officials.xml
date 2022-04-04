@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/distance_16"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.headman.village_government_officials.VillageGovernmentOfficialsFragment">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textVillageGovernment"
+        style="@style/TextTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dashboard_n_kepala_desa"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textVillage"
+        style="@style/TextTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tenrigangkae"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textVillageGovernment" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textNameHeadman"
+        style="@style/TextTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/wahyu_febri"
+        app:layout_constraintBottom_toTopOf="@+id/textVillage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textVillageGovernment" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textTitleGovernmentOfficials"
+        style="@style/TextTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/distance_12"
+        android:text="@string/aparat_pemerintah_desa"
+        android:textSize="@dimen/textSizeHeader"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textVillage" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listGovernmentOfficials"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/distance_16"
+        tools:listitem="@layout/layout_government_officials_list"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textTitleGovernmentOfficials"
+        tools:layout_editor_absoluteX="16dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

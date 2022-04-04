@@ -3,18 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_home" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
-    </group>
+    <item android:title="@string/administrasi_desa">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_village_rules_fragment"
+                    android:icon="@drawable/ic_document_stack"
+                    android:title="@string/peraturan_desa" />
+                <item
+                    android:id="@+id/nav_village_head_decision_fragment"
+                    android:icon="@drawable/ic_manage_accounts"
+                    android:title="@string/keputusan_kepala_desa" />
+                <item
+                    android:id="@+id/nav_village_government_officials_fragment"
+                    android:icon="@drawable/ic_outline_supervisor_account"
+                    android:title="@string/aparat_pemerintah_desa" />
+
+            </group>
+
+        </menu>
+    </item>
 </menu>
