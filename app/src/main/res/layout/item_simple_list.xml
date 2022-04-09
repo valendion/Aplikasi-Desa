@@ -3,12 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
+    android:layout_margin="@dimen/distance_16"
     app:cardCornerRadius="5dp"
     app:cardElevation="5dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clContentSocialAssistance"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="@dimen/distance_16">
@@ -21,7 +20,6 @@
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/textValue"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,8 +30,7 @@
             android:text="@string/_78467563474746856"
             android:textColor="@color/black"
             android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textTitle"
             app:layout_constraintTop_toBottomOf="@+id/textTitle" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

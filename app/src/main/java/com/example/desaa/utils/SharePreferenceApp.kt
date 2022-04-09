@@ -2,34 +2,33 @@ package com.example.desaa.utils
 
 import android.content.Context
 
-class SharePreferenceApp {
+class SharePreferenceApp(context: Context) {
 
-    private var _context: Context? = null
-    private var INSTANCE: SharePreferenceApp? = null
+
 
     companion object{
 
         const val KEY_NAME = "_setting"
         const val KEY_TOKEN = "token"
         const val KEY_ROLE = "role"
-    }
 
-    fun getInstance(): SharePreferenceApp{
-        if (INSTANCE == null){
-            synchronized(SharePreferenceApp::class){
-                if (INSTANCE == null){
-                    INSTANCE = SharePreferenceApp()
+        private var INSTANCE: SharePreferenceApp? = null
+
+        fun getInstance(context: Context): SharePreferenceApp{
+            if (INSTANCE == null){
+                synchronized(SharePreferenceApp::class){
+                    if (INSTANCE == null){
+                        INSTANCE = SharePreferenceApp(context)
+                    }
                 }
             }
+            return INSTANCE!!
         }
-        return INSTANCE!!
     }
 
-    fun setContext(context: Context){
-        _context = context
-    }
 
-    private val sharedPreferences = _context?.getSharedPreferences(KEY_NAME, Context.MODE_PRIVATE)
+
+    private val sharedPreferences = context.getSharedPreferences(KEY_NAME, Context.MODE_PRIVATE)
     fun <T> editData(key: String, data: T){
 
         val editor = sharedPreferences?.edit()
@@ -42,12 +41,12 @@ class SharePreferenceApp {
         editor?.apply()
     }
 
-    fun <T> getData(key: String, value: T): T{
-        return when(value){
-            is Boolean -> sharedPreferences?.getBoolean(key, value) as T
-            is Int -> sharedPreferences?.getInt(key, value) as T
-            is String -> sharedPreferences?.getString(key, value) as T
-            else -> throw java.lang.RuntimeException("$value class or type are not supported")
+    fun <T> getData(key: String, default: T): T{
+        return when(default){
+            is Boolean -> sharedPreferences?.getBoolean(key, default) as T
+            is Int -> sharedPreferences?.getInt(key, default) as T
+            is String -> sharedPreferences?.getString(key, default) as T
+            else -> throw java.lang.RuntimeException("$default class or type are not supported")
         }
     }
 

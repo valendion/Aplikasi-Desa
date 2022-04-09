@@ -9,8 +9,8 @@ import java.util.concurrent.TimeUnit
 
 class NetworkConfig {
 
-    val timeOut = 30000L
-    val BASE_URL = ""
+    private val timeOut = 30000L
+    private val BASE_URL = ""
 
     private val gson: Gson by lazy {
         GsonBuilder().setLenient().create()

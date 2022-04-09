@@ -5,8 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
 import com.example.desaa.databinding.FragmentDetailBackwoodBinding
 
 
@@ -16,7 +15,7 @@ class DetailBackwoodFragment : Fragment() {
 
     private val binding get() = _binding!!
 
-    private val viewModelDetailBackwood: DetailBackwoodViewModel by viewModels()
+    private val viewModelDetailBackwood: DetailBackwoodViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,9 +28,10 @@ class DetailBackwoodFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-//        viewModelDetailBackwood = ViewModelProvider(this).get(DetailBackwoodViewModel::class.java)
         binding.apply {
-            val name
+            viewModelDetailBackwood.getDataDetailBackwood.observe(viewLifecycleOwner){
+                //Implement View
+            }
         }
         super.onViewCreated(view, savedInstanceState)
     }

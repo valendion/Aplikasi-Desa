@@ -1,67 +1,75 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/distance_16"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.user.social_assistance_recipient.SocialAssistanceRecipientFragment">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textTitleSocialAssistanceRecipient"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/daftar_penerima_bantuan_sosial"
-        android:textAlignment="center"
-        style="@style/TextTitle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textTitleSocialAssistanceBPNT"
-        style="@style/TextTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/distance_24"
-        android:fontFamily="@font/interbold"
-        android:text="Bantuan Sosial BPNT"
-        android:textAlignment="center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textTitleSocialAssistanceRecipient" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listSocialAssistanceBPNT"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/distance_16"
-        tools:itemCount="3"
-        tools:listitem="@layout/layout_social_assistance_list"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textTitleSocialAssistanceBPNT" />
+        android:layout_height="match_parent"
+        android:padding="@dimen/distance_16">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textTitleSocialAssistanceJAMKESMAS"
-        style="@style/TextTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/distance_24"
-        android:fontFamily="@font/interbold"
-        android:text="@string/bantuan_sosial_jamkesmas"
-        android:textAlignment="center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listSocialAssistanceBPNT" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listSocialAssistanceJAMKESMAS"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/distance_16"
-        tools:itemCount="3"
-        tools:listitem="@layout/layout_social_assistance_list"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textTitleSocialAssistanceJAMKESMAS" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textTitleSocialAssistanceRecipient"
+            style="@style/TextTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/daftar_penerima_bantuan_sosial"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textTitleSocialAssistanceBPNT"
+            style="@style/TextTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_24"
+            android:fontFamily="@font/interbold"
+            android:text="@string/bantuan_sosial_bpnt"
+            android:textAlignment="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textTitleSocialAssistanceRecipient" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listSocialAssistanceBPNT"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="12dp"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            app:layout_constraintTop_toBottomOf="@+id/textTitleSocialAssistanceBPNT"
+            tools:itemCount="3"
+            tools:listitem="@layout/layout_social_assistance_list" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textTitleSocialAssistanceJAMKESMAS"
+            style="@style/TextTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_24"
+            android:fontFamily="@font/interbold"
+            android:text="@string/bantuan_sosial_jamkesmas"
+            android:textAlignment="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listSocialAssistanceBPNT" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listSocialAssistanceJAMKESMAS"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="12dp"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textTitleSocialAssistanceJAMKESMAS"
+            tools:itemCount="2"
+            tools:listitem="@layout/layout_social_assistance_list" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

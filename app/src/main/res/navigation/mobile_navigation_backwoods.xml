@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_dashboard_backwood_fragment"
-        android:name="com.example.desaa.ui.backwood.DashboardBackwoodFragment"
+        android:name="com.example.desaa.ui.backwood.dashboard_backwood.DashboardBackwoodFragment"
         android:label="fragment_dashboard_backwood"
         tools:layout="@layout/fragment_dashboard_backwood" >
         <action

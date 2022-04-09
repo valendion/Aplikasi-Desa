@@ -5,13 +5,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.desaa.R
 import com.example.desaa.databinding.ActivityBackwoodBinding
+import com.example.desaa.utils.SharePreferenceApp
 
 class BackwoodActivity : AppCompatActivity() {
     private lateinit var binding: ActivityBackwoodBinding
     private lateinit var appBarConfiguration: AppBarConfiguration
+    lateinit var sharePreferenceApp: SharePreferenceApp
+//    private val viewModelDashboard: DashBoardBackwoodViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBackwoodBinding.inflate(layoutInflater)
@@ -27,9 +29,9 @@ class BackwoodActivity : AppCompatActivity() {
             )
         )
 
-        val navController = findNavController(R.id.nav_host_fragment_content_backwood)
-
-        setupActionBarWithNavController(navController)
+//        val navController = findNavController(R.id.nav_host_fragment_content_backwood)
+//
+//        setupActionBarWithNavController(navController)
     }
 
     override fun onSupportNavigateUp(): Boolean {

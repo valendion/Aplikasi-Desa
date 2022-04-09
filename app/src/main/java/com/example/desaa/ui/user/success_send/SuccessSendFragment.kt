@@ -1,10 +1,11 @@
 package com.example.desaa.ui.user.success_send
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import com.example.desaa.databinding.FragmentSuccessSendBinding
 
 
@@ -25,7 +26,11 @@ class SuccessSendFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        binding.root.setDisplayHomeAsUpEnabled(false)
+        binding.btnSeeStatus.setOnClickListener {
+            val direction =
+                SuccessSendFragmentDirections.actionNavSuccessSendToNavStatus()
+            Navigation.findNavController(view).navigate(direction)
+        }
         super.onViewCreated(view, savedInstanceState)
     }
 
@@ -33,6 +38,4 @@ class SuccessSendFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
-
 }
