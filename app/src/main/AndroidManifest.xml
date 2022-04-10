@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DesaA">
         <activity
-            android:name=".SplashActivity"
+            android:name=".TestLayoutActivity"
             android:exported="false" />
         <activity
             android:name=".ui.headman.HomeHeadmanActivity"
@@ -36,7 +36,7 @@
             android:exported="false"
             android:theme="@style/Theme.DesaA.NoActionBar" />
         <activity
-            android:name=".TestLayoutActivity"
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

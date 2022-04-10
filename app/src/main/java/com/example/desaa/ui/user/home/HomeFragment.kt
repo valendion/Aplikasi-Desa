@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.desaa.databinding.FragmentHomeBinding
 import kotlinx.coroutines.*
+import kotlin.system.measureNanoTime
 
 class HomeFragment : Fragment() {
 
@@ -31,10 +32,13 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
-            runBlocking{
-                webViewHome.settings.javaScriptEnabled = true
-                webViewHome.loadUrl("https://tenrigangkae.id/")
-                loadingHomeUserActivity.visibility = View.INVISIBLE
+
+            loadingHomeUserActivity.visibility = View.VISIBLE
+            webViewHome.visibility = View.GONE
+
+            CoroutineScope(Dispatchers.Main).launch{
+                loadWebView()
+                loadingHomeUserActivity.visibility = View.GONE
                 webViewHome.visibility = View.VISIBLE
             }
         }
@@ -43,5 +47,18 @@ class HomeFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+   private suspend fun loadWebView(){
+        binding.apply {
+            webViewHome.settings.javaScriptEnabled = true
+            val time = measureNanoTime {
+                CoroutineScope(Dispatchers.Main).launch {
+                    val load = async { webViewHome.loadUrl("https://tenrigangkae.id/") }
+                    load.await()
+                }
+            }
+            delay(3000)
+        }
     }
 }

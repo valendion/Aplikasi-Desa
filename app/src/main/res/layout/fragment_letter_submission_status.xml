@@ -11,53 +11,56 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textTitleLetterSubmissionStatus"
-        style="@style/TextTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/interbold"
-        android:text="@string/daftar_pengajuan_surat"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textTitleLetterSubmissionStatus"
+            style="@style/TextTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/interbold"
+            android:text="@string/daftar_pengajuan_surat"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textTitleVillageIntroductionCertificate"
-        style="@style/TextTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/distance_24"
-        android:fontFamily="@font/interbold"
-        android:text="@string/surat_keterangan_pengantar_desa"
-        android:textAlignment="center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textTitleLetterSubmissionStatus" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textTitleVillageIntroductionCertificate"
+            style="@style/TextTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_24"
+            android:fontFamily="@font/interbold"
+            android:text="@string/surat_keterangan_pengantar_desa"
+            android:textAlignment="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textTitleLetterSubmissionStatus" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listVillageIntroductionCertificate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/distance_16"
-        tools:itemCount="3"
-        tools:listitem="@layout/layout_confirm_accept_list"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textTitleVillageIntroductionCertificate" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listVillageIntroductionCertificate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textTitleVillageIntroductionCertificate"
+            tools:itemCount="3"
+            android:scrollbars="none"
+            android:overScrollMode="never"
+            tools:listitem="@layout/layout_confirm_accept_list" />
 
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textTitleBusinessCertificate"
-        style="@style/TextTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/distance_24"
-        android:fontFamily="@font/interbold"
-        android:text="@string/surat_keterangan_usaha"
-        android:textAlignment="center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listVillageIntroductionCertificate" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textTitleBusinessCertificate"
+            style="@style/TextTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_24"
+            android:fontFamily="@font/interbold"
+            android:text="@string/surat_keterangan_usaha"
+            android:textAlignment="center"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listVillageIntroductionCertificate" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listBusinessCertificate"
@@ -69,30 +72,33 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textTitleBusinessCertificate"
             tools:itemCount="3"
+            android:visibility="gone"
             tools:listitem="@layout/layout_confirm_accept_list" />
 
         <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textTitleDummy1Certificate"
-        style="@style/TextTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/distance_24"
-        android:fontFamily="@font/interbold"
-        android:text="@string/surat_pengantar_dusun_abc"
-        android:textAlignment="center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listBusinessCertificate" />
+            android:id="@+id/textTitleDummy1Certificate"
+            style="@style/TextTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_24"
+            android:fontFamily="@font/interbold"
+            android:text="@string/surat_pengantar_dusun_abc"
+            android:textAlignment="center"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listBusinessCertificate" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listtextTitleDummy1Certificate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/distance_16"
-        tools:itemCount="3"
-        tools:listitem="@layout/layout_confirm_accept_list"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textTitleDummy1Certificate" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listtextTitleDummy1Certificate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textTitleDummy1Certificate"
+            tools:itemCount="3"
+            android:visibility="gone"
+            tools:listitem="@layout/layout_confirm_accept_list" />
 
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -104,6 +110,7 @@
             android:fontFamily="@font/interbold"
             android:text="@string/surat_pengantar_dusun_abc"
             android:textAlignment="center"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/listtextTitleDummy1Certificate" />
 
@@ -112,11 +119,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/distance_16"
-            tools:itemCount="3"
-            tools:listitem="@layout/layout_confirm_accept_list"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textTitleDummy2Certificate" />
+            app:layout_constraintTop_toBottomOf="@+id/textTitleDummy2Certificate"
+            tools:itemCount="3"
+            tools:listitem="@layout/layout_confirm_accept_list" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

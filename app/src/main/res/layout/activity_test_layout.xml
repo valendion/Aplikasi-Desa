@@ -10,8 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clContentSocialAssistance"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="@dimen/distance_16">
+        android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listTest"
@@ -20,6 +19,8 @@
             android:layout_marginTop="12dp"
             android:overScrollMode="never"
             android:scrollbars="none"
+            android:clipToPadding = "false"
+            android:padding="@dimen/distance_16"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

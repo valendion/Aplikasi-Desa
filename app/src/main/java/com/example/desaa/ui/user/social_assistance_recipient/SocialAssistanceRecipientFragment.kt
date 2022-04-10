@@ -41,7 +41,7 @@ class SocialAssistanceRecipientFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             listSocialAssistanceBPNT.apply {
-                layoutManager = LinearLayoutManager(requireActivity())
+                layoutManager = LinearLayoutManager(activity)
                 adapter = adapterSocialAssistanceBMPT
 
                 viewModelBMPT.addDatalistAssistanceBnpt(Data.dataDummy)

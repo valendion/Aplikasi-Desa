@@ -37,7 +37,7 @@ class AdapterSocialAssistanceJamkes :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SocialAssitanceJamkes {
         val itemBinding =
-            LayoutSocialAssistanceListBinding.inflate(LayoutInflater.from(parent.context))
+            LayoutSocialAssistanceListBinding.inflate(LayoutInflater.from(parent.context),parent, false)
         return SocialAssitanceJamkes(itemBinding)
     }
 
