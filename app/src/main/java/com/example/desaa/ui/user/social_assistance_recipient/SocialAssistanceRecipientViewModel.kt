@@ -3,7 +3,7 @@ package com.example.desaa.ui.user.social_assistance_recipient
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.desaa.model.DummyData
+import com.example.desaa.model.response.DummyData
 
 class SocialAssistanceRecipientViewModel : ViewModel() {
     // List social assistance BNPT

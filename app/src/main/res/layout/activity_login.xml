@@ -98,6 +98,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:ems="10"
+                    android:text="kepaladesa@tenrigangkae.id"
                     android:inputType="textEmailAddress"
                     android:textColor="@android:color/black" />
 
@@ -123,6 +124,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:ems="10"
+                    android:text="Kepaladesa123#"
                     android:inputType="textPassword"
                     android:textColor="@android:color/black" />
 

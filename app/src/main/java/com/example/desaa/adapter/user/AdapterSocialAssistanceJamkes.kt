@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.desaa.databinding.LayoutSocialAssistanceListBinding
-import com.example.desaa.model.DummyData
+import com.example.desaa.model.response.DummyData
 
 class AdapterSocialAssistanceJamkes :
     RecyclerView.Adapter<AdapterSocialAssistanceJamkes.SocialAssitanceJamkes>() {

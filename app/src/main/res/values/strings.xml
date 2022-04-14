@@ -92,4 +92,6 @@
     <string name="nip_197905062010011007">NIP :197905062010011007</string>
     <string name="nik_5201140506790001">NIK :5201140506790001</string>
     <string name="bantuan_sosial_bpnt">Bantuan Sosial BPNT</string>
+    <string name="coba_lagi">Coba Lagi</string>
+    <string name="no_signal">No Signal</string>
 </resources>

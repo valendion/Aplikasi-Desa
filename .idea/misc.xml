@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/file/DesaApp/app/src/main/res/drawable/drawer_item.xml" value="0.138" />
         <entry key="..\:/file/DesaApp/app/src/main/res/drawable/ic_baseline_back.xml" value="0.1605" />
+        <entry key="..\:/file/DesaApp/app/src/main/res/drawable/ic_no_signal.xml" value="0.1" />
         <entry key="..\:/file/DesaApp/app/src/main/res/drawable/layout_bg_radius.xml" value="0.1595" />
         <entry key="..\:/file/DesaApp/app/src/main/res/drawable/layout_border_black.xml" value="0.152" />
         <entry key="..\:/file/DesaApp/app/src/main/res/drawable/rounded_border.xml" value="0.1335" />
@@ -41,6 +42,7 @@
         <entry key="..\:/file/DesaApp/app/src/main/res/layout/layout_develop_by.xml" value="0.25" />
         <entry key="..\:/file/DesaApp/app/src/main/res/layout/layout_government_officials_list.xml" value="0.15551537070524413" />
         <entry key="..\:/file/DesaApp/app/src/main/res/layout/layout_input_login.xml" value="0.25" />
+        <entry key="..\:/file/DesaApp/app/src/main/res/layout/layout_no_signal.xml" value="0.563819095477387" />
         <entry key="..\:/file/DesaApp/app/src/main/res/layout/layout_simple_list.xml" value="0.264" />
         <entry key="..\:/file/DesaApp/app/src/main/res/layout/layout_social_assistance_list.xml" value="0.4" />
         <entry key="..\:/file/DesaApp/app/src/main/res/layout/layout_tollbar_all.xml" value="0.25" />

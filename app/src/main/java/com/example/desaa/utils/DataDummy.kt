@@ -1,6 +1,6 @@
 package com.example.desaa.utils
 
-import com.example.desaa.model.DummyData
+import com.example.desaa.model.response.DummyData
 
 object Data{
     val dataDummy = arrayListOf(

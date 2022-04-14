@@ -1,7 +1,11 @@
 package com.example.desaa.ui.user
 
+import android.content.IntentFilter
+import android.net.ConnectivityManager
+import android.net.ConnectivityManager.CONNECTIVITY_ACTION
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.ConnectivityManagerCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -10,18 +14,22 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.desaa.R
 import com.example.desaa.databinding.ActivityHomeBinding
+import com.example.desaa.utils.NetworkConnection
 import com.google.android.material.navigation.NavigationView
 
 class HomeUserActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityHomeBinding
+    private lateinit var networkChange: NetworkConnection
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        networkChange = NetworkConnection(this)
 
         setSupportActionBar(binding.appBarHome.toolbar)
 
@@ -45,5 +53,18 @@ class HomeUserActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_home)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        val filter = IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
+        registerReceiver(networkChange, filter)
+    }
+
+    override fun onStop() {
+        super.onStop()
+
+        unregisterReceiver(networkChange)
     }
 }

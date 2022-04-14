@@ -33,6 +33,10 @@ class NetworkConfig {
             .build()
     }
 
+    val apiServiceAdminVillage : ApiServiceAdminVillage by lazy {
+        retrofit.create(ApiServiceAdminVillage::class.java)
+    }
+
 //    val apiServiceSector: ApiServiceSector by lazy {
 //        retrofit.create(ApiServiceSector::class.java)
 //    }
