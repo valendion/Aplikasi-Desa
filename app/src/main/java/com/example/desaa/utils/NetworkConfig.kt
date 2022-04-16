@@ -1,5 +1,6 @@
 package com.example.desaa.utils
 
+import com.example.desaa.model.network.ApiServiceAdminVillage
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
@@ -7,17 +8,13 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-class NetworkConfig {
+object NetworkConfig {
 
-    private val timeOut = 30000L
-    private val BASE_URL = ""
+    private const val timeOut = 100000L
+    private const val BASE_URL = "https://testing.sunistheworld.com/api/"
 
     private val gson: Gson by lazy {
         GsonBuilder().setLenient().create()
-    }
-
-    private val httpClient: OkHttpClient by lazy {
-        OkHttpClient.Builder().build()
     }
 
     private val retrofit: Retrofit by lazy {
@@ -26,10 +23,10 @@ class NetworkConfig {
         httpClient.readTimeout(timeOut, TimeUnit.MILLISECONDS)
         httpClient.writeTimeout(timeOut, TimeUnit.MILLISECONDS)
         httpClient.connectTimeout(timeOut, TimeUnit.MILLISECONDS)
-        return@lazy Retrofit.Builder()
+         Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(httpClient.build())
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
     }
 

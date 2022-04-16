@@ -12,8 +12,15 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.desaa.R
 import com.example.desaa.databinding.ActivityHomeHeadmanBinding
+import com.example.desaa.utils.NetworkConfig
 import com.example.desaa.utils.NetworkConnection
+import com.example.desaa.utils.SharePreferenceApp
+import com.example.desaa.utils.SharePreferenceApp.Companion.getInstance
 import com.google.android.material.navigation.NavigationView
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class HomeHeadmanActivity : AppCompatActivity() {
@@ -21,6 +28,7 @@ class HomeHeadmanActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityHomeHeadmanBinding
     private lateinit var networkChange: NetworkConnection
+    private lateinit var sharePreferenceApp: SharePreferenceApp
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +37,8 @@ class HomeHeadmanActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         networkChange = NetworkConnection(this)
+
+        sharePreferenceApp = getInstance(this)
 
         setSupportActionBar(binding.appBarHomeHeadman.toolbar)
 
@@ -47,6 +57,20 @@ class HomeHeadmanActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navControllerHeadman, appBarConfiguration)
         navView.setupWithNavController(navControllerHeadman)
+
+        getProfile()
+    }
+
+    fun getProfile(){
+        CoroutineScope(Dispatchers.Main).launch {
+            val dataProfile = NetworkConfig.apiServiceAdminVillage.getAparatureogged("Bearer ${sharePreferenceApp.getData("token", "")}")
+            withContext(Dispatchers.IO){
+                dataProfile.data.apply {
+                    sharePreferenceApp.editData("nama_kelapa_desa", namaKepalaDesa)
+                    sharePreferenceApp.editData("nama_desa", namaDesa)
+                }
+            }
+        }
     }
 
 
