@@ -13,6 +13,10 @@ data class ModelDataVillageGovernmentOfficials(
     @SerializedName("nip")
     var nip: String? = null,
 
+    @SerializedName("nik")
+    var nik: String? = null,
+
+
     @SerializedName("foto")
     var foto: String? = null,
 

@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit
 object NetworkConfig {
 
     private const val timeOut = 100000L
-    private const val BASE_URL = "https://testing.sunistheworld.com/api/"
+    private const val BASE_URL = "https://administrasi.tenrigangkae.id/api/"
 
     private val gson: Gson by lazy {
         GsonBuilder().setLenient().create()

@@ -22,10 +22,10 @@ interface ApiServiceAdminVillage {
     suspend fun getRuleVillage(@Header("Authorization") token: String): ResponseRuleVillage
 
     @GET("keputusan_kepala_desa")
-    suspend fun getDecisionHeadman(@Header("Authorization") token: String): ResponseRuleVillage
+    suspend fun getDecisionHeadman(@Header("Authorization") token: String): ResponseDecisionHeadman
 
     @GET("aparat_pemerintah_desa")
-    suspend fun getVillageGovernmentOfficials(@Header("Authorization") token: String): ResponseRuleVillage
+    suspend fun getVillageGovernmentOfficials(@Header("Authorization") token: String): ResponseVillageGovernmentOfficials
 
     @GET("aparatur")
     suspend fun getAparatureRole(@Header("Authorization") token: String): ResponseRoleLogged

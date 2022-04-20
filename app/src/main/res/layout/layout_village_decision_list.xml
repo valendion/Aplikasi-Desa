@@ -34,16 +34,40 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/TexxDescribeDate"
+            android:id="@+id/textDescribeNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/distance_8"
-            android:text="@string/ditetapkan"
+            android:text="No.           :"
             android:textColor="@color/white"
             android:paddingHorizontal="16dp"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textTitle" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textValueNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_8"
+            android:text="@string/_1_09_01_2016"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:paddingHorizontal="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textTitle" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textDescribeDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_8"
+            android:text="Tanggal   :"
+            android:textColor="@color/white"
+            android:paddingHorizontal="16dp"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textDescribeNumber" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textValueDate"
@@ -55,7 +79,7 @@
             android:textSize="14sp"
             android:paddingHorizontal="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/textValueNumber" />
 
         <FrameLayout
             android:id="@+id/btnDownload"
@@ -66,7 +90,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             style="@style/ButtonSecondary"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/TexxDescribeDate" >
+            app:layout_constraintTop_toBottomOf="@+id/textDescribeDate" >
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"

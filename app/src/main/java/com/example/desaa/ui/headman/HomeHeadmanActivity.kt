@@ -15,6 +15,9 @@ import com.example.desaa.databinding.ActivityHomeHeadmanBinding
 import com.example.desaa.utils.NetworkConfig
 import com.example.desaa.utils.NetworkConnection
 import com.example.desaa.utils.SharePreferenceApp
+import com.example.desaa.utils.SharePreferenceApp.Companion.KEY_NAME_HEADMAN
+import com.example.desaa.utils.SharePreferenceApp.Companion.KEY_NAME_VILLAGE
+import com.example.desaa.utils.SharePreferenceApp.Companion.KEY_TOKEN
 import com.example.desaa.utils.SharePreferenceApp.Companion.getInstance
 import com.google.android.material.navigation.NavigationView
 import kotlinx.coroutines.CoroutineScope
@@ -61,18 +64,18 @@ class HomeHeadmanActivity : AppCompatActivity() {
         getProfile()
     }
 
-    fun getProfile(){
+    private fun getProfile(){
         CoroutineScope(Dispatchers.Main).launch {
-            val dataProfile = NetworkConfig.apiServiceAdminVillage.getAparatureogged("Bearer ${sharePreferenceApp.getData("token", "")}")
+            val dataProfile = NetworkConfig.apiServiceAdminVillage.getAparatureogged("Bearer ${sharePreferenceApp.getData(
+                KEY_TOKEN, "")}")
             withContext(Dispatchers.IO){
                 dataProfile.data.apply {
-                    sharePreferenceApp.editData("nama_kelapa_desa", namaKepalaDesa)
-                    sharePreferenceApp.editData("nama_desa", namaDesa)
+                    sharePreferenceApp.editData(KEY_NAME_HEADMAN, namaKepalaDesa)
+                    sharePreferenceApp.editData(KEY_NAME_VILLAGE, namaDesa)
                 }
             }
         }
     }
-
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_home_headman)

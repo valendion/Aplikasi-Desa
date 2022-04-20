@@ -4,13 +4,13 @@ import android.content.Context
 
 class SharePreferenceApp(context: Context) {
 
-
-
     companion object{
 
         const val KEY_NAME = "_setting"
         const val KEY_TOKEN = "token"
         const val KEY_ROLE = "role"
+        const val KEY_NAME_HEADMAN = "nama_kepala_desa"
+        const val KEY_NAME_VILLAGE = "nama_desa"
 
         private var INSTANCE: SharePreferenceApp? = null
 

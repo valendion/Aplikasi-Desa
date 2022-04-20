@@ -1,8 +1,16 @@
 package com.example.desaa.ui.headman.dashboard
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import com.example.desaa.model.response.ModelDataInfoVillage
 
-class DashboardViewModel(application: Application): AndroidViewModel(application) {
+class DashboardViewModel: ViewModel() {
+    private var _statistic = MutableLiveData<ModelDataInfoVillage>()
 
+    val statistic: LiveData<ModelDataInfoVillage> get() = _statistic
+
+    fun addValueStatistic(dataStatistic: ModelDataInfoVillage){
+        _statistic.postValue(dataStatistic)
+    }
 }
