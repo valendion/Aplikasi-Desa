@@ -34,6 +34,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textTitleSocialAssistanceRecipient" />
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnDetailSocialAssistanceBPNT"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/interbold"
+            android:text="Detail"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="@+id/textTitleSocialAssistanceBPNT"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textTitleSocialAssistanceBPNT" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listSocialAssistanceBPNT"
             android:layout_width="match_parent"
@@ -56,6 +68,18 @@
             android:textAlignment="center"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/listSocialAssistanceBPNT" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnDetailSocialAssistanceJAMKESMAS"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/interbold"
+            android:text="Detail"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="@+id/textTitleSocialAssistanceJAMKESMAS"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textTitleSocialAssistanceJAMKESMAS" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listSocialAssistanceJAMKESMAS"

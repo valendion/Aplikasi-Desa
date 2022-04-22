@@ -4,6 +4,10 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import coil.transform.CircleCropTransformation
+import com.example.desaa.R
+
 import com.example.desaa.databinding.LayoutGovernmentOfficialsListBinding
 import com.example.desaa.model.response.ModelDataVillageGovernmentOfficials
 
@@ -16,9 +20,18 @@ class AdapterVillageGovernmentOfficials :
         fun bind(data: ModelDataVillageGovernmentOfficials) {
             binding.apply {
                 textName.text = data.namaPegawaiDesa
-                textNIK.text = data.nik
-                textNIP.text = data.nip
+                textNIK.text = root.context.getString(R.string.nik, data.nik.toString())
+                textNIP.text = root.context.getString(R.string.nip,data.nip.toString())
                 textPosition.text = data.jabatan
+                if (data.foto != null){
+                    imagePhoto.load(data.foto){
+                        crossfade(true)
+                        placeholder(R.drawable.ic_image_34)
+                    }
+                }else{
+                    imagePhoto.load(R.drawable.ic_image_34)
+                }
+
             }
         }
     }

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/distance_16"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.user.DetailSocialAssitanceFragment">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textDetailSocialAssistance"
+        style="@style/TextTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/daftar_penerima_bantuan_sosial"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textDescribeSocialAssistance"
+        style="@style/TextTitle2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/distance_16"
+        android:text="@string/describe_detail_social_assistance"
+        android:textAlignment="center"
+        android:background="@drawable/layout_bg_radius_green"
+        android:layout_marginTop="@dimen/distance_16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textDetailSocialAssistance" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textAidProgramGoals"
+        style="@style/TextTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sasaran Program Bantuan"
+        android:textAlignment="center"
+        android:layout_marginTop="@dimen/distance_40"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textDescribeSocialAssistance" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textValueAidProgramGoals"
+        style="@style/TextRegular2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Penduduk Perorangan"
+        android:textAlignment="center"
+        android:layout_marginTop="@dimen/distance_8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textAidProgramGoals" />
+
+<!--    Batas -->
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textHelpTimeline"
+        style="@style/TextTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rentang Waktu Bantuan"
+        android:textAlignment="center"
+        android:layout_marginTop="@dimen/distance_16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textValueAidProgramGoals" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textValueHelpTimeline"
+        style="@style/TextRegular2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="9, April 2022 sampai dengan 30, April 2022"
+        android:textAlignment="center"
+        android:layout_marginTop="@dimen/distance_8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textHelpTimeline" />
+
+<!--   Batas -->
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textOriginofFunds"
+        style="@style/TextTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Asal Dana"
+        android:textAlignment="center"
+        android:layout_marginTop="@dimen/distance_16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textValueHelpTimeline" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textValueOriginofFunds"
+        style="@style/TextRegular2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pemerintah Pusat"
+        android:textAlignment="center"
+        android:layout_marginTop="@dimen/distance_8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textOriginofFunds" />
+
+<!--   Batas -->
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textNumberofBeneficiaries"
+        style="@style/TextTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jumlah Penerima Bantuan"
+        android:textAlignment="center"
+        android:layout_marginTop="@dimen/distance_16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textValueOriginofFunds" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textValueNumberofBeneficiaries"
+        style="@style/TextRegular2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="5 Orang"
+        android:textAlignment="center"
+        android:layout_marginTop="@dimen/distance_8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textNumberofBeneficiaries" />
+</androidx.constraintlayout.widget.ConstraintLayout>

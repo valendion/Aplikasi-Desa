@@ -12,6 +12,11 @@ interface ApiServiceAdminVillage {
         @Field("password") password: String
     ): ResponseLogin
 
+    @POST("logout")
+    suspend fun logout(
+        @Header("Authorization") token: String,
+    ): ResponseLogout
+
     @GET("statistik_desa")
     suspend fun getStatistics(@Header("Authorization") token: String): ResponseVillageStatsInfo
 

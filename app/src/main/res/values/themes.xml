@@ -29,6 +29,12 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <style name="TextTitle2" >
+        <item name="android:fontFamily">@font/interbold</item>
+        <item name="android:textSize">@dimen/textSizeNormal</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
     <style name="TextTitleBLarge" >
         <item name="android:fontFamily">@font/interbold</item>
         <item name="android:textSize">@dimen/textSizeHeaderLarge</item>

@@ -1,8 +1,10 @@
 package com.example.desaa.ui.headman
 
+import android.content.Intent
 import android.content.IntentFilter
 import android.net.ConnectivityManager
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
@@ -12,6 +14,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.desaa.R
 import com.example.desaa.databinding.ActivityHomeHeadmanBinding
+import com.example.desaa.ui.user.HomeUserActivity
 import com.example.desaa.utils.NetworkConfig
 import com.example.desaa.utils.NetworkConnection
 import com.example.desaa.utils.SharePreferenceApp
@@ -62,6 +65,21 @@ class HomeHeadmanActivity : AppCompatActivity() {
         navView.setupWithNavController(navControllerHeadman)
 
         getProfile()
+
+        binding.appBarHomeHeadman.apply {
+            btnLogout.setOnClickListener{
+                CoroutineScope(Dispatchers.Main).launch {
+                    val dataLogout = NetworkConfig.apiServiceAdminVillage.logout("Bearer ${sharePreferenceApp.getData(
+                        KEY_TOKEN, "")}")
+
+
+                    Toast.makeText(this@HomeHeadmanActivity, dataLogout.message, Toast.LENGTH_SHORT).show()
+                }
+                startActivity(Intent(this@HomeHeadmanActivity, HomeUserActivity::class.java))
+                sharePreferenceApp.clearDate()
+                finishAffinity()
+            }
+        }
     }
 
     private fun getProfile(){
