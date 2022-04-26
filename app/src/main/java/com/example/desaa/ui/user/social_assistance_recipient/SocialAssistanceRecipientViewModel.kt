@@ -3,21 +3,24 @@ package com.example.desaa.ui.user.social_assistance_recipient
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.desaa.model.response.DummyData
+import com.example.desaa.model.response.ModelDataHelpProgramList
+import com.example.desaa.model.response.ModelDataHelpProgramParticipant
 
 class SocialAssistanceRecipientViewModel : ViewModel() {
-    // List social assistance BNPT
-    private var _listAssistanceBnpt  = MutableLiveData<ArrayList<DummyData>>()
-    val listAssistanceBnpt: LiveData<ArrayList<DummyData>> get() = _listAssistanceBnpt
 
-    fun addDatalistAssistanceBnpt(data: ArrayList<DummyData>){
-        _listAssistanceBnpt.value = data
+    // Help Program List
+    private var _listHelpProgram = MutableLiveData<ArrayList<ModelDataHelpProgramList>>()
+    val listHelpProgram: LiveData<ArrayList<ModelDataHelpProgramList>> get() = _listHelpProgram
+
+    fun addDataHelpPrograms(data: ArrayList<ModelDataHelpProgramList>){
+        _listHelpProgram.postValue(data)
     }
-    // list social assitance Jamkesmas
-    private var _listAssistanceJamkes = MutableLiveData<ArrayList<DummyData>>()
-    val listAssistanceJamkes: LiveData<ArrayList<DummyData>> get() = _listAssistanceJamkes
 
-    fun addDatalistAssistanceJamkes(data: ArrayList<DummyData>){
-        _listAssistanceJamkes.value = data
+    // list social assitance
+    private var _listAssistance = MutableLiveData<ArrayList<ModelDataHelpProgramParticipant>>()
+    val listAssistance: LiveData<ArrayList<ModelDataHelpProgramParticipant>> get() = _listAssistance
+
+    fun addDatalistAssistance(data: ArrayList<ModelDataHelpProgramParticipant>){
+        _listAssistance.postValue(data)
     }
 }

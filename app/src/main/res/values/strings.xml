@@ -94,8 +94,10 @@
     <string name="bantuan_sosial_bpnt">Bantuan Sosial BPNT</string>
     <string name="coba_lagi">Coba Lagi</string>
     <string name="no_signal">No Signal</string>
+    <string name="aktif">Aktif</string>
     <string name="nip">Nip \t : %1s</string>
     <string name="nik">Nik \t : %1s</string>
     <string name="describe_detail_social_assistance">JAMKESMAS adalah sebuah program jaminan kesehatan untuk warga Indonesia yang memberikan perlindungan sosial dibidang kesehatan.</string>
+    <string name="bantuan_sosial">Bantuan Sosial</string>
 
 </resources>

@@ -31,7 +31,11 @@
         android:id="@+id/nav_social_assistance"
         android:name="com.example.desaa.ui.user.social_assistance_recipient.SocialAssistanceRecipientFragment"
         android:label="fragment_social_assistance_recipient"
-        tools:layout="@layout/fragment_social_assistance_recipient" />
+        tools:layout="@layout/fragment_social_assistance_recipient" >
+        <action
+            android:id="@+id/action_nav_social_assistance_to_detailSocialAssitanceFragment"
+            app:destination="@id/detailSocialAssitanceFragment" />
+    </fragment>
     <fragment
         android:id="@+id/nav_status"
         android:name="com.example.desaa.ui.user.letter_submission_status.LetterSubmissionStatusFragment"
@@ -56,4 +60,14 @@
         android:name="com.example.desaa.LoginActivity"
         android:label="activity_login"
         tools:layout="@layout/activity_login" />
+    <fragment
+        android:id="@+id/detailSocialAssitanceFragment"
+        android:name="com.example.desaa.ui.user.detail_social_assistance.DetailSocialAssitanceFragment"
+        android:label="fragment_detail_social_assitance"
+        tools:layout="@layout/fragment_detail_social_assitance" >
+        <argument
+            android:name="dataDetailHelp"
+            app:argType="com.example.desaa.model.response.ModelDataDetalSocialAssistance"
+            app:nullable="true" />
+    </fragment>
 </navigation>

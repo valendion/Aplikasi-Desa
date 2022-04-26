@@ -34,4 +34,11 @@ interface ApiServiceAdminVillage {
 
     @GET("aparatur")
     suspend fun getAparatureRole(@Header("Authorization") token: String): ResponseRoleLogged
+
+    @GET("program_bantuan_sosial")
+    suspend fun getHelpProgramList(): ResponseHelpProgramList
+
+
+    @GET("peserta_bantuan_sosial/{id}")
+    suspend fun getHelpProgramParticipant(@Path("id") id: Int): ResponseHelpProgramPartisipant
 }

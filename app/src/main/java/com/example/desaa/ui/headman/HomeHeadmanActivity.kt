@@ -64,7 +64,7 @@ class HomeHeadmanActivity : AppCompatActivity() {
         setupActionBarWithNavController(navControllerHeadman, appBarConfiguration)
         navView.setupWithNavController(navControllerHeadman)
 
-        getProfile()
+//        getProfile()
 
         binding.appBarHomeHeadman.apply {
             btnLogout.setOnClickListener{

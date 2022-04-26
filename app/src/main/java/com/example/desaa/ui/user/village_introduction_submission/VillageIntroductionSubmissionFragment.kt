@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.example.desaa.databinding.FragmentVillageIntroductionSubmissionBinding
 
-
 class VillageIntroductionSubmissionFragment : Fragment() {
 
     private var _binding: FragmentVillageIntroductionSubmissionBinding? = null

@@ -10,7 +10,7 @@ class VillageRulesViewModel: ViewModel() {
 
      val villageRule: LiveData<ArrayList<ModelDataRuleVillage>?> get() = _villageRule
 
-    fun addVillageRule(dataList: ArrayList<ModelDataRuleVillage>?){
+    fun  addVillageRule(dataList: ArrayList<ModelDataRuleVillage>?){
         _villageRule.postValue(dataList)
     }
 }

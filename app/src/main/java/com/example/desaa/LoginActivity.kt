@@ -2,10 +2,12 @@ package com.example.desaa
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.desaa.databinding.ActivityLoginBinding
+import com.example.desaa.ui.backwood.BackwoodActivity
 import com.example.desaa.ui.headman.HomeHeadmanActivity
 import com.example.desaa.utils.NetworkConfig
 import com.example.desaa.utils.SharePreferenceApp
@@ -93,20 +95,48 @@ class LoginActivity : AppCompatActivity() {
                 val role = dataRole.data?.role
 
                 withContext(Dispatchers.Main) {
-                    when (role) {
-                        "kepala_desa" -> {
+                    sharePreferenceApp.editData(SharePreferenceApp.KEY_ROLE, role)
 
-                            startActivity(
-                                Intent(
-                                    this@LoginActivity,
-                                    HomeHeadmanActivity::class.java
+                    if (role != null) {
+                        when  {
+                            role == "kepala_desa" -> {
+
+                                startActivity(
+                                    Intent(
+                                        this@LoginActivity,
+                                        HomeHeadmanActivity::class.java
+                                    )
                                 )
+                                getProfile()
+                                Log.e("role", sharePreferenceApp.getData(SharePreferenceApp.KEY_ROLE,""))
+                                finishAffinity()
+                            }
 
-                            )
-
-                            finishAffinity()
+                            role.contains("kepala_dusun") ->{
+                                startActivity(
+                                    Intent(
+                                        this@LoginActivity,
+                                        BackwoodActivity::class.java
+                                    )
+                                )
+                                getProfile()
+                                finishAffinity()
+                            }
                         }
                     }
+                }
+            }
+        }
+    }
+
+    private fun getProfile(){
+        CoroutineScope(Dispatchers.Main).launch {
+            val dataProfile = NetworkConfig.apiServiceAdminVillage.getAparatureogged("Bearer ${sharePreferenceApp.getData(
+                KEY_TOKEN, "")}")
+            withContext(Dispatchers.IO){
+                dataProfile.data.apply {
+                    sharePreferenceApp.editData(SharePreferenceApp.KEY_NAME_HEADMAN, namaKepalaDesa)
+                    sharePreferenceApp.editData(SharePreferenceApp.KEY_NAME_VILLAGE, namaDesa)
                 }
             }
         }

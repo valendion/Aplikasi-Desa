@@ -29,13 +29,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/distance_24"
             android:fontFamily="@font/interbold"
-            android:text="@string/bantuan_sosial_bpnt"
+            android:text="@string/bantuan_sosial"
             android:textAlignment="center"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textTitleSocialAssistanceRecipient" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnDetailSocialAssistanceBPNT"
+            android:id="@+id/btnDetailSocialAssistance"
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -46,53 +46,71 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textTitleSocialAssistanceBPNT" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/listSocialAssistanceBPNT"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputSocialAssistance"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="12dp"
-            android:overScrollMode="never"
-            android:scrollbars="none"
-            app:layout_constraintTop_toBottomOf="@+id/textTitleSocialAssistanceBPNT"
-            tools:itemCount="3"
-            tools:listitem="@layout/layout_social_assistance_list" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textTitleSocialAssistanceJAMKESMAS"
-            style="@style/TextTitle"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/distance_24"
-            android:fontFamily="@font/interbold"
-            android:text="@string/bantuan_sosial_jamkesmas"
-            android:textAlignment="center"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/listSocialAssistanceBPNT" />
+            android:hint="Daftar Bantuan"
+            app:layout_constraintTop_toBottomOf="@+id/btnDetailSocialAssistance">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnDetailSocialAssistanceJAMKESMAS"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/interbold"
-            android:text="Detail"
-            android:textAlignment="center"
-            app:layout_constraintBottom_toBottomOf="@+id/textTitleSocialAssistanceJAMKESMAS"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textTitleSocialAssistanceJAMKESMAS" />
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteHelpProgramList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/listSocialAssistanceJAMKESMAS"
+            android:id="@+id/recyclerSocialAssistance"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="12dp"
-            android:overScrollMode="never"
-            android:scrollbars="none"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_24"
+            android:visibility="invisible"
+
+            app:layout_constraintTop_toBottomOf="@+id/inputSocialAssistance" />
+
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/loadingLoadingSocialAssistanceFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:elevation="2dp"
+            android:visibility="invisible"
+            app:indicatorColor="@color/primaryGreen"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textTitleSocialAssistanceJAMKESMAS"
-            tools:itemCount="2"
-            tools:listitem="@layout/layout_social_assistance_list" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageNoData"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/ic_empty_data"
+            app:layout_constraintTop_toBottomOf="@+id/inputSocialAssistance"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/distance_24"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textNoData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Data Tidak ada"
+            style="@style/TextTitle"
+            app:layout_constraintTop_toBottomOf="@+id/imageNoData"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/grupNoData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="imageNoData,textNoData"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

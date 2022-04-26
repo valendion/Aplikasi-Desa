@@ -17,4 +17,15 @@ object Validation {
         return input.matches(emailAddressRegex)
     }
 
+    fun validationHelpPrograam(value: String): Int{
+        return when(value){
+            "JAMKESMAS" -> 1
+            "BLSM" -> 2
+            "BNPT" -> 3
+            "PKH" -> 4
+            "Bedah Rumah" -> 5
+            else -> 0
+        }
+    }
+
 }
