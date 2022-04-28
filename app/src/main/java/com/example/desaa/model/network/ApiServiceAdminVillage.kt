@@ -38,6 +38,9 @@ interface ApiServiceAdminVillage {
     @GET("program_bantuan_sosial")
     suspend fun getHelpProgramList(): ResponseHelpProgramList
 
+    @GET("daftar_pengajuan_surat_dusun")
+    suspend fun getIntroductionVillageLetterList(): ResponseIntroductionVillageLetter
+
 
     @GET("peserta_bantuan_sosial/{id}")
     suspend fun getHelpProgramParticipant(@Path("id") id: Int): ResponseHelpProgramPartisipant

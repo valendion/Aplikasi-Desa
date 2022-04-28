@@ -15,6 +15,8 @@
     <color name="darkBlue">#003D75</color>
     <color name="blue">#1964A9</color>
     <color name="yellowYound">#FDFF8D</color>
+    <color name="redOld">#C70000</color>
+    <color name="amber">#E4E907</color>
 
 
 </resources>

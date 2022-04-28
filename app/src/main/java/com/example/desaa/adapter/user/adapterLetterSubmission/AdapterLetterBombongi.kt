@@ -1,24 +1,23 @@
-package com.example.desaa.adapter.user
+package com.example.desaa.adapter.user.adapterLetterSubmission
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.desaa.R
-import com.example.desaa.databinding.LayoutConfirmAcceptListBinding
-import com.example.desaa.databinding.LayoutConfirmRejectedListBinding
-import com.example.desaa.model.response.ModelDataHelpProgramParticipant
+import com.example.desaa.databinding.LayoutConfirmNotPrintedListBinding
+import com.example.desaa.databinding.LayoutConfirmPrintedListBinding
+import com.example.desaa.model.response.ModelDataIntroductionVillageLetter
 
 
-class AdapterSocialAssistanceHelpProgramList :
+class AdapterLetterBombongi :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private var _listSocialAssistance = arrayListOf<ModelDataHelpProgramParticipant>()
+    private var _listSocialAssistance = arrayListOf<ModelDataIntroductionVillageLetter>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         if (viewType == 1) {
             val itemBinding =
-                LayoutConfirmAcceptListBinding.inflate(
+                LayoutConfirmPrintedListBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
                     false
@@ -27,7 +26,7 @@ class AdapterSocialAssistanceHelpProgramList :
         }
 
         val itemBinding =
-            LayoutConfirmRejectedListBinding.inflate(
+            LayoutConfirmNotPrintedListBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -48,36 +47,36 @@ class AdapterSocialAssistanceHelpProgramList :
 
     override fun getItemCount(): Int = _listSocialAssistance.size
 
-
-    inner class HelpProgramViewHolder(val binding: LayoutConfirmAcceptListBinding) :
+    inner class HelpProgramViewHolder(val binding: LayoutConfirmPrintedListBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: ModelDataHelpProgramParticipant) {
+        fun bind(data: ModelDataIntroductionVillageLetter) {
             binding.apply {
-                textTitle.text = data.namaLengkap
+                textTitle.text = data.namaPenduduk
                 textValue.text = data.nik
-                textNotif.text = itemView.context.getString(R.string.aktif)
+                textValueCertificate.text = data.jenisSuratAkanDibuat
             }
         }
     }
 
-    inner class HelpProgramViewHolderNotActive(val binding: LayoutConfirmRejectedListBinding) :
+    inner class HelpProgramViewHolderNotActive(val binding: LayoutConfirmNotPrintedListBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: ModelDataHelpProgramParticipant) {
+        fun bind(data: ModelDataIntroductionVillageLetter) {
             binding.apply {
-                textTitle.text = data.namaLengkap
+                textTitle.text = data.namaPenduduk
                 textValue.text = data.nik
+                textValueCertificate.text = data.jenisSuratAkanDibuat
             }
         }
     }
 
     override fun getItemViewType(position: Int): Int {
-        return if (_listSocialAssistance[position].status == "Aktif") 1
+        return if (_listSocialAssistance[position].statusAcc == "ACC") 1
         else 0
     }
 
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setList(list: ArrayList<ModelDataHelpProgramParticipant>) {
+    fun setList(list: ArrayList<ModelDataIntroductionVillageLetter>) {
         _listSocialAssistance.clear()
         list.forEach { model ->
             if (model != null) {
@@ -87,23 +86,9 @@ class AdapterSocialAssistanceHelpProgramList :
         notifyDataSetChanged()
     }
 
-    fun getCountParticipant():Int = _listSocialAssistance.size
-
-    private fun add(model: ModelDataHelpProgramParticipant) {
+    private fun add(model: ModelDataIntroductionVillageLetter) {
         _listSocialAssistance.add(model)
         notifyItemInserted(_listSocialAssistance.size)
     }
-
-//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HelpProgramViewHolder {
-//        val itemBinding =
-//            LayoutConfirmAcceptListBinding.inflate(LayoutInflater.from(parent.context),parent, false)
-//        return HelpProgramViewHolder(itemBinding)
-//    }
-//
-//    override fun onBindViewHolder(holder: HelpProgramViewHolder, position: Int) {
-//        holder.bind(_listSocialAssistance[position])
-//    }
-//
-//    override fun getItemCount(): Int = _listSocialAssistance.size
 
 }

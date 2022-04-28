@@ -30,13 +30,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/distance_24"
             android:fontFamily="@font/interbold"
-            android:text="@string/surat_keterangan_pengantar_desa"
+            android:text="@string/surat_keterangan_pengantar_desa_bombongi"
             android:textAlignment="center"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textTitleLetterSubmissionStatus" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/listVillageIntroductionCertificate"
+            android:id="@+id/listBombongiCertificate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/distance_16"
@@ -50,79 +50,104 @@
 
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textTitleBusinessCertificate"
+            android:id="@+id/textTitleTinggittoCertificate"
             style="@style/TextTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/distance_24"
             android:fontFamily="@font/interbold"
-            android:text="@string/surat_keterangan_usaha"
+            android:text="Surat Keterangan Pengantar Desa Tinggitto"
             android:textAlignment="center"
-            android:visibility="gone"
+            android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/listVillageIntroductionCertificate" />
+            app:layout_constraintTop_toBottomOf="@+id/listBombongiCertificate" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/listBusinessCertificate"
+            android:id="@+id/listTinggittoCertificate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/distance_16"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textTitleBusinessCertificate"
+            app:layout_constraintTop_toBottomOf="@+id/textTitleTinggittoCertificate"
             tools:itemCount="3"
-            android:visibility="gone"
+            android:visibility="visible"
             tools:listitem="@layout/layout_confirm_accept_list" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textTitleDummy1Certificate"
+            android:id="@+id/textTitleMakkaraengCertificate"
             style="@style/TextTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/distance_24"
             android:fontFamily="@font/interbold"
-            android:text="@string/surat_pengantar_dusun_abc"
+            android:text="Surat Keterangan Pengantar Desa Makkaraeng"
             android:textAlignment="center"
-            android:visibility="gone"
+            android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/listBusinessCertificate" />
+            app:layout_constraintTop_toBottomOf="@+id/listTinggittoCertificate" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/listtextTitleDummy1Certificate"
+            android:id="@+id/listMakkaraengCertificate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/distance_16"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textTitleDummy1Certificate"
+            app:layout_constraintTop_toBottomOf="@+id/textTitleMakkaraengCertificate"
             tools:itemCount="3"
-            android:visibility="gone"
+            android:visibility="visible"
             tools:listitem="@layout/layout_confirm_accept_list" />
 
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textTitleDummy2Certificate"
+            android:id="@+id/textTitlePadaeloCertificate"
             style="@style/TextTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/distance_24"
             android:fontFamily="@font/interbold"
-            android:text="@string/surat_pengantar_dusun_abc"
+            android:text="Surat Keterangan Pengantar Desa Padaelo"
             android:textAlignment="center"
-            android:visibility="gone"
+            android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/listtextTitleDummy1Certificate" />
+            app:layout_constraintTop_toBottomOf="@+id/listMakkaraengCertificate" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/listtextTit2eDummy1Certificate"
+            android:id="@+id/listPadaeloCertificate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/distance_16"
-            android:visibility="gone"
+            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textTitleDummy2Certificate"
+            app:layout_constraintTop_toBottomOf="@+id/textTitlePadaeloCertificate"
+            tools:itemCount="3"
+            tools:listitem="@layout/layout_confirm_accept_list" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textTitleBugisCertificate"
+            style="@style/TextTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_24"
+            android:fontFamily="@font/interbold"
+            android:text="Surat Keterangan Pengantar Desa Bugis"
+            android:textAlignment="center"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listPadaeloCertificate" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listBugisCertificate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_16"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textTitleBugisCertificate"
             tools:itemCount="3"
             tools:listitem="@layout/layout_confirm_accept_list" />
 

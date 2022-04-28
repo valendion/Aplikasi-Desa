@@ -33,7 +33,7 @@
     <string name="kirim_data">Kirim Data</string>
     <string name="lihat_status_disini">Lihat Status Disini</string>
     <string name="pengajuan_n_surat_pengantar_dusun_n_berhasil_dilakukan">Pengajuan\n Surat Pengantar Dusun\n Berhasil Dilakukan</string>
-    <string name="daftar_pengajuan_surat">Daftar Pengajuan Surat</string>
+    <string name="daftar_pengajuan_surat">Daftar Pengajuan\n Surat Pengantar Dusun</string>
     <string name="daftar_penerima_bantuan_sosial">Daftar Penerima Bantuan Sosial</string>
     <string name="title_activity_home_headman">HomeHeadmanActivity</string>
     <string name="administrasi_desa">Administrasi Desa</string>
@@ -78,7 +78,7 @@
     <string name="foto_ktp">Foto KTP</string>
     <string name="tekan_tombol_dibawah_ini_jika_data_telah_anda_setujui">Tekan tombol dibawah ini jika data telah anda setujui</string>
     <string name="buatkan_surat_pengantar">Buatkan Surat Pengantar</string>
-    <string name="surat_keterangan_pengantar_desa">Surat Keterangan Pengantar Desa</string>
+    <string name="surat_keterangan_pengantar_desa_bombongi">Surat Keterangan Pengantar Desa Bombongi</string>
     <string name="surat_keterangan_usaha">Surat Keterangan Usaha</string>
     <string name="surat_pengantar_dusun_abc">Surat Pengantar Dusun ABC</string>
     <string name="bantuan_sosial_jamkesmas">Bantuan Sosial JAMKESMAS</string>
@@ -99,5 +99,6 @@
     <string name="nik">Nik \t : %1s</string>
     <string name="describe_detail_social_assistance">JAMKESMAS adalah sebuah program jaminan kesehatan untuk warga Indonesia yang memberikan perlindungan sosial dibidang kesehatan.</string>
     <string name="bantuan_sosial">Bantuan Sosial</string>
+    <string name="surat_keterangan_pengantar_desa_padaelo">Surat Keterangan Pengantar Desa Padaelo</string>
 
 </resources>

@@ -41,8 +41,11 @@
         <entry key="..\:/file/DesaApp/app/src/main/res/layout/fragment_village_introduction_submission.xml" value="0.264" />
         <entry key="..\:/file/DesaApp/app/src/main/res/layout/fragment_village_rules.xml" value="0.2" />
         <entry key="..\:/file/DesaApp/app/src/main/res/layout/item_simple_list.xml" value="0.2" />
+        <entry key="..\:/file/DesaApp/app/src/main/res/layout/layout_confirm__rejected_list.xml" value="0.20923913043478262" />
         <entry key="..\:/file/DesaApp/app/src/main/res/layout/layout_confirm_accept_list.xml" value="0.25" />
         <entry key="..\:/file/DesaApp/app/src/main/res/layout/layout_confirm_check_list.xml" value="0.4" />
+        <entry key="..\:/file/DesaApp/app/src/main/res/layout/layout_confirm_not_printed_list.xml" value="0.4" />
+        <entry key="..\:/file/DesaApp/app/src/main/res/layout/layout_confirm_printed_list.xml" value="0.6" />
         <entry key="..\:/file/DesaApp/app/src/main/res/layout/layout_develop_by.xml" value="0.25" />
         <entry key="..\:/file/DesaApp/app/src/main/res/layout/layout_government_officials_list.xml" value="0.4" />
         <entry key="..\:/file/DesaApp/app/src/main/res/layout/layout_input_login.xml" value="0.25" />

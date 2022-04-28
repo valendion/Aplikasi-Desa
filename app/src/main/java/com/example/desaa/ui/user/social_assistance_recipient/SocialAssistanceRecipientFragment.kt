@@ -60,16 +60,16 @@ class SocialAssistanceRecipientFragment : Fragment() {
             loadingLoadingSocialAssistanceFragment.visibility = View.VISIBLE
             inputSocialAssistance.visibility = View.INVISIBLE
             recyclerSocialAssistance.visibility = View.INVISIBLE
-            grupNoData.visibility = View.VISIBLE
+//            grupNoData.visibility = View.VISIBLE
             btnDetailSocialAssistance.isEnabled = false
 
-            if (!statusData){
-                grupNoData.visibility = View.VISIBLE
-                recyclerSocialAssistance.visibility = View.INVISIBLE
-            }else{
-                grupNoData.visibility = View.INVISIBLE
-                recyclerSocialAssistance.visibility = View.VISIBLE
-            }
+//            if (!statusData){
+//                grupNoData.visibility = View.VISIBLE
+//                recyclerSocialAssistance.visibility = View.INVISIBLE
+//            }else{
+//                grupNoData.visibility = View.INVISIBLE
+//                recyclerSocialAssistance.visibility = View.VISIBLE
+//            }
 
             recyclerSocialAssistance.apply {
                 layoutManager = LinearLayoutManager(activity)
@@ -88,7 +88,7 @@ class SocialAssistanceRecipientFragment : Fragment() {
                         }
 
                         btnDetailSocialAssistance.setOnClickListener {
-                            dataListProgram.data[indexSelected  -1].apply {
+                            dataListProgram.data[indexSelected - 1].apply {
                                 val dataDetail = ModelDataDetalSocialAssistance(
                                     describe = keterangan,
                                     originOfFunds = asalDana,
@@ -123,6 +123,33 @@ class SocialAssistanceRecipientFragment : Fragment() {
 
                         inputSocialAssistance.visibility = View.VISIBLE
 
+                        if (inputSocialAssistance.editText?.text?.isNotEmpty() == true) {
+                            btnDetailSocialAssistance.isEnabled = true
+                            indexSelected +=1
+                            CoroutineScope(Dispatchers.Main).launch {
+                                val dataHelpPartisipant =
+                                    NetworkConfig.apiServiceAdminVillage.getHelpProgramParticipant(
+                                        Validation.validationHelpPrograam(inputSocialAssistance.editText?.text.toString())
+                                    )
+
+                                withContext(Dispatchers.IO) {
+                                    addDatalistAssistance(dataHelpPartisipant.data)
+                                }
+
+                                listAssistance.observe(viewLifecycleOwner) {
+                                    if (it != null) {
+                                        adapterSocial.setList(it)
+
+                                        recyclerSocialAssistance.visibility = View.VISIBLE
+                                    } else {
+
+                                        recyclerSocialAssistance.visibility = View.VISIBLE
+                                    }
+                                }
+
+                            }
+                        }
+
                         inputSocialAssistance.editText?.doOnTextChanged { text, start, before, count ->
                             statusData = true
                             indexSelected = Validation.validationHelpPrograam(text.toString())
@@ -142,11 +169,11 @@ class SocialAssistanceRecipientFragment : Fragment() {
                                 listAssistance.observe(viewLifecycleOwner) {
                                     if (it != null) {
                                         adapterSocial.setList(it)
-                                        grupNoData.visibility = View.INVISIBLE
+//                                        grupNoData.visibility = View.INVISIBLE
                                         recyclerSocialAssistance.visibility = View.VISIBLE
                                     } else {
-                                        grupNoData.visibility = View.VISIBLE
-                                        recyclerSocialAssistance.visibility = View.INVISIBLE
+//                                        grupNoData.visibility = View.VISIBLE
+                                        recyclerSocialAssistance.visibility = View.VISIBLE
                                     }
                                 }
 
@@ -169,13 +196,11 @@ class SocialAssistanceRecipientFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         binding.apply {
-            if (!statusData){
+            if (!statusData) {
                 btnDetailSocialAssistance.isEnabled = false
-                grupNoData.visibility = View.VISIBLE
-                recyclerSocialAssistance.visibility = View.INVISIBLE
-            }else{
+                recyclerSocialAssistance.visibility = View.VISIBLE
+            } else {
                 btnDetailSocialAssistance.isEnabled = true
-                grupNoData.visibility = View.INVISIBLE
                 recyclerSocialAssistance.visibility = View.VISIBLE
             }
         }
