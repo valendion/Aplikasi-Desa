@@ -21,7 +21,16 @@
         tools:layout="@layout/fragment_detail_backwood" >
         <action
             android:id="@+id/action_nav_detail_backwood_Fragment_to_nav_approve_fragment"
-            app:destination="@id/nav_approve_fragment" />
+            app:destination="@id/nav_approve_fragment"
+            app:popUpTo="@id/nav_dashboard_backwood_fragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@animator/nav_default_pop_exit_anim" />
+        <argument
+            android:name="dataDetailNotAccept"
+            app:argType="com.example.desaa.model.response.ModelDataIntroductionSubmission"
+            app:nullable="true" />
     </fragment>
     <fragment
         android:id="@+id/nav_approve_fragment"
@@ -30,6 +39,16 @@
         tools:layout="@layout/fragment_approve" >
         <action
             android:id="@+id/action_nav_approve_fragment_to_nav_dashboard_backwood_fragment"
-            app:destination="@id/nav_dashboard_backwood_fragment" />
+            app:destination="@id/nav_dashboard_backwood_fragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/nav_dashboard_backwood_fragment"
+            app:popUpToInclusive="false" />
+        <argument
+            android:name="dataMessage"
+            app:argType="string"
+            app:nullable="true" />
     </fragment>
 </navigation>

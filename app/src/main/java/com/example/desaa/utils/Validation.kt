@@ -28,4 +28,15 @@ object Validation {
         }
     }
 
+    fun validationBackwood(value: String): Int{
+        return when{
+            value.contains("Bombongi") -> 1
+            value.contains("Tinggito") -> 2
+            value.contains("Makkaraeng") -> 3
+            value.contains("Padaelo") -> 4
+            value.contains("Bugis") -> 5
+            else -> 0
+        }
+    }
+
 }

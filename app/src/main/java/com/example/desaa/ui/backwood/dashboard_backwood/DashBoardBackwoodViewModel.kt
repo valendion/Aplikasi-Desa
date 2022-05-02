@@ -1,19 +1,24 @@
 package com.example.desaa.ui.backwood.dashboard_backwood
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.desaa.utils.SharePreferenceApp
+import androidx.lifecycle.ViewModel
+import com.example.desaa.model.response.ModelDataIntroductionSubmission
 
-class DashBoardBackwoodViewModel(application: Application,private val sharePreferenceApp: SharePreferenceApp): AndroidViewModel(application) {
+class DashBoardBackwoodViewModel: ViewModel() {
 
-   private var _role =  MutableLiveData<String>()
-   val role : LiveData<String> get() = _role
+   private var _acceptData =  MutableLiveData<ArrayList<ModelDataIntroductionSubmission>>()
+   val acceptDatas : LiveData<ArrayList<ModelDataIntroductionSubmission>> get() = _acceptData
 
-   fun changevalue(){
-      val name = sharePreferenceApp.getData(SharePreferenceApp.KEY_ROLE, "")
-      _role.postValue(name)
+   fun addDataAccept(data: ArrayList<ModelDataIntroductionSubmission>){
+      _acceptData.postValue(data)
+   }
+
+   private var _notAcceptData =  MutableLiveData<ArrayList<ModelDataIntroductionSubmission>>()
+   val notAcceptDatas : LiveData<ArrayList<ModelDataIntroductionSubmission>> get() = _notAcceptData
+
+   fun addDataNotAccept(data: ArrayList<ModelDataIntroductionSubmission>){
+      _notAcceptData.postValue(data)
    }
 
 }

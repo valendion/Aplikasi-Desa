@@ -11,7 +11,7 @@ import com.example.desaa.adapter.headman.AdapterVillageRule
 import com.example.desaa.databinding.FragmentVillageRulesBinding
 import com.example.desaa.utils.NetworkConfig
 import com.example.desaa.utils.SharePreferenceApp
-import com.example.desaa.utils.SharePreferenceApp.Companion.KEY_NAME_HEADMAN
+import com.example.desaa.utils.SharePreferenceApp.Companion.KEY_NAME_APARATURE
 import com.example.desaa.utils.SharePreferenceApp.Companion.KEY_NAME_VILLAGE
 import com.example.desaa.utils.SharePreferenceApp.Companion.KEY_TOKEN
 import com.example.desaa.utils.SharePreferenceApp.Companion.getInstance
@@ -81,7 +81,7 @@ class VillageRulesFragment : Fragment() {
                             adapterVillageRule.setList(it)
                         }
 
-                        textNameHeadman.text = sharePreferenceApp.getData(KEY_NAME_HEADMAN, "")
+                        textNameHeadman.text = sharePreferenceApp.getData(KEY_NAME_APARATURE, "")
                         textVillage.text = sharePreferenceApp.getData(KEY_NAME_VILLAGE, "")
 
                         loadingVillageRuleFragment.visibility = View.GONE

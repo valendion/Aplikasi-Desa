@@ -10,7 +10,6 @@
         android:layout_height="match_parent"
         android:padding="@dimen/distance_16">
 
-
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textTitleSocialAssistanceRecipient"
             style="@style/TextTitle"
@@ -46,73 +45,120 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textTitleSocialAssistanceBPNT" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/inputSocialAssistance"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/textAttention"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/distance_24"
-            android:hint="Daftar Bantuan"
-            app:layout_constraintTop_toBottomOf="@+id/btnDetailSocialAssistance">
+            android:padding="@dimen/distance_16"
+            android:layout_marginTop="@dimen/distance_16"
+            app:layout_constraintTop_toBottomOf="@+id/textTitleSocialAssistanceBPNT"
+            android:background="@color/yellowYound">
 
-            <AutoCompleteTextView
-                android:id="@+id/autoCompleteHelpProgramList"
-                android:layout_width="match_parent"
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/appCompatImageView"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="none" />
+                android:layout_marginEnd="@dimen/distance_16"
+                android:src="@drawable/ic_alarm_24"
+                app:layout_constraintEnd_toStartOf="@+id/textTitleSocialAssitance"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textTitleSocialAssitance"
+                style="@style/TextRegular2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Himbauan"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/appCompatImageView"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textDescribeSocialAssitance"
+                style="@style/TextRegular2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/untuk_pengurusan_bantuan_sosial_dan_pencairan_dana_bantuan_silahkan_menghubungi_aparatur_desa_tenrigangkae_atau_datang_langsung_ke_kantor_desa_tenrigangkae"
+                android:textAlignment="viewStart"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/distance_16"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textTitleSocialAssitance" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputSocialAssistance"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/distance_16"
+        android:hint="Daftar Bantuan"
+        app:layout_constraintTop_toBottomOf="@+id/textAttention">
+
+        <AutoCompleteTextView
+            android:id="@+id/autoCompleteHelpProgramList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerSocialAssistance"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginTop="@dimen/distance_24"
             android:visibility="visible"
-
-            app:layout_constraintTop_toBottomOf="@+id/inputSocialAssistance" />
-
-
-        <com.google.android.material.progressindicator.CircularProgressIndicator
-            android:id="@+id/loadingLoadingSocialAssistanceFragment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:indeterminate="true"
-            android:elevation="2dp"
-            android:visibility="invisible"
-            app:indicatorColor="@color/primaryGreen"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imageNoData"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:src="@drawable/ic_empty_data"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/inputSocialAssistance"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="@dimen/distance_24"/>
+            tools:layout_editor_absoluteX="16dp" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textNoData"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Data Tidak ada"
-            style="@style/TextTitle"
-            app:layout_constraintTop_toBottomOf="@+id/imageNoData"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
 
-        <androidx.constraintlayout.widget.Group
-            android:id="@+id/grupNoData"
-            android:visibility="gone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:constraint_referenced_ids="imageNoData,textNoData"/>
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/loadingLoadingSocialAssistanceFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:indeterminate="true"
+        android:visibility="invisible"
+        app:indicatorColor="@color/primaryGreen"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageNoData"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="@dimen/distance_24"
+        android:src="@drawable/ic_empty_data"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputSocialAssistance" />
 
-</androidx.core.widget.NestedScrollView>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textNoData"
+        style="@style/TextTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Data Tidak ada"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageNoData" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/grupNoData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="imageNoData,textNoData" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>

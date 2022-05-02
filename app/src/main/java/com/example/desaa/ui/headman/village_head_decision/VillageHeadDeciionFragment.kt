@@ -76,7 +76,7 @@ class VillageHeadDeciionFragment : Fragment() {
                             adapterVillageHeadman.setList(it)
                         }
 
-                        textNameHeadman.text = sharePreferenceApp.getData(SharePreferenceApp.KEY_NAME_HEADMAN, "")
+                        textNameHeadman.text = sharePreferenceApp.getData(SharePreferenceApp.KEY_NAME_APARATURE, "")
                         textVillage.text = sharePreferenceApp.getData(SharePreferenceApp.KEY_NAME_VILLAGE, "")
 
                         loadingVillageHeadFragment.visibility = View.GONE

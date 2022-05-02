@@ -1,60 +1,184 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/distance_16"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.backwood.dashboard_backwood.DashboardBackwoodFragment">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textVillageBackwood"
-        style="@style/TextTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/dashboard_n_kepala_desa"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textVillage"
-        style="@style/TextTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/tenrigangkae"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textVillageBackwood" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textNameBackwood"
-        style="@style/TextTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/wahyu_febri"
-        app:layout_constraintBottom_toTopOf="@+id/textVillage"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textVillageBackwood" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textTitleVillageBackwood"
-        style="@style/TextTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/distance_12"
-        android:text="@string/daftar_pengajuan_nsurat_pengantar_dusun"
-        android:textSize="@dimen/textSizeHeader"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textVillage" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listBackwoods"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_marginTop="@dimen/distance_16"
-        android:layout_height="0dp"
-        tools:listitem="@layout/layout_confirm_check_list"
-        app:layout_constraintTop_toBottomOf="@+id/textTitleVillageBackwood"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textVillageBackwood"
+            style="@style/TextTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dashboard_n_kepala_dusun"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textVillage"
+            style="@style/TextTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tenrigangkae"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textVillageBackwood" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textNameBackwood"
+            style="@style/TextTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/wahyu_febri"
+            app:layout_constraintBottom_toTopOf="@+id/textVillage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textVillageBackwood" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textTitleNotAcceptBackwood"
+            style="@style/TextTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/daftar_pengajuan_nsurat_pengantar_dusun"
+            android:textAlignment="viewStart"
+            android:textSize="@dimen/textSizeHeader"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textVillage" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textDescribeNotAcceptBackwood"
+            style="@style/TextRegular2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Belum\ndiperiksa"
+            android:textAlignment="viewStart"
+            android:textSize="@dimen/textSizeHeader"
+            app:layout_constraintBottom_toBottomOf="@+id/textTitleNotAcceptBackwood"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textTitleNotAcceptBackwood" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listNotAcceptBackwoods"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginTop="@dimen/distance_16"
+            app:layout_constraintTop_toBottomOf="@+id/textTitleNotAcceptBackwood"
+            tools:itemCount="3"
+            tools:listitem="@layout/layout_confirm_check_list" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageNoData2"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/ic_empty_data"
+            app:layout_constraintBottom_toTopOf="@+id/textNoData2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/listNotAcceptBackwoods"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textNoData2"
+            style="@style/TextRegular2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Data Kosong"
+            android:textSize="@dimen/textSizeHeaderBig"
+            app:layout_constraintBottom_toBottomOf="@+id/listNotAcceptBackwoods"
+            app:layout_constraintEnd_toEndOf="@id/listNotAcceptBackwoods"
+            app:layout_constraintStart_toStartOf="@+id/listNotAcceptBackwoods"
+            app:layout_constraintTop_toBottomOf="@+id/imageNoData2" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textTitleAcceptBackwood"
+            style="@style/TextTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_16"
+            app:layout_goneMarginTop="@dimen/distance_16"
+            android:text="@string/daftar_pengajuan_nsurat_pengantar_dusun"
+            android:textAlignment="viewStart"
+            android:textSize="@dimen/textSizeHeader"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listNotAcceptBackwoods" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textDescribeAcceptBackwood"
+            style="@style/TextRegular2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="22dp"
+            android:text="Diterima"
+            android:textAlignment="viewStart"
+            android:textSize="@dimen/textSizeHeader"
+            app:layout_constraintBottom_toBottomOf="@+id/textTitleAcceptBackwood"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textTitleAcceptBackwood" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listAcceptBackwoods"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginTop="@dimen/distance_16"
+            app:layout_constraintTop_toBottomOf="@+id/textTitleAcceptBackwood"
+            tools:itemCount="3"
+            tools:listitem="@layout/layout_confirm_accept_list" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageNoData1"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="@dimen/distance_40"
+            android:src="@drawable/ic_empty_data"
+            app:layout_constraintBottom_toTopOf="@+id/textNoData1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/listAcceptBackwoods"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textNoData1"
+            style="@style/TextRegular2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Data Kosong"
+            android:textSize="@dimen/textSizeHeaderBig"
+            app:layout_constraintEnd_toEndOf="@id/imageNoData1"
+            app:layout_constraintStart_toStartOf="@+id/imageNoData1"
+            app:layout_constraintTop_toBottomOf="@+id/imageNoData1" />
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/loadingDashboardBackwoodFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="2dp"
+            android:indeterminate="true"
+            android:visibility="visible"
+            app:indicatorColor="@color/primaryGreen"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/grupNoData1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="imageNoData1, textNoData1" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/grupNoData2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="imageNoData2, textNoData2" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

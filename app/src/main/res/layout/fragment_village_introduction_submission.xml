@@ -48,7 +48,7 @@
         app:layout_constraintTop_toBottomOf="@+id/inputNik">
 
         <AutoCompleteTextView
-
+            android:id="@+id/autoCompleTypeLetter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="none" />
@@ -71,6 +71,18 @@
             android:lines="3" />
     </com.google.android.material.textfield.TextInputLayout>
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageValue"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:padding="@dimen/distance_8"
+            android:layout_marginTop="@dimen/distance_16"
+            android:src="@drawable/ic_image_34"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputDescription" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintAddPhoto"
         android:layout_width="wrap_content"
@@ -82,13 +94,13 @@
         app:layout_constraintCircleRadius="@dimen/distance_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputDescription">
+        app:layout_constraintTop_toBottomOf="@+id/imageValue">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imageGalery"
+            android:id="@+id/imagePhoto"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/ic_image_34"
+            android:src="@drawable/ic_menu_camera"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -98,13 +110,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/distance_16"
             android:fontFamily="@font/interregular"
-            android:text="Photo from Galery"
+            android:text="Take photo"
             android:textColor="@color/black"
             android:textSize="@dimen/textSizeSmall"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageGalery" />
+            app:layout_constraintTop_toBottomOf="@+id/imagePhoto" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -142,6 +154,19 @@
         android:background="@color/primaryGreen"
         android:text="@string/kirim_data"
         app:layout_constraintTop_toBottomOf="@+id/textDescritionAgree" />
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/loadingLoadingVillageIntroductionFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="2dp"
+            android:indeterminate="true"
+            android:visibility="invisible"
+            app:indicatorColor="@color/primaryGreen"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

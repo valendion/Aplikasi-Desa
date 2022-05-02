@@ -1,6 +1,9 @@
 package com.example.desaa.model.network
 
 import com.example.desaa.model.response.*
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import okhttp3.ResponseBody
 import retrofit2.http.*
 
 interface ApiServiceAdminVillage {
@@ -41,7 +44,39 @@ interface ApiServiceAdminVillage {
     @GET("daftar_pengajuan_surat_dusun")
     suspend fun getIntroductionVillageLetterList(): ResponseIntroductionVillageLetter
 
-
     @GET("peserta_bantuan_sosial/{id}")
     suspend fun getHelpProgramParticipant(@Path("id") id: Int): ResponseHelpProgramPartisipant
+
+    @GET("pengajuan_surat_pengantar_dusun_belum_acc/{id}")
+    suspend fun getIntroductionSubmissionNotAcc(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int
+    ): ResponseIntroductionSubmission
+
+    @GET("daftar_jenis_surat")
+    suspend fun getTypeLetter(): ResponseTypeLetter
+
+    @GET("pengajuan_surat_pengantar_dusun_acc/{id}")
+    suspend fun getIntroductionSubmissionAcc(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int
+    ): ResponseIntroductionSubmission
+
+    @FormUrlEncoded
+    @POST("pengajuan_surat_pengantar_dusun")
+    suspend fun getMessageApprove(
+        @Header("Authorization") token: String,
+        @Field("wilayah_administratif_dusun_id") id: Int,
+        @Field("nik") nik: String,
+        @Field("jenis_surat_akan_dibuat") jenisSurat: String
+    ): ResponseApprove
+
+    @Multipart
+    @POST("surat_pengantar_dusun")
+    suspend fun postFormUser(
+        @Part("nik") nik: RequestBody,
+        @Part("jenis_surat_akan_dibuat") jenisSurat: RequestBody,
+        @Part("keterangan") keterangan: RequestBody,
+        @Part image: MultipartBody.Part
+    ): ResponseApprove
 }

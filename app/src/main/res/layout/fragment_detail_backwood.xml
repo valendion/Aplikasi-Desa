@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/distance_16"
     tools:context=".ui.backwood.detail_backwood.DetailBackwoodFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textTitleVillageDetailBackwood"
@@ -34,6 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/TextTitle"
+            android:textAlignment="viewStart"
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -101,7 +106,7 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textValueDetailDescription"
             style="@style/TextRegular2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/saya_ingin_mengurus_surat_keterangan_untuk_usaha_saya_bang_mohon_dibantu_surat_pengantarnya"
@@ -121,12 +126,15 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imageKTP"
-            android:layout_width="100dp"
-            android:layout_height="80dp"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
             android:layout_marginTop="8dp"
             android:src="@color/grey"
-            app:layout_constraintTop_toBottomOf="@+id/textTitleDetailImageKTP"
-            app:layout_constraintStart_toStartOf="parent"/>
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textTitleDetailImageKTP" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -143,7 +151,7 @@
         android:text="@string/tekan_tombol_dibawah_ini_jika_data_telah_anda_setujui"/>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnCOnfirm"
+        android:id="@+id/btnConfirm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/ButtonPrimary"
@@ -152,5 +160,6 @@
         android:layout_marginTop="@dimen/distance_16"
         app:layout_constraintTop_toBottomOf="@+id/textConfirm"/>
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

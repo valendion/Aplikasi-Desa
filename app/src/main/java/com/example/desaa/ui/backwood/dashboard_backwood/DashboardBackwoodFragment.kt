@@ -1,15 +1,24 @@
 package com.example.desaa.ui.backwood.dashboard_backwood
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.desaa.adapter.backwood.AdapterIntroductionAccept
+import com.example.desaa.adapter.backwood.AdapterIntroductionNotAccept
 import com.example.desaa.databinding.FragmentDashboardBackwoodBinding
+import com.example.desaa.model.response.ModelDataIntroductionSubmission
+import com.example.desaa.utils.NetworkConfig
 import com.example.desaa.utils.SharePreferenceApp
+import com.example.desaa.utils.SharePreferenceApp.Companion.KEY_NAME_APARATURE
+import com.example.desaa.utils.SharePreferenceApp.Companion.KEY_NAME_BACKWOOD
 import com.example.desaa.utils.SharePreferenceApp.Companion.getInstance
+import com.example.desaa.utils.Validation
+import kotlinx.coroutines.*
 
 
 class DashboardBackwoodFragment : Fragment() {
@@ -18,9 +27,20 @@ class DashboardBackwoodFragment : Fragment() {
 
     private val binding get() = _binding!!
 
-    private lateinit var viewModelDashboardBackwood: DashBoardBackwoodViewModel
+    private val viewModelDashboard: DashBoardBackwoodViewModel by activityViewModels()
 
     private lateinit var sharePreferenceApp: SharePreferenceApp
+
+    private val accepts = arrayListOf<ModelDataIntroductionSubmission>()
+    private val notAccepts = arrayListOf<ModelDataIntroductionSubmission>()
+
+    private val adapterAccept: AdapterIntroductionAccept by lazy {
+        AdapterIntroductionAccept()
+    }
+
+    private val adapterNotAccpet: AdapterIntroductionNotAccept by lazy {
+        AdapterIntroductionNotAccept()
+    }
 
 
     override fun onCreateView(
@@ -35,27 +55,101 @@ class DashboardBackwoodFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         sharePreferenceApp = getInstance(requireActivity())
 
-        val viewModelFactory =
-            DashBoardViewModelFactory(
-                requireActivity().application,
-                sharePreferenceApp
-            )
-        viewModelDashboardBackwood =
-            ViewModelProvider(this, viewModelFactory)[DashBoardBackwoodViewModel::class.java]
-
-        viewModelDashboardBackwood.role.observe(viewLifecycleOwner) {
-            Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
-        }
-
         binding.apply {
+            loadingDashboardBackwoodFragment.visibility = View.VISIBLE
+            listNotAcceptBackwoods.visibility = View.INVISIBLE
+            listAcceptBackwoods.visibility = View.INVISIBLE
 
-            textTitleVillageBackwood.setOnClickListener {
-                viewModelDashboardBackwood.changevalue()
-//                val direction =
-//                    DashboardBackwoodFragmentDirections.actionNavDashboardBackwoodFragmentToNavDetailBackwoodFragment()
-//                Navigation.findNavController(view).navigate(direction)
+            textVillage.text = sharePreferenceApp.getData(KEY_NAME_BACKWOOD, "")
+            textNameBackwood.text = sharePreferenceApp.getData(KEY_NAME_APARATURE, "")
+
+            viewModelDashboard.apply {
+
+                CoroutineScope(Dispatchers.Main).launch {
+
+
+                    val dataIntruductionSubmissionAcc =
+                        NetworkConfig.apiServiceAdminVillage.getIntroductionSubmissionAcc(
+                            "Bearer ${
+                                sharePreferenceApp.getData(
+                                    SharePreferenceApp.KEY_TOKEN,
+                                    ""
+                                )
+                            }",
+                            Validation.validationBackwood(
+                                sharePreferenceApp.getData(
+                                    KEY_NAME_BACKWOOD,
+                                    ""
+                                )
+                            )
+                        )
+
+                    val dataIntruductionSubmissionNotAcc =
+                        NetworkConfig.apiServiceAdminVillage.getIntroductionSubmissionNotAcc(
+                            "Bearer ${
+                                sharePreferenceApp.getData(
+                                    SharePreferenceApp.KEY_TOKEN,
+                                    ""
+                                )
+                            }",
+                            Validation.validationBackwood(
+                                sharePreferenceApp.getData(
+                                    KEY_NAME_BACKWOOD,
+                                    ""
+                                )
+                            )
+                        )
+                    withContext(Dispatchers.IO) {
+                        dataIntruductionSubmissionAcc.apply {
+                            addDataAccept(data)
+                        }
+
+                        dataIntruductionSubmissionNotAcc.apply {
+                            addDataNotAccept(data)
+                        }
+                    }
+
+                    listAcceptBackwoods.apply {
+                        layoutManager = LinearLayoutManager(activity)
+                        adapter = adapterAccept
+                        acceptDatas.observe(viewLifecycleOwner) {
+                            if (it.isEmpty()) {
+                                listAcceptBackwoods.visibility = View.INVISIBLE
+                                grupNoData1.visibility = View.VISIBLE
+                            } else {
+                                adapterAccept.setList(it)
+                                listAcceptBackwoods.visibility = View.VISIBLE
+                                grupNoData1.visibility = View.INVISIBLE
+                            }
+
+                        }
+                    }
+
+                    listNotAcceptBackwoods.apply {
+                        layoutManager = LinearLayoutManager(activity)
+                        adapter = adapterNotAccpet
+
+                        notAcceptDatas.observe(viewLifecycleOwner) {
+                            if (it.isEmpty()) {
+                                listNotAcceptBackwoods.visibility = View.INVISIBLE
+                                grupNoData2.visibility = View.VISIBLE
+                            } else {
+                                Log.e("not_accept", it.toString())
+                                adapterNotAccpet.setList(it)
+
+                                listNotAcceptBackwoods.visibility = View.VISIBLE
+                                grupNoData2.visibility = View.INVISIBLE
+                            }
+
+
+                        }
+
+
+                    }
+                    loadingDashboardBackwoodFragment.visibility = View.INVISIBLE
+                }
+
             }
-
         }
         super.onViewCreated(view, savedInstanceState)
     }

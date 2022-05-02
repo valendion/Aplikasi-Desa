@@ -18,7 +18,7 @@ import com.example.desaa.ui.user.HomeUserActivity
 import com.example.desaa.utils.NetworkConfig
 import com.example.desaa.utils.NetworkConnection
 import com.example.desaa.utils.SharePreferenceApp
-import com.example.desaa.utils.SharePreferenceApp.Companion.KEY_NAME_HEADMAN
+import com.example.desaa.utils.SharePreferenceApp.Companion.KEY_NAME_APARATURE
 import com.example.desaa.utils.SharePreferenceApp.Companion.KEY_NAME_VILLAGE
 import com.example.desaa.utils.SharePreferenceApp.Companion.KEY_TOKEN
 import com.example.desaa.utils.SharePreferenceApp.Companion.getInstance
@@ -59,38 +59,29 @@ class HomeHeadmanActivity : AppCompatActivity() {
                 R.id.nav_dashboard_headman,
                 R.id.nav_village_rules_fragment,
 
-            ), drawerLayout
+                ), drawerLayout
         )
         setupActionBarWithNavController(navControllerHeadman, appBarConfiguration)
         navView.setupWithNavController(navControllerHeadman)
 
-//        getProfile()
-
         binding.appBarHomeHeadman.apply {
-            btnLogout.setOnClickListener{
+            btnLogout.setOnClickListener {
                 CoroutineScope(Dispatchers.Main).launch {
-                    val dataLogout = NetworkConfig.apiServiceAdminVillage.logout("Bearer ${sharePreferenceApp.getData(
-                        KEY_TOKEN, "")}")
+                    val dataLogout = NetworkConfig.apiServiceAdminVillage.logout(
+                        "Bearer ${
+                            sharePreferenceApp.getData(
+                                KEY_TOKEN, ""
+                            )
+                        }"
+                    )
 
 
-                    Toast.makeText(this@HomeHeadmanActivity, dataLogout.message, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@HomeHeadmanActivity, dataLogout.message, Toast.LENGTH_SHORT)
+                        .show()
                 }
                 startActivity(Intent(this@HomeHeadmanActivity, HomeUserActivity::class.java))
                 sharePreferenceApp.clearDate()
                 finishAffinity()
-            }
-        }
-    }
-
-    private fun getProfile(){
-        CoroutineScope(Dispatchers.Main).launch {
-            val dataProfile = NetworkConfig.apiServiceAdminVillage.getAparatureogged("Bearer ${sharePreferenceApp.getData(
-                KEY_TOKEN, "")}")
-            withContext(Dispatchers.IO){
-                dataProfile.data.apply {
-                    sharePreferenceApp.editData(KEY_NAME_HEADMAN, namaKepalaDesa)
-                    sharePreferenceApp.editData(KEY_NAME_VILLAGE, namaDesa)
-                }
             }
         }
     }

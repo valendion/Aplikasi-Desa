@@ -38,7 +38,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listBombongiCertificate"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="300dp"
             android:layout_marginTop="@dimen/distance_16"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -48,7 +48,30 @@
             android:overScrollMode="never"
             tools:listitem="@layout/layout_confirm_accept_list" />
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageNoData1"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/ic_empty_data"
+            app:layout_constraintBottom_toTopOf="@+id/textNoData1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/listBombongiCertificate"
+            app:layout_constraintVertical_chainStyle="packed" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textNoData1"
+            style="@style/TextRegular2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Data Kosong"
+            android:textSize="@dimen/textSizeHeaderBig"
+            app:layout_constraintBottom_toBottomOf="@+id/listBombongiCertificate"
+            app:layout_constraintEnd_toEndOf="@id/listBombongiCertificate"
+            app:layout_constraintStart_toStartOf="@+id/listBombongiCertificate"
+            app:layout_constraintTop_toBottomOf="@+id/imageNoData1" />
+
+<!--Batas 1-->
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textTitleTinggittoCertificate"
             style="@style/TextTitle"
@@ -56,7 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/distance_24"
             android:fontFamily="@font/interbold"
-            android:text="Surat Keterangan Pengantar Desa Tinggitto"
+            android:text="Surat Keterangan Pengantar Dusun Tinggitto"
             android:textAlignment="center"
             android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
@@ -65,15 +88,39 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listTinggittoCertificate"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="300dp"
             android:layout_marginTop="@dimen/distance_16"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textTitleTinggittoCertificate"
             tools:itemCount="3"
             android:visibility="visible"
             tools:listitem="@layout/layout_confirm_accept_list" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageNoData2"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/ic_empty_data"
+            app:layout_constraintBottom_toTopOf="@+id/textNoData2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/listTinggittoCertificate"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textNoData2"
+            style="@style/TextRegular2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Data Kosong"
+            android:textSize="@dimen/textSizeHeaderBig"
+            app:layout_constraintBottom_toBottomOf="@+id/listTinggittoCertificate"
+            app:layout_constraintEnd_toEndOf="@id/listBombongiCertificate"
+            app:layout_constraintStart_toStartOf="@+id/listTinggittoCertificate"
+            app:layout_constraintTop_toBottomOf="@+id/imageNoData2" />
+
+<!--        Batas  2-->
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textTitleMakkaraengCertificate"
@@ -82,7 +129,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/distance_24"
             android:fontFamily="@font/interbold"
-            android:text="Surat Keterangan Pengantar Desa Makkaraeng"
+            android:text="Surat Keterangan Pengantar Dusun Makkaraeng"
             android:textAlignment="center"
             android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
@@ -91,8 +138,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listMakkaraengCertificate"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/distance_16"
+            android:layout_height="300dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textTitleMakkaraengCertificate"
@@ -100,7 +147,30 @@
             android:visibility="visible"
             tools:listitem="@layout/layout_confirm_accept_list" />
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageNoData3"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/ic_empty_data"
+            app:layout_constraintBottom_toTopOf="@+id/textNoData3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/listMakkaraengCertificate"
+            app:layout_constraintVertical_chainStyle="packed" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textNoData3"
+            style="@style/TextRegular2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Data Kosong"
+            android:textSize="@dimen/textSizeHeaderBig"
+            app:layout_constraintBottom_toBottomOf="@+id/listMakkaraengCertificate"
+            app:layout_constraintEnd_toEndOf="@id/listMakkaraengCertificate"
+            app:layout_constraintStart_toStartOf="@+id/listMakkaraengCertificate"
+            app:layout_constraintTop_toBottomOf="@+id/imageNoData3" />
+
+<!--Batas 3 -->
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textTitlePadaeloCertificate"
             style="@style/TextTitle"
@@ -108,7 +178,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/distance_24"
             android:fontFamily="@font/interbold"
-            android:text="Surat Keterangan Pengantar Desa Padaelo"
+            android:text="Surat Keterangan Pengantar Dusun Padaelo"
             android:textAlignment="center"
             android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
@@ -117,7 +187,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listPadaeloCertificate"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="300dp"
             android:layout_marginTop="@dimen/distance_16"
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
@@ -126,6 +196,31 @@
             tools:itemCount="3"
             tools:listitem="@layout/layout_confirm_accept_list" />
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageNoData4"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/ic_empty_data"
+            app:layout_constraintBottom_toTopOf="@+id/textNoData4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/listPadaeloCertificate"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textNoData4"
+            style="@style/TextRegular2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Data Kosong"
+            android:textSize="@dimen/textSizeHeaderBig"
+            app:layout_constraintBottom_toBottomOf="@+id/listPadaeloCertificate"
+            app:layout_constraintEnd_toEndOf="@id/listPadaeloCertificate"
+            app:layout_constraintStart_toStartOf="@+id/listPadaeloCertificate"
+            app:layout_constraintTop_toBottomOf="@+id/imageNoData4" />
+
+<!--        Batas 4 -->
+
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textTitleBugisCertificate"
             style="@style/TextTitle"
@@ -133,7 +228,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/distance_24"
             android:fontFamily="@font/interbold"
-            android:text="Surat Keterangan Pengantar Desa Bugis"
+            android:text="Surat Keterangan Pengantar Dusun Bugis"
             android:textAlignment="center"
             android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
@@ -142,7 +237,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listBugisCertificate"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="300dp"
             android:layout_marginTop="@dimen/distance_16"
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
@@ -151,6 +246,71 @@
             tools:itemCount="3"
             tools:listitem="@layout/layout_confirm_accept_list" />
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageNoData5"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/ic_empty_data"
+            app:layout_constraintBottom_toTopOf="@+id/textNoData5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/listBugisCertificate"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textNoData5"
+            style="@style/TextRegular2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Data Kosong"
+            android:textSize="@dimen/textSizeHeaderBig"
+            app:layout_constraintBottom_toBottomOf="@+id/listBugisCertificate"
+            app:layout_constraintEnd_toEndOf="@id/listBugisCertificate"
+            app:layout_constraintStart_toStartOf="@+id/listBugisCertificate"
+            app:layout_constraintTop_toBottomOf="@+id/imageNoData5" />
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/loadingLoadingLetterSubmissionFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:elevation="2dp"
+            android:visibility="invisible"
+            app:indicatorColor="@color/primaryGreen"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/grup1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="textNoData1, imageNoData1"/>
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/grup2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="textNoData2, imageNoData2"/>
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/grup3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="textNoData3 ,imageNoData3"/>
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/grup4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="textNoData4, imageNoData4"/>
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/grup5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="textNoData5, imageNoData5"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.core.widget.NestedScrollView>

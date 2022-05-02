@@ -70,4 +70,5 @@
             app:argType="com.example.desaa.model.response.ModelDataDetalSocialAssistance"
             app:nullable="true" />
     </fragment>
+
 </navigation>

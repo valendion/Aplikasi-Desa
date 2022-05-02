@@ -39,6 +39,7 @@
     <string name="administrasi_desa">Administrasi Desa</string>
     <string name="aparat_pemerintah_desa">Aparat Pemerintah Desa</string>
     <string name="dashboard_n_kepala_desa">Dashboard\nKepala Desa</string>
+    <string name="dashboard_n_kepala_dusun">Dashboard\nKepala Dusun</string>
     <string name="tekan_tombol_dibawah_ini_jika_data_telah_lengkap_terinput">Tekan tombol dibawah ini jika data telah lengkap terinput</string>
     <string name="tenrigangkae">Tenrigangkae</string>
     <string name="wahyu_febri">Wahyu Febri</string>
@@ -78,14 +79,14 @@
     <string name="foto_ktp">Foto KTP</string>
     <string name="tekan_tombol_dibawah_ini_jika_data_telah_anda_setujui">Tekan tombol dibawah ini jika data telah anda setujui</string>
     <string name="buatkan_surat_pengantar">Buatkan Surat Pengantar</string>
-    <string name="surat_keterangan_pengantar_desa_bombongi">Surat Keterangan Pengantar Desa Bombongi</string>
+    <string name="surat_keterangan_pengantar_desa_bombongi">Surat Keterangan Pengantar Dusun Bombongi</string>
     <string name="surat_keterangan_usaha">Surat Keterangan Usaha</string>
     <string name="surat_pengantar_dusun_abc">Surat Pengantar Dusun ABC</string>
     <string name="bantuan_sosial_jamkesmas">Bantuan Sosial JAMKESMAS</string>
     <string name="ishak_s_kom">Ishak, S Kom</string>
     <string name="nama_warga">Nama Warga</string>
     <string name="perdes_spj_tentang_keuangan_desa_tahun_2016">Perdes SPJ Tentang Keuangan Desa Tahun 2016</string>
-    <string name="_1_09_01_2016">1 / 09–01-2016</string>
+    <string name="_1_09_01_2016">1 / 09–01–2016</string>
     <string name="ditetapkan">Ditetapkan :</string>
     <string name="sekretaris_desa">Sekretaris Desa</string>
     <string name="mustahiq_s_adm">Mustahiq S.Adm</string>
@@ -100,5 +101,6 @@
     <string name="describe_detail_social_assistance">JAMKESMAS adalah sebuah program jaminan kesehatan untuk warga Indonesia yang memberikan perlindungan sosial dibidang kesehatan.</string>
     <string name="bantuan_sosial">Bantuan Sosial</string>
     <string name="surat_keterangan_pengantar_desa_padaelo">Surat Keterangan Pengantar Desa Padaelo</string>
+    <string name="untuk_pengurusan_bantuan_sosial_dan_pencairan_dana_bantuan_silahkan_menghubungi_aparatur_desa_tenrigangkae_atau_datang_langsung_ke_kantor_desa_tenrigangkae">Untuk pengurusan bantuan sosial dan pencairan dana bantuan silahkan menghubungi aparatur Desa Tenrigangkae atau datang langsung ke Kantor Desa Tenrigangkae.</string>
 
 </resources>

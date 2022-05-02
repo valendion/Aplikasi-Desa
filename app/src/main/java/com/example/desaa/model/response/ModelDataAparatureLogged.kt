@@ -10,7 +10,10 @@ data class ModelDataAparatureLogged(
     @SerializedName("nama_desa")
     var namaDesa: String? = null,
 
-    @SerializedName("nama_kepala_desa")
-    var namaKepalaDesa: String? = null
+    @SerializedName("nama_dusun")
+    var namaDusun: String? = null,
+
+    @SerializedName("nama_aparatur")
+    var namaAparatur: String? = null
 
 )

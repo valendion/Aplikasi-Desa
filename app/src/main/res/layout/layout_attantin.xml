@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/distance_16"
+    android:background="@color/yellowYound">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/appCompatImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/distance_16"
+        android:src="@drawable/ic_alarm_24"
+        app:layout_constraintEnd_toStartOf="@+id/textTitleSocialAssitance"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textTitleSocialAssitance"
+        style="@style/TextRegular2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Himbauan"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/appCompatImageView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textDescribeSocialAssitance"
+        style="@style/TextRegular2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/untuk_pengurusan_bantuan_sosial_dan_pencairan_dana_bantuan_silahkan_menghubungi_aparatur_desa_tenrigangkae_atau_datang_langsung_ke_kantor_desa_tenrigangkae"
+        android:textAlignment="viewStart"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/distance_16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textTitleSocialAssitance" />
+</androidx.constraintlayout.widget.ConstraintLayout>

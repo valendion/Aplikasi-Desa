@@ -1,16 +1,26 @@
 package com.example.desaa.ui.backwood
 
+import android.content.Intent
 import android.content.IntentFilter
 import android.net.ConnectivityManager
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.example.desaa.R
 import com.example.desaa.databinding.ActivityBackwoodBinding
+import com.example.desaa.ui.user.HomeUserActivity
+import com.example.desaa.utils.NetworkConfig
 import com.example.desaa.utils.NetworkConnection
 import com.example.desaa.utils.SharePreferenceApp
+import com.example.desaa.utils.SharePreferenceApp.Companion.getInstance
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class BackwoodActivity : AppCompatActivity() {
     private lateinit var binding: ActivityBackwoodBinding
@@ -24,6 +34,8 @@ class BackwoodActivity : AppCompatActivity() {
         binding = ActivityBackwoodBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        sharePreferenceApp = getInstance(this)
+
         setSupportActionBar(binding.toolbar)
 
         networkChange = NetworkConnection(this)
@@ -35,6 +47,29 @@ class BackwoodActivity : AppCompatActivity() {
                 R.id.nav_dashboard_backwood_fragment,
             )
         )
+
+        val navController = findNavController(R.id.nav_host_fragment_content_backwood)
+
+        setupActionBarWithNavController(navController)
+
+        binding.imageLogout.setOnClickListener {
+            CoroutineScope(Dispatchers.Main).launch {
+                val dataLogout = NetworkConfig.apiServiceAdminVillage.logout(
+                    "Bearer ${
+                        sharePreferenceApp.getData(
+                            SharePreferenceApp.KEY_TOKEN, ""
+                        )
+                    }"
+                )
+
+
+                Toast.makeText(this@BackwoodActivity, dataLogout.message, Toast.LENGTH_SHORT)
+                    .show()
+            }
+            startActivity(Intent(this@BackwoodActivity, HomeUserActivity::class.java))
+            sharePreferenceApp.clearDate()
+            finishAffinity()
+        }
 
     }
 

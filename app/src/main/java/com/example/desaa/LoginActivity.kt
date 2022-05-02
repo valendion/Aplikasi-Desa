@@ -14,10 +14,7 @@ import com.example.desaa.utils.SharePreferenceApp
 import com.example.desaa.utils.SharePreferenceApp.Companion.KEY_TOKEN
 import com.example.desaa.utils.SharePreferenceApp.Companion.getInstance
 import com.example.desaa.utils.Validation
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 
 class LoginActivity : AppCompatActivity() {
     lateinit var binding: ActivityLoginBinding
@@ -82,8 +79,6 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
         }
-
-
     }
 
     private fun getRole(token: String) {
@@ -98,28 +93,30 @@ class LoginActivity : AppCompatActivity() {
                     sharePreferenceApp.editData(SharePreferenceApp.KEY_ROLE, role)
 
                     if (role != null) {
-                        when  {
+                        when {
                             role == "kepala_desa" -> {
-
+                                getProfile("kepala_desa")
+                                delay(1000)
                                 startActivity(
                                     Intent(
                                         this@LoginActivity,
                                         HomeHeadmanActivity::class.java
                                     )
                                 )
-                                getProfile()
-                                Log.e("role", sharePreferenceApp.getData(SharePreferenceApp.KEY_ROLE,""))
+
                                 finishAffinity()
                             }
 
-                            role.contains("kepala_dusun") ->{
+                            role.contains("kepala_dusun") -> {
+
+                                getProfile("kepala_dusun")
+                                delay(1000)
                                 startActivity(
                                     Intent(
                                         this@LoginActivity,
                                         BackwoodActivity::class.java
                                     )
                                 )
-                                getProfile()
                                 finishAffinity()
                             }
                         }
@@ -129,17 +126,35 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun getProfile(){
+    private fun getProfile(role: String) {
         CoroutineScope(Dispatchers.Main).launch {
-            val dataProfile = NetworkConfig.apiServiceAdminVillage.getAparatureogged("Bearer ${sharePreferenceApp.getData(
-                KEY_TOKEN, "")}")
-            withContext(Dispatchers.IO){
+            val dataProfile = NetworkConfig.apiServiceAdminVillage.getAparatureogged(
+                "Bearer ${
+                    sharePreferenceApp.getData(
+                        KEY_TOKEN, ""
+                    )
+                }"
+            )
+            withContext(Dispatchers.IO) {
                 dataProfile.data.apply {
-                    sharePreferenceApp.editData(SharePreferenceApp.KEY_NAME_HEADMAN, namaKepalaDesa)
-                    sharePreferenceApp.editData(SharePreferenceApp.KEY_NAME_VILLAGE, namaDesa)
+
+                    if (role == "kepala_desa") {
+                        sharePreferenceApp.editData(
+                            SharePreferenceApp.KEY_NAME_APARATURE,
+                            namaAparatur
+                        )
+                        sharePreferenceApp.editData(SharePreferenceApp.KEY_NAME_VILLAGE, namaDesa)
+                    } else {
+                        sharePreferenceApp.editData(
+                            SharePreferenceApp.KEY_NAME_APARATURE,
+                            namaAparatur
+                        )
+                        sharePreferenceApp.editData(SharePreferenceApp.KEY_NAME_VILLAGE, namaDesa)
+                        sharePreferenceApp.editData(SharePreferenceApp.KEY_NAME_BACKWOOD, namaDusun)
+                    }
                 }
             }
         }
     }
-
 }
+

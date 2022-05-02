@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/distance_16">
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageNoData"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/ic_empty_data"
+        app:layout_constraintBottom_toTopOf="@+id/textNoData"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textNoData"
+        style="@style/TextRegular2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Data Kosong"
+        android:textSize="@dimen/textSizeHeaderBig"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/imageNoData"
+        app:layout_constraintStart_toStartOf="@+id/imageNoData"
+        app:layout_constraintTop_toBottomOf="@+id/imageNoData" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

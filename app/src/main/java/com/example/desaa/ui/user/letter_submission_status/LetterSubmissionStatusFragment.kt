@@ -62,6 +62,18 @@ class LetterSubmissionStatusFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
+            loadingLoadingLetterSubmissionFragment.visibility = View.VISIBLE
+            grup1.visibility = View.VISIBLE
+            grup2.visibility = View.VISIBLE
+            grup3.visibility = View.VISIBLE
+            grup4.visibility = View.VISIBLE
+            grup5.visibility = View.VISIBLE
+            listBugisCertificate.visibility = View.INVISIBLE
+            listPadaeloCertificate.visibility = View.INVISIBLE
+            listMakkaraengCertificate.visibility = View.INVISIBLE
+            listBombongiCertificate.visibility = View.INVISIBLE
+            listTinggittoCertificate.visibility = View.INVISIBLE
+
             viewModelLetterSubmissionStatus.apply {
 
                 CoroutineScope(Dispatchers.Main).launch {
@@ -85,15 +97,7 @@ class LetterSubmissionStatusFragment : Fragment() {
                             dataBugis.add(data)
                         }
                     }
-//                        withContext(Dispatchers.IO) {
-//                            addDatalistVillageBombongiIntroductionCertificate(
-//                                dataBombongi
-//                            )
-//                        }
-//
-//                        listAssistanceBombongi.observe(viewLifecycleOwner) {
-//                            adapterVillageBombongi.setList(it)
-//                        }
+
                     listTinggittoCertificate.apply {
                         layoutManager = LinearLayoutManager(activity)
                         adapter = adapterVillageTinggitto
@@ -120,7 +124,15 @@ class LetterSubmissionStatusFragment : Fragment() {
                         }
 
                         listAssistanceBombongi.observe(viewLifecycleOwner) {
-                            adapterVillageBombongi.setList(it)
+                            if (it.isNotEmpty()){
+                                grup1.visibility = View.INVISIBLE
+                                listBombongiCertificate.visibility = View.VISIBLE
+
+                                adapterVillageBombongi.setList(it)
+                            }else {
+                                grup1.visibility = View.VISIBLE
+                                listBombongiCertificate.visibility = View.INVISIBLE
+                            }
                         }
                     }
 
@@ -136,9 +148,16 @@ class LetterSubmissionStatusFragment : Fragment() {
                         }
 
                         listAssistancePadaelo.observe(viewLifecycleOwner) {
-                            adapterLetterPadaelo.setList(it)
-                        }
+                            if (it.isNotEmpty()){
+                                grup4.visibility = View.INVISIBLE
+                                listPadaeloCertificate.visibility = View.VISIBLE
 
+                                adapterLetterPadaelo.setList(it)
+                            }else {
+                                grup4.visibility = View.VISIBLE
+                                listPadaeloCertificate.visibility = View.INVISIBLE
+                            }
+                        }
                     }
 
                     listMakkaraengCertificate.apply {
@@ -152,7 +171,16 @@ class LetterSubmissionStatusFragment : Fragment() {
                         }
 
                         listAssistanceMakkaraeng.observe(viewLifecycleOwner) {
-                            adapterLetterMakkaraeng.setList(it)
+
+                            if (it.isNotEmpty()){
+                                grup3.visibility = View.INVISIBLE
+                                listMakkaraengCertificate.visibility = View.VISIBLE
+
+                                adapterLetterMakkaraeng.setList(it)
+                            }else {
+                                grup3.visibility = View.VISIBLE
+                                listMakkaraengCertificate.visibility = View.INVISIBLE
+                            }
                         }
 
                     }
@@ -168,9 +196,20 @@ class LetterSubmissionStatusFragment : Fragment() {
                         }
 
                         listAssistanceBugis.observe(viewLifecycleOwner) {
-                            adapterLetterBugis.setList(it)
+
+                            if (it.isNotEmpty()){
+                                grup5.visibility = View.INVISIBLE
+                                listBugisCertificate.visibility = View.VISIBLE
+                                adapterLetterBugis.setList(it)
+                            }else {
+                                grup5.visibility = View.VISIBLE
+                                listBugisCertificate.visibility = View.INVISIBLE
+                            }
                         }
                     }
+
+                    loadingLoadingLetterSubmissionFragment.visibility = View.INVISIBLE
+
 
                 }
 

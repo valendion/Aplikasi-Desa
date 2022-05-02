@@ -45,7 +45,6 @@ class SocialAssistanceRecipientFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
         _binding = FragmentSocialAssistanceRecipientBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -60,16 +59,7 @@ class SocialAssistanceRecipientFragment : Fragment() {
             loadingLoadingSocialAssistanceFragment.visibility = View.VISIBLE
             inputSocialAssistance.visibility = View.INVISIBLE
             recyclerSocialAssistance.visibility = View.INVISIBLE
-//            grupNoData.visibility = View.VISIBLE
             btnDetailSocialAssistance.isEnabled = false
-
-//            if (!statusData){
-//                grupNoData.visibility = View.VISIBLE
-//                recyclerSocialAssistance.visibility = View.INVISIBLE
-//            }else{
-//                grupNoData.visibility = View.INVISIBLE
-//                recyclerSocialAssistance.visibility = View.VISIBLE
-//            }
 
             recyclerSocialAssistance.apply {
                 layoutManager = LinearLayoutManager(activity)
@@ -131,7 +121,6 @@ class SocialAssistanceRecipientFragment : Fragment() {
                                     NetworkConfig.apiServiceAdminVillage.getHelpProgramParticipant(
                                         Validation.validationHelpPrograam(inputSocialAssistance.editText?.text.toString())
                                     )
-
                                 withContext(Dispatchers.IO) {
                                     addDatalistAssistance(dataHelpPartisipant.data)
                                 }
@@ -146,7 +135,6 @@ class SocialAssistanceRecipientFragment : Fragment() {
                                         recyclerSocialAssistance.visibility = View.VISIBLE
                                     }
                                 }
-
                             }
                         }
 
@@ -178,8 +166,6 @@ class SocialAssistanceRecipientFragment : Fragment() {
                                 }
 
                             }
-
-
                         }
                     }
                 }

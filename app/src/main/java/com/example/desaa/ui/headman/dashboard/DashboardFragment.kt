@@ -2,17 +2,17 @@ package com.example.desaa.ui.headman.dashboard
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModelProvider
 import com.example.desaa.databinding.FragmentDashboardBinding
-import com.example.desaa.ui.headman.HomeHeadmanViewModelFactory
-import com.example.desaa.ui.headman.ViewModelHeadman
 import com.example.desaa.utils.NetworkConfig
 import com.example.desaa.utils.SharePreferenceApp
+import com.example.desaa.utils.SharePreferenceApp.Companion.KEY_NAME_APARATURE
+import com.example.desaa.utils.SharePreferenceApp.Companion.KEY_NAME_VILLAGE
 import com.example.desaa.utils.SharePreferenceApp.Companion.KEY_TOKEN
 import com.example.desaa.utils.SharePreferenceApp.Companion.getInstance
 import kotlinx.coroutines.CoroutineScope
@@ -25,8 +25,6 @@ class DashboardFragment : Fragment() {
     private var _binding: FragmentDashboardBinding? = null
 
     private val binding get() = _binding!!
-
-    private lateinit var viewModeHeadman: ViewModelHeadman
 
     private val viewModelDashboardViewModel: DashboardViewModel by activityViewModels()
 
@@ -46,14 +44,6 @@ class DashboardFragment : Fragment() {
 
         sharePreferenceApp = getInstance(requireActivity())
 
-        val viewModelFactoryHeadman = HomeHeadmanViewModelFactory(
-            requireActivity().application,
-            sharePreferenceApp
-        )
-
-        viewModeHeadman =
-            ViewModelProvider(this, viewModelFactoryHeadman)[ViewModelHeadman::class.java]
-
         binding.apply {
             loadingDashboardFragment.visibility = View.VISIBLE
             boxTotalPopulation.visibility = View.GONE
@@ -65,24 +55,22 @@ class DashboardFragment : Fragment() {
             boxTotalPopulationABloodType.visibility = View.GONE
             boxTotalPopulationOBloodType.visibility = View.GONE
 
-            val url =  "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31793.320088443972!2d119.5497434177944!3d-5.076989264164404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dbefa370d24c795%3A0xa5397d823fa94a8b!2sTenrigangkae%2C%20Kec.%20Mandai%2C%20Kabupaten%20Maros%2C%20Sulawesi%20Selatan!5e0!3m2!1sid!2sid!4v1650271214818!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+            val url =
+                "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31793.320088443972!2d119.5497434177944!3d-5.076989264164404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dbefa370d24c795%3A0xa5397d823fa94a8b!2sTenrigangkae%2C%20Kec.%20Mandai%2C%20Kabupaten%20Maros%2C%20Sulawesi%20Selatan!5e0!3m2!1sid!2sid!4v1650271214818!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
             webViewVillageArea.settings.javaScriptEnabled = true
-            webViewVillageArea.loadData(url,"text/html", "UTF-8")
+            webViewVillageArea.loadData(url, "text/html", "UTF-8")
 
-            viewModeHeadman.apply {
-                addValueHeadman()
-                addValueVillage()
+            textNameHeadman.text = sharePreferenceApp.getData(KEY_NAME_APARATURE, "")
 
-                nameHeadman.observe(viewLifecycleOwner) { nameHeadman ->
-                    textNameHeadman.text = nameHeadman
-                }
+            textVillage.text = sharePreferenceApp.getData(KEY_NAME_VILLAGE, "")
 
-                nameVillage.observe(viewLifecycleOwner) { nameVillage ->
-                    textVillage.text = nameVillage
-                }
-            }
 
             viewModelDashboardViewModel.apply {
+                Log.e("dashboard", sharePreferenceApp.getData(KEY_NAME_APARATURE, ""))
+                textNameHeadman.text = sharePreferenceApp.getData(KEY_NAME_APARATURE, "")
+
+                textVillage.text = sharePreferenceApp.getData(KEY_NAME_VILLAGE, "")
+
                 CoroutineScope(Dispatchers.Main).launch {
                     val dataStatistic = NetworkConfig.apiServiceAdminVillage.getStatistics(
                         "Bearer ${
@@ -128,7 +116,6 @@ class DashboardFragment : Fragment() {
                     textVillagePhoneNumberValue.text =
                         it.telepon_desa
                 }
-
             }
         }
         super.onViewCreated(view, savedInstanceState)
@@ -139,4 +126,12 @@ class DashboardFragment : Fragment() {
         _binding = null
     }
 
+    override fun onStart() {
+        super.onStart()
+        binding.apply {
+            textNameHeadman.text = sharePreferenceApp.getData(KEY_NAME_APARATURE, "")
+
+            textVillage.text = sharePreferenceApp.getData(KEY_NAME_VILLAGE, "")
+        }
+    }
 }
