@@ -28,6 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/distance_24"
+        android:saveEnabled="true"
         android:hint="@string/masukkan_nomor_nik"
         app:layout_constraintTop_toBottomOf="@+id/textTitleFormVillageIntroductionSubmission">
 
@@ -43,6 +44,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:saveEnabled="true"
         android:layout_marginTop="@dimen/distance_16"
         android:hint="@string/pilih_jenis_surat"
         app:layout_constraintTop_toBottomOf="@+id/inputNik">
@@ -60,6 +62,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:saveEnabled="true"
         android:layout_marginTop="@dimen/distance_16"
         android:hint="@string/masukkan_alasan_mengurus_surat"
         app:layout_constraintTop_toBottomOf="@+id/inputLetterType">
@@ -85,30 +88,20 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintAddPhoto"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/distance_24"
         android:background="@drawable/layout_bg_radius"
-        android:paddingHorizontal="@dimen/distance_24"
-        android:paddingVertical="@dimen/distance_16"
+        android:padding="@dimen/distance_8"
         app:layout_constraintCircleRadius="@dimen/distance_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageValue">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imagePhoto"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/ic_menu_camera"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/distance_16"
+            android:layout_marginTop="@dimen/distance_8"
             android:fontFamily="@font/interregular"
             android:text="Take photo"
             android:textColor="@color/black"

@@ -10,6 +10,7 @@ import androidx.core.os.bundleOf
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.desaa.R
@@ -33,7 +34,7 @@ class SocialAssistanceRecipientFragment : Fragment() {
 
     private lateinit var sharePreferenceApp: SharePreferenceApp
 
-    private val viewModelSocialAssistance: SocialAssistanceRecipientViewModel by activityViewModels()
+    private val viewModelSocialAssistance: SocialAssistanceRecipientViewModel by viewModels()
 
     private val adapterSocial: AdapterSocialAssistanceHelpProgramList by lazy { AdapterSocialAssistanceHelpProgramList() }
 

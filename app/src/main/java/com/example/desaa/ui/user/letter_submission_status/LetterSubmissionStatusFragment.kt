@@ -1,6 +1,7 @@
 package com.example.desaa.ui.user.letter_submission_status
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -50,6 +51,7 @@ class LetterSubmissionStatusFragment : Fragment() {
     private val dataPadaelo = arrayListOf<ModelDataIntroductionVillageLetter>()
     private val dataBugis = arrayListOf<ModelDataIntroductionVillageLetter>()
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -60,7 +62,6 @@ class LetterSubmissionStatusFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         binding.apply {
             loadingLoadingLetterSubmissionFragment.visibility = View.VISIBLE
             grup1.visibility = View.VISIBLE

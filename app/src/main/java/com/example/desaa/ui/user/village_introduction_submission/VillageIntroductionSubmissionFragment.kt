@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,22 +11,23 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
+import cn.pedant.SweetAlert.SweetAlertDialog
 import com.example.desaa.R
 import com.example.desaa.databinding.FragmentVillageIntroductionSubmissionBinding
+import com.example.desaa.model.response.ResponseStatus
 import com.example.desaa.utils.Convert
 import com.example.desaa.utils.NetworkConfig
 import com.github.dhaval2404.imagepicker.ImagePicker
-import com.github.dhaval2404.imagepicker.util.FileUtil
+import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import okhttp3.MediaType
+import kotlinx.coroutines.withContext
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import retrofit2.http.Multipart
-import java.io.File
-import java.lang.Exception
+
 
 class VillageIntroductionSubmissionFragment : Fragment() {
 
@@ -35,9 +35,11 @@ class VillageIntroductionSubmissionFragment : Fragment() {
 
     private val binding get() = _binding!!
 
-    private lateinit var uri: Uri
+    private var uri: Uri? = null
 
     private var dataTypeLetter = arrayListOf<String>()
+
+    private var TAG = "VillageIntroductionSubmissionFragment"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,6 +51,9 @@ class VillageIntroductionSubmissionFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+//        factoryVillageIntroduction = VillageIntroductionSubmissionFactory()
+//        viewModelVillageIntroduction = ViewModelProvider(this, factoryVillageIntroduction)[VillageIntroductionSubmissionViewModel::class.java]
 
         binding.apply {
 
@@ -66,41 +71,108 @@ class VillageIntroductionSubmissionFragment : Fragment() {
             loadingLoadingVillageIntroductionFragment.visibility = View.INVISIBLE
 
             btnSend.setOnClickListener {
+
                 CoroutineScope(Dispatchers.Main).launch {
 
                     val nik = inputNik.editText?.text.toString()
+
+
                     val jenisSurat = inputLetterType.editText?.text.toString()
                     val reason = inputDescription.editText?.text.toString()
 
-                    val file = Convert.getFileFromUri(requireActivity(), uri)
+                    when {
+                        nik.isEmpty() -> {
+                            inputNik.error = "Nik anda kosong"
+                            inputNik.requestFocus()
+                        }
+                        jenisSurat.isEmpty() -> {
+                            inputLetterType.error = "Jenis Surat anda kosong"
+                            inputNik.requestFocus()
+                        }
+                        reason.isEmpty() -> {
+                            inputDescription.error = "Alasan anda  kosong"
+                            inputNik.requestFocus()
+                        }
+                        uri == null -> {
+                            SweetAlertDialog(requireContext(), SweetAlertDialog.WARNING_TYPE)
+                                .setTitleText("Perhatian")
+                                .setContentText("Gambar anda kosong")
+                                .show()
+                        }
+                        else -> {
+                            inputNik.error = null
+                            inputLetterType.error = null
+                            inputDescription.error = null
 
-                    val requestBody =
-                        file?.let { it1 -> RequestBody.create("image/*".toMediaTypeOrNull(), it1) }
 
-                    val part = file?.let { it1 -> requestBody?.let { it2 ->
-                        MultipartBody.Part.createFormData("foto_ktp", it1.name,
-                            it2
-                        )
-                    } }
+                            val file = Convert.getFileFromUri(requireActivity(), uri!!)
 
-                    val requestNik = RequestBody.create("text/plain".toMediaTypeOrNull(), nik)
-                    val requestJenisSurat = RequestBody.create("text/plain".toMediaTypeOrNull(), jenisSurat)
-                    val requestReason = RequestBody.create("text/plain".toMediaTypeOrNull(), reason)
+                            val requestBody =
+                                file?.let { it1 ->
+                                    RequestBody.create(
+                                        "image/*".toMediaTypeOrNull(),
+                                        it1
+                                    )
+                                }
 
-                    try {
-                        val dataMessaage =
-                            part?.let { it1 ->
-                                NetworkConfig.apiServiceAdminVillage.postFormUser(
-                                    requestNik,requestJenisSurat,requestReason, it1
-                                )
+                            val part = file?.let { it1 ->
+                                requestBody?.let { it2 ->
+                                    MultipartBody.Part.createFormData(
+                                        "foto_ktp", it1.name,
+                                        it2
+                                    )
+                                }
                             }
 
-                        Toast.makeText(requireActivity(),
-                            dataMessaage?.success?.message?.get(0) ?: "", Toast.LENGTH_SHORT).show()
+                            val requestNik =
+                                RequestBody.create("text/plain".toMediaTypeOrNull(), nik)
+                            val requestJenisSurat =
+                                RequestBody.create("text/plain".toMediaTypeOrNull(), jenisSurat)
+                            val requestReason =
+                                RequestBody.create("text/plain".toMediaTypeOrNull(), reason)
+
+                            withContext(Dispatchers.IO) {
+                                val response =
+                                    part?.let { it1 ->
+                                        NetworkConfig.apiServiceAdminVillage.postFormUser(
+                                            requestNik, requestJenisSurat, requestReason, it1
+                                        )
+                                    }
+
+                                withContext(Dispatchers.Main) {
+
+                                    if (response!!.isSuccessful) {
+                                        SweetAlertDialog(
+                                            requireActivity(),
+                                            SweetAlertDialog.SUCCESS_TYPE
+                                        )
+                                            .setTitleText("Berhasil")
+                                            .setContentText(response.body()?.message ?: "")
+                                            .show()
+
+                                        val action =
+                                            VillageIntroductionSubmissionFragmentDirections.actionNavVillageToSuccessSendFragment()
+                                        Navigation.findNavController(binding.root).navigate(action)
+                                    } else {
+                                        val errorMessage = Gson().fromJson(
+                                            response.errorBody()?.charStream(),
+                                            ResponseStatus::class.java
+                                        )
+                                        SweetAlertDialog(
+                                            requireActivity(),
+                                            SweetAlertDialog.WARNING_TYPE
+                                        )
+                                            .setTitleText("Perhatian")
+                                            .setContentText(errorMessage.message)
+                                            .setConfirmText("Perbaharui Data Form")
+                                            .show()
+                                    }
+                                }
+
+                            }
+                        }
 
 
-                    }catch (e: Exception){
-                        Log.e("image", e.message.toString())
                     }
                 }
             }
@@ -129,6 +201,7 @@ class VillageIntroductionSubmissionFragment : Fragment() {
             // Use Uri object instead of File to avoid storage permissions
             binding.imageValue.setImageURI(uri)
 
+
         } else if (resultCode == ImagePicker.RESULT_ERROR) {
             Toast.makeText(requireContext(), ImagePicker.getError(data), Toast.LENGTH_SHORT).show()
         } else {
@@ -152,6 +225,5 @@ class VillageIntroductionSubmissionFragment : Fragment() {
         }
         return dataTypeLetter
     }
-
 
 }

@@ -5,11 +5,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import coil.load
 import com.example.desaa.R
 import com.example.desaa.databinding.FragmentDetailBackwoodBinding
@@ -20,7 +17,9 @@ import com.example.desaa.utils.SharePreferenceApp.Companion.KEY_NAME_BACKWOOD
 import com.example.desaa.utils.SharePreferenceApp.Companion.KEY_TOKEN
 import com.example.desaa.utils.SharePreferenceApp.Companion.getInstance
 import com.example.desaa.utils.Validation
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 class DetailBackwoodFragment : Fragment() {
@@ -30,8 +29,6 @@ class DetailBackwoodFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var sharePreferenceApp: SharePreferenceApp
-
-    private val viewModelDetailBackwood: DetailBackwoodViewModel by activityViewModels()
 
     private lateinit var dataDetail: ModelDataIntroductionSubmission
 
@@ -90,14 +87,7 @@ class DetailBackwoodFragment : Fragment() {
                                 )
                             }
                         }
-
-
-//                        val bundle = bundleOf("message_approve" to (dataMessage?.success?.message?.get(0)
-//                            ?: ""))
-//                        delay(1000)
-//                        binding.root.findNavController()
-//                            .navigate(R.id.nav_approve_fragment, bundle)
-                    val message = dataMessage?.success?.message?.get(0)
+                    val message = dataMessage?.message
                     val action = DetailBackwoodFragmentDirections.actionNavDetailBackwoodFragmentToNavApproveFragment(message)
                     Navigation.findNavController(binding.root).navigate(action)
                 }

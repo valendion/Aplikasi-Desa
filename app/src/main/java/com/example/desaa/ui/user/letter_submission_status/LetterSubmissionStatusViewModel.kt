@@ -1,5 +1,6 @@
 package com.example.desaa.ui.user.letter_submission_status
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

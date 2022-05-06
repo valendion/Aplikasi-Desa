@@ -4,7 +4,6 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.net.ConnectivityManager
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
@@ -12,21 +11,17 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import cn.pedant.SweetAlert.SweetAlertDialog
 import com.example.desaa.R
 import com.example.desaa.databinding.ActivityHomeHeadmanBinding
 import com.example.desaa.ui.user.HomeUserActivity
 import com.example.desaa.utils.NetworkConfig
 import com.example.desaa.utils.NetworkConnection
 import com.example.desaa.utils.SharePreferenceApp
-import com.example.desaa.utils.SharePreferenceApp.Companion.KEY_NAME_APARATURE
-import com.example.desaa.utils.SharePreferenceApp.Companion.KEY_NAME_VILLAGE
 import com.example.desaa.utils.SharePreferenceApp.Companion.KEY_TOKEN
 import com.example.desaa.utils.SharePreferenceApp.Companion.getInstance
 import com.google.android.material.navigation.NavigationView
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 
 
 class HomeHeadmanActivity : AppCompatActivity() {
@@ -66,7 +61,7 @@ class HomeHeadmanActivity : AppCompatActivity() {
 
         binding.appBarHomeHeadman.apply {
             btnLogout.setOnClickListener {
-                CoroutineScope(Dispatchers.Main).launch {
+                CoroutineScope(Dispatchers.IO).launch {
                     val dataLogout = NetworkConfig.apiServiceAdminVillage.logout(
                         "Bearer ${
                             sharePreferenceApp.getData(
@@ -74,14 +69,35 @@ class HomeHeadmanActivity : AppCompatActivity() {
                             )
                         }"
                     )
+                    withContext(Dispatchers.Main) {
 
-
-                    Toast.makeText(this@HomeHeadmanActivity, dataLogout.message, Toast.LENGTH_SHORT)
-                        .show()
+                        SweetAlertDialog(this@HomeHeadmanActivity, SweetAlertDialog.WARNING_TYPE)
+                            .setTitleText("Apakah anda ingin keluar ?")
+                            .setConfirmText("Ya")
+                            .setConfirmClickListener { sDialog ->
+                                sDialog.dismissWithAnimation()
+                                SweetAlertDialog(
+                                    this@HomeHeadmanActivity,
+                                    SweetAlertDialog.SUCCESS_TYPE
+                                )
+                                    .setTitleText(dataLogout.message)
+                                    .show()
+                                launch { delay(2000) }
+                                sharePreferenceApp.clearDate()
+                                startActivity(
+                                    Intent(
+                                        this@HomeHeadmanActivity,
+                                        HomeUserActivity::class.java
+                                    )
+                                )
+                                finishAffinity()
+                            }
+                            .setCancelButton(
+                                "Tidak"
+                            ) { sDialog -> sDialog.dismissWithAnimation() }
+                            .show()
+                    }
                 }
-                startActivity(Intent(this@HomeHeadmanActivity, HomeUserActivity::class.java))
-                sharePreferenceApp.clearDate()
-                finishAffinity()
             }
         }
     }

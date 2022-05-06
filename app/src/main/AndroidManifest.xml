@@ -20,25 +20,31 @@
         <activity
             android:name=".ui.headman.HomeHeadmanActivity"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_home_headman"
             android:theme="@style/Theme.DesaA.NoActionBar" />
         <activity
             android:name=".ui.user.HomeUserActivity"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_home"
             android:theme="@style/Theme.DesaA.NoActionBar" />
         <activity
             android:name=".MainActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".ui.backwood.BackwoodActivity"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.DesaA.NoActionBar" />
         <activity
             android:name=".SplashActivity"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

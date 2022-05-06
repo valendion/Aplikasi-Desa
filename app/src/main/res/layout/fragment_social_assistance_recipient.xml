@@ -83,7 +83,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/untuk_pengurusan_bantuan_sosial_dan_pencairan_dana_bantuan_silahkan_menghubungi_aparatur_desa_tenrigangkae_atau_datang_langsung_ke_kantor_desa_tenrigangkae"
-                android:textAlignment="viewStart"
+                android:gravity="center"
                 android:textStyle="bold"
                 android:layout_marginTop="@dimen/distance_16"
                 app:layout_constraintEnd_toEndOf="parent"

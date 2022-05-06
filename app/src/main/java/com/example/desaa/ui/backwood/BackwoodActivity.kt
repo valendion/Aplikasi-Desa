@@ -4,13 +4,12 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.net.ConnectivityManager
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
+import cn.pedant.SweetAlert.SweetAlertDialog
 import com.example.desaa.R
 import com.example.desaa.databinding.ActivityBackwoodBinding
 import com.example.desaa.ui.user.HomeUserActivity
@@ -18,9 +17,8 @@ import com.example.desaa.utils.NetworkConfig
 import com.example.desaa.utils.NetworkConnection
 import com.example.desaa.utils.SharePreferenceApp
 import com.example.desaa.utils.SharePreferenceApp.Companion.getInstance
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
+import kotlin.concurrent.thread
 
 class BackwoodActivity : AppCompatActivity() {
     private lateinit var binding: ActivityBackwoodBinding
@@ -53,7 +51,7 @@ class BackwoodActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController)
 
         binding.imageLogout.setOnClickListener {
-            CoroutineScope(Dispatchers.Main).launch {
+            CoroutineScope(Dispatchers.IO).launch {
                 val dataLogout = NetworkConfig.apiServiceAdminVillage.logout(
                     "Bearer ${
                         sharePreferenceApp.getData(
@@ -62,13 +60,30 @@ class BackwoodActivity : AppCompatActivity() {
                     }"
                 )
 
+                withContext(Dispatchers.Main) {
+                    SweetAlertDialog(this@BackwoodActivity, SweetAlertDialog.WARNING_TYPE)
+                        .setTitleText("Apakah anda ingin keluar ?")
+                        .setConfirmText("Ya")
+                        .setConfirmClickListener {
+                            it.dismissWithAnimation()
+                            sharePreferenceApp.clearDate()
 
-                Toast.makeText(this@BackwoodActivity, dataLogout.message, Toast.LENGTH_SHORT)
-                    .show()
+                            launch { delay(2000) }
+
+                            startActivity(
+                                Intent(
+                                    this@BackwoodActivity,
+                                    HomeUserActivity::class.java
+                                )
+                            )
+                            finishAffinity()
+                        }
+                        .setCancelButton(
+                            "Tidak"
+                        ) { sDialog -> sDialog.dismissWithAnimation() }
+                        .show()
+                }
             }
-            startActivity(Intent(this@BackwoodActivity, HomeUserActivity::class.java))
-            sharePreferenceApp.clearDate()
-            finishAffinity()
         }
 
     }

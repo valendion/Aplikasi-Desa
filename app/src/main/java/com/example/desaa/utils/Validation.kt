@@ -1,6 +1,10 @@
 package com.example.desaa.utils
 
+import kotlinx.coroutines.CoroutineExceptionHandler
+
 object Validation {
+
+    private var message: String = ""
 
     private val emailAddressRegex = Regex(
         "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
@@ -17,8 +21,8 @@ object Validation {
         return input.matches(emailAddressRegex)
     }
 
-    fun validationHelpPrograam(value: String): Int{
-        return when(value){
+    fun validationHelpPrograam(value: String): Int {
+        return when (value) {
             "JAMKESMAS" -> 1
             "BLSM" -> 2
             "BNPT" -> 3
@@ -28,14 +32,22 @@ object Validation {
         }
     }
 
-    fun validationBackwood(value: String): Int{
-        return when{
+    fun validationBackwood(value: String): Int {
+        return when {
             value.contains("Bombongi") -> 1
             value.contains("Tinggito") -> 2
             value.contains("Makkaraeng") -> 3
             value.contains("Padaelo") -> 4
             value.contains("Bugis") -> 5
             else -> 0
+        }
+    }
+
+    fun exeptionHandler(): CoroutineExceptionHandler {
+       return CoroutineExceptionHandler { _, t ->
+            {
+                t.printStackTrace()
+            }
         }
     }
 

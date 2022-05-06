@@ -4,6 +4,7 @@ import com.example.desaa.model.response.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
+import retrofit2.Response
 import retrofit2.http.*
 
 interface ApiServiceAdminVillage {
@@ -69,7 +70,7 @@ interface ApiServiceAdminVillage {
         @Field("wilayah_administratif_dusun_id") id: Int,
         @Field("nik") nik: String,
         @Field("jenis_surat_akan_dibuat") jenisSurat: String
-    ): ResponseApprove
+    ): ResponseStatus
 
     @Multipart
     @POST("surat_pengantar_dusun")
@@ -78,5 +79,5 @@ interface ApiServiceAdminVillage {
         @Part("jenis_surat_akan_dibuat") jenisSurat: RequestBody,
         @Part("keterangan") keterangan: RequestBody,
         @Part image: MultipartBody.Part
-    ): ResponseApprove
+    ): Response<ResponseStatus>
 }

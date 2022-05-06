@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import cn.pedant.SweetAlert.SweetAlertDialog
 import com.example.desaa.databinding.ActivityLoginBinding
 import com.example.desaa.ui.backwood.BackwoodActivity
 import com.example.desaa.ui.headman.HomeHeadmanActivity
@@ -49,7 +50,6 @@ class LoginActivity : AppCompatActivity() {
                     loadingLoginActivity.visibility = View.VISIBLE
 
                     getToken(email, password)
-//                    getRole()
                 }
             }
         }
@@ -71,9 +71,9 @@ class LoginActivity : AppCompatActivity() {
                     }
 
                     withContext(Dispatchers.Main) {
-                        Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT)
+                        SweetAlertDialog(this@LoginActivity, SweetAlertDialog.SUCCESS_TYPE)
+                            .setTitleText(message)
                             .show()
-
                     }
 
                 }

@@ -11,14 +11,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.desaa.adapter.backwood.AdapterIntroductionAccept
 import com.example.desaa.adapter.backwood.AdapterIntroductionNotAccept
 import com.example.desaa.databinding.FragmentDashboardBackwoodBinding
-import com.example.desaa.model.response.ModelDataIntroductionSubmission
 import com.example.desaa.utils.NetworkConfig
 import com.example.desaa.utils.SharePreferenceApp
 import com.example.desaa.utils.SharePreferenceApp.Companion.KEY_NAME_APARATURE
 import com.example.desaa.utils.SharePreferenceApp.Companion.KEY_NAME_BACKWOOD
 import com.example.desaa.utils.SharePreferenceApp.Companion.getInstance
 import com.example.desaa.utils.Validation
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class DashboardBackwoodFragment : Fragment() {
@@ -30,9 +32,6 @@ class DashboardBackwoodFragment : Fragment() {
     private val viewModelDashboard: DashBoardBackwoodViewModel by activityViewModels()
 
     private lateinit var sharePreferenceApp: SharePreferenceApp
-
-    private val accepts = arrayListOf<ModelDataIntroductionSubmission>()
-    private val notAccepts = arrayListOf<ModelDataIntroductionSubmission>()
 
     private val adapterAccept: AdapterIntroductionAccept by lazy {
         AdapterIntroductionAccept()
