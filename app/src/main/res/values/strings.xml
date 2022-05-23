@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">DesaApp</string>
     <string name="www_sunistheworld_com">www.sunistheworld.com</string>
-    <string name="pt_synergy_utility_network">PT. Synergy Utility Network</string>
-    <string name="desa_tenrigangkae">Desa Tenrigangkae</string>
-    <string name="aplikasi">Aplikasi</string>
+    <string name="pt_synergy_utility_network">&#169; PT. Synergy Utility Network</string>
+    <string name="desa_tenrigangkae">Tenrigangkae</string>
+    <string name="aplikasi">DeSUN</string>
     <string name="developed_by">Developed by</string>
     <string name="form_login">Form Login</string>
     <string name="title_activity_home">HomeActivity</string>
@@ -79,7 +79,7 @@
     <string name="foto_ktp">Foto KTP</string>
     <string name="tekan_tombol_dibawah_ini_jika_data_telah_anda_setujui">Tekan tombol dibawah ini jika data telah anda setujui</string>
     <string name="buatkan_surat_pengantar">Buatkan Surat Pengantar</string>
-    <string name="surat_keterangan_pengantar_desa_bombongi">Surat Keterangan Pengantar Dusun Bombongi</string>
+    <string name="surat_keterangan_pengantar_desa_bombongi">Surat Keterangan Pengantar Dusun</string>
     <string name="surat_keterangan_usaha">Surat Keterangan Usaha</string>
     <string name="surat_pengantar_dusun_abc">Surat Pengantar Dusun ABC</string>
     <string name="bantuan_sosial_jamkesmas">Bantuan Sosial JAMKESMAS</string>

@@ -3,7 +3,6 @@ package com.example.desaa.model.network
 import com.example.desaa.model.response.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import okhttp3.ResponseBody
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -14,7 +13,7 @@ interface ApiServiceAdminVillage {
     suspend fun getToken(
         @Field("email") email: String,
         @Field("password") password: String
-    ): ResponseLogin
+    ): Response<ResponseLogin>
 
     @POST("logout")
     suspend fun logout(
@@ -25,7 +24,7 @@ interface ApiServiceAdminVillage {
     suspend fun getStatistics(@Header("Authorization") token: String): ResponseVillageStatsInfo
 
     @GET("aparatur_logged")
-    suspend fun getAparatureogged(@Header("Authorization") token: String): ResponseAparatureLogged
+    suspend fun getAparatureogged(@Header("Authorization") token: String): Response<ResponseAparatureLogged>
 
     @GET("peraturan_desa")
     suspend fun getRuleVillage(@Header("Authorization") token: String): ResponseRuleVillage
@@ -37,7 +36,7 @@ interface ApiServiceAdminVillage {
     suspend fun getVillageGovernmentOfficials(@Header("Authorization") token: String): ResponseVillageGovernmentOfficials
 
     @GET("aparatur")
-    suspend fun getAparatureRole(@Header("Authorization") token: String): ResponseRoleLogged
+    suspend fun getAparatureRole(@Header("Authorization") token: String): Response<ResponseRoleLogged>
 
     @GET("program_bantuan_sosial")
     suspend fun getHelpProgramList(): ResponseHelpProgramList

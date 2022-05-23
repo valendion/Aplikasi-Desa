@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
 import com.example.desaa.databinding.FragmentDashboardBinding
 import com.example.desaa.utils.NetworkConfig
 import com.example.desaa.utils.SharePreferenceApp
@@ -26,7 +27,9 @@ class DashboardFragment : Fragment() {
 
     private val binding get() = _binding!!
 
-    private val viewModelDashboardViewModel: DashboardViewModel by activityViewModels()
+    private lateinit var viewModelDashboardViewModel: DashboardViewModel
+
+    private lateinit var viewModelFactory: FactoryDashboardHeadman
 
     private lateinit var sharePreferenceApp: SharePreferenceApp
 
@@ -43,6 +46,10 @@ class DashboardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         sharePreferenceApp = getInstance(requireActivity())
+
+        viewModelFactory = FactoryDashboardHeadman(requireActivity())
+
+        viewModelDashboardViewModel = ViewModelProvider(requireActivity(), viewModelFactory)[DashboardViewModel::class.java]
 
         binding.apply {
             loadingDashboardFragment.visibility = View.VISIBLE
@@ -66,24 +73,9 @@ class DashboardFragment : Fragment() {
 
 
             viewModelDashboardViewModel.apply {
-                Log.e("dashboard", sharePreferenceApp.getData(KEY_NAME_APARATURE, ""))
                 textNameHeadman.text = sharePreferenceApp.getData(KEY_NAME_APARATURE, "")
 
                 textVillage.text = sharePreferenceApp.getData(KEY_NAME_VILLAGE, "")
-
-                CoroutineScope(Dispatchers.Main).launch {
-                    val dataStatistic = NetworkConfig.apiServiceAdminVillage.getStatistics(
-                        "Bearer ${
-                            sharePreferenceApp.getData(
-                                KEY_TOKEN, ""
-                            )
-                        }"
-                    )
-
-                    withContext(Dispatchers.IO) {
-                        addValueStatistic(dataStatistic.data)
-                    }
-                }
 
                 statistic.observe(viewLifecycleOwner) {
                     loadingDashboardFragment.visibility = View.GONE

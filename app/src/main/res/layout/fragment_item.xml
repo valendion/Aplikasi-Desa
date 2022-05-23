@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/distance_16"
+    tools:context=".ui.user.letter_submission_status.ItemFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listCertificate"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scrollbars="none"
+        android:layout_marginTop="@dimen/distance_16"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:itemCount="3"
+        tools:listitem="@layout/layout_confirm_accept_list" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageNoData"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/ic_empty_data"
+        app:layout_constraintBottom_toTopOf="@+id/textNoData"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/listCertificate"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textNoData"
+        style="@style/TextRegular2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Data Kosong"
+        android:fontFamily="@font/interregular"
+        android:textSize="@dimen/textSizeHeader"
+        app:layout_constraintBottom_toBottomOf="@+id/listCertificate"
+        app:layout_constraintEnd_toEndOf="@id/listCertificate"
+        app:layout_constraintStart_toStartOf="@+id/listCertificate"
+        app:layout_constraintTop_toBottomOf="@+id/imageNoData" />
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/loadingLoadingLetterSubmissionFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:elevation="2dp"
+        android:visibility="invisible"
+        app:indicatorColor="@color/primaryGreen"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/grup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="textNoData, imageNoData"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

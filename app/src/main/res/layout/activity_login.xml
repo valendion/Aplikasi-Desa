@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/primaryGreen"
     android:padding="@dimen/distance_16"
-    tools:context=".LoginActivity">
+    tools:context=".ui.login.LoginActivity">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageLogo"
@@ -161,42 +161,15 @@
         app:layout_constraintTop_toBottomOf="@+id/cardInput" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/interregular"
-        android:text="@string/developed_by"
-        android:textColor="@color/white"
-        android:textSize="@dimen/textSizeNormal"
-        app:layout_constraintBottom_toTopOf="@+id/textPTSun"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textPTSun"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/interregular"
         android:text="@string/pt_synergy_utility_network"
         android:textColor="@color/white"
-        android:textSize="@dimen/textSizeNormal"
-        app:layout_constraintBottom_toTopOf="@+id/textWebsiteSun"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textWebsiteSun"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/interregular"
-        android:text="@string/www_sunistheworld_com"
-        android:textColor="@color/white"
-        android:textSize="@dimen/textSizeNormal"
+        android:textSize="@dimen/textSizeHeader"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

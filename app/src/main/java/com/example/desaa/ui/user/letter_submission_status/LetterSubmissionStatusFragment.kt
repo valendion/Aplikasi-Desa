@@ -211,12 +211,7 @@ class LetterSubmissionStatusFragment : Fragment() {
 
                     loadingLoadingLetterSubmissionFragment.visibility = View.INVISIBLE
 
-
                 }
-
-
-
-
             }
         }
     }

@@ -5,18 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.desaa.adapter.headman.AdapterVillageGovernmentOfficials
 import com.example.desaa.databinding.FragmentVillageGovernmentOfficialsBinding
-import com.example.desaa.utils.NetworkConfig
 import com.example.desaa.utils.SharePreferenceApp
-import com.example.desaa.utils.SharePreferenceApp.Companion.KEY_TOKEN
 import com.example.desaa.utils.SharePreferenceApp.Companion.getInstance
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class VillageGovernmentOfficialsFragment : Fragment() {
 
@@ -26,7 +20,9 @@ class VillageGovernmentOfficialsFragment : Fragment() {
 
     private lateinit var sharePreferenceApp: SharePreferenceApp
 
-    private val viewModelVillageGovernment: VillageGovernmentOfficialsViewModel by activityViewModels()
+    private lateinit var viewModelVillageGovernment: VillageGovernmentOfficialsViewModel
+
+    private lateinit var factoryVillageGovernment: FactoryGovermentHeadman
 
     private val adapterVillageGovernment: AdapterVillageGovernmentOfficials by lazy {
         AdapterVillageGovernmentOfficials()
@@ -42,12 +38,23 @@ class VillageGovernmentOfficialsFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        sharePreferenceApp = getInstance(requireActivity())
+
         binding.apply {
             loadingVillageGovernmentFragment.visibility = View.VISIBLE
             listGovernmentOfficials.visibility = View.GONE
             textNameHeadman.visibility = View.GONE
             textVillage.visibility = View.GONE
+
+            sharePreferenceApp = getInstance(requireActivity())
+
+            factoryVillageGovernment = FactoryGovermentHeadman(requireActivity())
+
+            viewModelVillageGovernment = ViewModelProvider(
+                requireActivity(),
+                factoryVillageGovernment
+            )[VillageGovernmentOfficialsViewModel::class.java]
+
+
 
             viewModelVillageGovernment.apply {
 
@@ -55,32 +62,20 @@ class VillageGovernmentOfficialsFragment : Fragment() {
                     layoutManager = LinearLayoutManager(activity)
                     adapter = adapterVillageGovernment
 
-                    CoroutineScope(Dispatchers.Main).launch {
-                        val dataVIllageGovernment = NetworkConfig.apiServiceAdminVillage.getVillageGovernmentOfficials(
-                            "Bearer ${
-                                sharePreferenceApp.getData(
-                                    KEY_TOKEN,
-                                    ""
-                                )
-                            }"
-                        )
-
-                        withContext(Dispatchers.IO) {
-                            addVillageGovernment(dataVIllageGovernment.data)
-                        }
-
-                        villageGovernment.observe(viewLifecycleOwner) {
-                            adapterVillageGovernment.setList(it)
-                        }
-
-                        textNameHeadman.text = sharePreferenceApp.getData(SharePreferenceApp.KEY_NAME_APARATURE, "")
-                        textVillage.text = sharePreferenceApp.getData(SharePreferenceApp.KEY_NAME_VILLAGE, "")
-
-                        loadingVillageGovernmentFragment.visibility = View.GONE
-                        listGovernmentOfficials.visibility = View.VISIBLE
-                        textNameHeadman.visibility = View.VISIBLE
-                        textVillage.visibility = View.VISIBLE
+                    villageGovernment.observe(viewLifecycleOwner) {
+                        adapterVillageGovernment.setList(it)
                     }
+
+                    textNameHeadman.text =
+                        sharePreferenceApp.getData(SharePreferenceApp.KEY_NAME_APARATURE, "")
+                    textVillage.text =
+                        sharePreferenceApp.getData(SharePreferenceApp.KEY_NAME_VILLAGE, "")
+
+                    loadingVillageGovernmentFragment.visibility = View.GONE
+                    listGovernmentOfficials.visibility = View.VISIBLE
+                    textNameHeadman.visibility = View.VISIBLE
+                    textVillage.visibility = View.VISIBLE
+
                 }
             }
         }

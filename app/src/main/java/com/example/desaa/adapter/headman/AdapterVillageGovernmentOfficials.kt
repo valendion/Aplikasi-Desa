@@ -5,9 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import coil.transform.CircleCropTransformation
 import com.example.desaa.R
-
 import com.example.desaa.databinding.LayoutGovernmentOfficialsListBinding
 import com.example.desaa.model.response.ModelDataVillageGovernmentOfficials
 
@@ -27,6 +25,7 @@ class AdapterVillageGovernmentOfficials :
                     imagePhoto.load(data.foto){
                         crossfade(true)
                         placeholder(R.drawable.ic_image_34)
+                            .error(R.drawable.ic_image_34)
                     }
                 }else{
                     imagePhoto.load(R.drawable.ic_image_34)

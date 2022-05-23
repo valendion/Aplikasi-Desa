@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.core.os.bundleOf
+import androidx.core.view.forEach
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -106,63 +107,78 @@ class SocialAssistanceRecipientFragment : Fragment() {
                             R.layout.support_simple_spinner_dropdown_item,
                             help
                         )
-                        (inputSocialAssistance.editText as? AutoCompleteTextView)?.setAdapter(
-                            adapter
-                        )
+                        (inputSocialAssistance.editText as? AutoCompleteTextView)?.apply {
+                            setAdapter(
+                                adapter
+                            )
+                            setText(help[0], false)
+                        }
 
                         loadingLoadingSocialAssistanceFragment.visibility = View.INVISIBLE
 
                         inputSocialAssistance.visibility = View.VISIBLE
 
                         if (inputSocialAssistance.editText?.text?.isNotEmpty() == true) {
+
                             btnDetailSocialAssistance.isEnabled = true
                             indexSelected +=1
-                            CoroutineScope(Dispatchers.Main).launch {
+
+                            CoroutineScope(Dispatchers.IO).launch {
                                 val dataHelpPartisipant =
                                     NetworkConfig.apiServiceAdminVillage.getHelpProgramParticipant(
                                         Validation.validationHelpPrograam(inputSocialAssistance.editText?.text.toString())
                                     )
-                                withContext(Dispatchers.IO) {
-                                    addDatalistAssistance(dataHelpPartisipant.data)
-                                }
 
+                                addDatalistAssistance(dataHelpPartisipant.data)
+
+                            }
                                 listAssistance.observe(viewLifecycleOwner) {
                                     if (it != null) {
                                         adapterSocial.setList(it)
 
-                                        recyclerSocialAssistance.visibility = View.VISIBLE
+                                        CoroutineScope(Dispatchers.Main).launch {
+                                            recyclerSocialAssistance.visibility = View.VISIBLE
+                                        }
+
                                     } else {
 
-                                        recyclerSocialAssistance.visibility = View.VISIBLE
+                                        CoroutineScope(Dispatchers.Main).launch {
+                                            recyclerSocialAssistance.visibility = View.VISIBLE
+                                        }
                                     }
                                 }
-                            }
+
                         }
 
+
+
                         inputSocialAssistance.editText?.doOnTextChanged { text, start, before, count ->
+
                             statusData = true
+
                             indexSelected = Validation.validationHelpPrograam(text.toString())
 
                             btnDetailSocialAssistance.isEnabled = statusData
 
-                            CoroutineScope(Dispatchers.Main).launch {
+                            CoroutineScope(Dispatchers.IO).launch {
                                 val dataHelpPartisipant =
                                     NetworkConfig.apiServiceAdminVillage.getHelpProgramParticipant(
                                         Validation.validationHelpPrograam(text.toString())
                                     )
 
-                                withContext(Dispatchers.IO) {
                                     addDatalistAssistance(dataHelpPartisipant.data)
-                                }
 
-                                listAssistance.observe(viewLifecycleOwner) {
-                                    if (it != null) {
-                                        adapterSocial.setList(it)
+                                withContext(Dispatchers.Main) {
+                                    listAssistance.observe(viewLifecycleOwner) {
+                                        if (it != null) {
+                                            adapterSocial.setList(it)
 //                                        grupNoData.visibility = View.INVISIBLE
-                                        recyclerSocialAssistance.visibility = View.VISIBLE
-                                    } else {
+
+                                            recyclerSocialAssistance.visibility = View.VISIBLE
+                                        } else {
 //                                        grupNoData.visibility = View.VISIBLE
-                                        recyclerSocialAssistance.visibility = View.VISIBLE
+                                            recyclerSocialAssistance.visibility = View.VISIBLE
+                                        }
                                     }
                                 }
 

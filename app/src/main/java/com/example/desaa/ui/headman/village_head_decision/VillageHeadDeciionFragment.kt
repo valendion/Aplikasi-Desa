@@ -6,15 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.desaa.adapter.headman.AdapterVillageHeadDecision
 import com.example.desaa.databinding.FragmentVillageHeadDeciionBinding
-import com.example.desaa.utils.NetworkConfig
+import com.example.desaa.ui.headman.village_government_officials.FactoryGovermentHeadman
+import com.example.desaa.ui.headman.village_government_officials.VillageGovernmentOfficialsViewModel
 import com.example.desaa.utils.SharePreferenceApp
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 
 class VillageHeadDeciionFragment : Fragment() {
@@ -25,7 +23,9 @@ class VillageHeadDeciionFragment : Fragment() {
 
     private lateinit var sharePreferenceApp: SharePreferenceApp
 
-    private val viewModelVillageHeadman: VIllageHeadDecisionViewModel by activityViewModels()
+    private lateinit var viewModelVillageHeadman: VIllageHeadDecisionViewModel
+
+    private lateinit var factoryVillageDecition: FactoryDecisionHeadman
 
     private val adapterVillageHeadman: AdapterVillageHeadDecision by lazy {
         AdapterVillageHeadDecision()
@@ -41,13 +41,22 @@ class VillageHeadDeciionFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        sharePreferenceApp = SharePreferenceApp.getInstance(requireActivity())
+
 
         binding.apply {
             loadingVillageHeadFragment.visibility = View.VISIBLE
             listVillageHeadman.visibility = View.GONE
             textNameHeadman.visibility = View.GONE
             textVillage.visibility = View.GONE
+
+            sharePreferenceApp = SharePreferenceApp.getInstance(requireActivity())
+
+            factoryVillageDecition = FactoryDecisionHeadman(requireActivity())
+
+            viewModelVillageHeadman = ViewModelProvider(
+                requireActivity(),
+                factoryVillageDecition
+            )[VIllageHeadDecisionViewModel::class.java]
 
             viewModelVillageHeadman.apply {
 
@@ -56,34 +65,20 @@ class VillageHeadDeciionFragment : Fragment() {
                     layoutManager = LinearLayoutManager(activity)
                     adapter = adapterVillageHeadman
 
-
-
-                    CoroutineScope(Dispatchers.Main).launch {
-                        val dataVillageHeadman = NetworkConfig.apiServiceAdminVillage.getDecisionHeadman(
-                            "Bearer ${
-                                sharePreferenceApp.getData(
-                                    SharePreferenceApp.KEY_TOKEN,
-                                    ""
-                                )
-                            }"
-                        )
-
-                        withContext(Dispatchers.IO) {
-                            addVillageHeadman(dataVillageHeadman.data)
-                        }
-
-                        villageHeadman.observe(viewLifecycleOwner) {
-                            adapterVillageHeadman.setList(it)
-                        }
-
-                        textNameHeadman.text = sharePreferenceApp.getData(SharePreferenceApp.KEY_NAME_APARATURE, "")
-                        textVillage.text = sharePreferenceApp.getData(SharePreferenceApp.KEY_NAME_VILLAGE, "")
-
-                        loadingVillageHeadFragment.visibility = View.GONE
-                        listVillageHeadman.visibility = View.VISIBLE
-                        textNameHeadman.visibility = View.VISIBLE
-                        textVillage.visibility = View.VISIBLE
+                    villageHeadman.observe(viewLifecycleOwner) {
+                        adapterVillageHeadman.setList(it)
                     }
+
+                    textNameHeadman.text =
+                        sharePreferenceApp.getData(SharePreferenceApp.KEY_NAME_APARATURE, "")
+                    textVillage.text =
+                        sharePreferenceApp.getData(SharePreferenceApp.KEY_NAME_VILLAGE, "")
+
+                    loadingVillageHeadFragment.visibility = View.GONE
+                    listVillageHeadman.visibility = View.VISIBLE
+                    textNameHeadman.visibility = View.VISIBLE
+                    textVillage.visibility = View.VISIBLE
+
                 }
             }
         }
