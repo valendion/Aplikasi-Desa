@@ -5,6 +5,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
+import android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import coil.load
@@ -17,6 +20,7 @@ import com.example.desaa.utils.SharePreferenceApp.Companion.KEY_NAME_BACKWOOD
 import com.example.desaa.utils.SharePreferenceApp.Companion.KEY_TOKEN
 import com.example.desaa.utils.SharePreferenceApp.Companion.getInstance
 import com.example.desaa.utils.Validation
+import com.jsibbold.zoomage.ZoomageView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -61,7 +65,9 @@ class DetailBackwoodFragment : Fragment() {
                 placeholder(R.drawable.ic_image_34)
             }
 
-            dataDetail.fotoKtp?.let { Log.e("image", it) }
+            imageKTP.setOnClickListener {
+                addDialog()
+            }
 
             btnConfirm.setOnClickListener {
 
@@ -95,6 +101,26 @@ class DetailBackwoodFragment : Fragment() {
         }
         super.onViewCreated(view, savedInstanceState)
     }
+
+    private fun addDialog(){
+        val dialogView   = layoutInflater.inflate(R.layout.layout_zoom_image, null)
+
+        // Inisiasi Element / Widget
+        val zoomPhoto       = dialogView.findViewById<ZoomageView>(R.id.zoomPhoto)
+
+        zoomPhoto.load(dataDetail.fotoKtp) {
+            crossfade(true)
+            placeholder(R.drawable.ic_image_34)
+        }
+        //Inisiasi Alert Dialog
+        val alertBuilder = AlertDialog.Builder(requireActivity())
+        alertBuilder.setView( dialogView )
+
+        val dialog = alertBuilder.create()
+        dialog.show()
+
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

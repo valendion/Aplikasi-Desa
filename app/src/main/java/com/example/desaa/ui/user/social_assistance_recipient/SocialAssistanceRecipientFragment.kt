@@ -70,14 +70,14 @@ class SocialAssistanceRecipientFragment : Fragment() {
 
                 viewModelSocialAssistance.apply {
 
-                    CoroutineScope(Dispatchers.Main).launch {
+                    CoroutineScope(Dispatchers.IO).launch {
                         val dataListProgram =
                             NetworkConfig.apiServiceAdminVillage.getHelpProgramList()
+
                         val help = arrayListOf<String>()
 
-                        withContext(Dispatchers.IO) {
                             addDataHelpPrograms(dataListProgram.data)
-                        }
+
 
                         btnDetailSocialAssistance.setOnClickListener {
                             dataListProgram.data[indexSelected - 1].apply {
@@ -101,22 +101,24 @@ class SocialAssistanceRecipientFragment : Fragment() {
                                 helpData.namaProgram?.let { it1 -> help.add(it1) }
                             }
                         }
+                        withContext(Dispatchers.Main) {
 
-                        val adapter = ArrayAdapter(
-                            requireContext(),
-                            R.layout.support_simple_spinner_dropdown_item,
-                            help
-                        )
-                        (inputSocialAssistance.editText as? AutoCompleteTextView)?.apply {
-                            setAdapter(
-                                adapter
+                            val adapter = ArrayAdapter(
+                                requireContext(),
+                                R.layout.support_simple_spinner_dropdown_item,
+                                help
                             )
-                            setText(help[0], false)
+                            (inputSocialAssistance.editText as? AutoCompleteTextView)?.apply {
+                                setAdapter(
+                                    adapter
+                                )
+                                setText(help[0], false)
+                            }
+
+                            loadingLoadingSocialAssistanceFragment.visibility = View.INVISIBLE
+
+                            inputSocialAssistance.visibility = View.VISIBLE
                         }
-
-                        loadingLoadingSocialAssistanceFragment.visibility = View.INVISIBLE
-
-                        inputSocialAssistance.visibility = View.VISIBLE
 
                         if (inputSocialAssistance.editText?.text?.isNotEmpty() == true) {
 
