@@ -36,7 +36,7 @@
         style="@style/TextRegular2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Data Kosong"
+        android:text="@string/data_kosong"
         android:fontFamily="@font/interregular"
         android:textSize="@dimen/textSizeHeader"
         app:layout_constraintBottom_toBottomOf="@+id/listCertificate"

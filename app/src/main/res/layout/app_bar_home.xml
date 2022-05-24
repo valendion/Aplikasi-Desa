@@ -19,35 +19,39 @@
             app:popupTheme="@style/Theme.DesaA.PopupOverlay" >
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:padding="8dp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:padding="8dp">
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/imageLogo"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
-                    android:src="@drawable/logo_maros"
                     android:layout_marginStart="16dp"
+                    android:src="@drawable/logo_maros"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/textTitleAplikasiTopBar"
+                    app:layout_constraintHorizontal_bias="0.21"
+                    app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/textTitleAplikasiTopBar"
+                    style="@style/TextTitleToolbarSecondary"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/aplikasi"
-                    style="@style/TextTitleToolbarSecondary"
                     android:layout_marginStart="@dimen/distance_12"
-                    app:layout_constraintTop_toTopOf="@+id/imageLogo"
-                    app:layout_constraintStart_toEndOf="@id/imageLogo"/>
+                    android:text="@string/aplikasi"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/imageLogo"
+                    app:layout_constraintTop_toTopOf="@+id/imageLogo" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/textTitleDesaTenrigangkaeTopBar"
+                    style="@style/TextTitleToolbarSecondary"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/TextTitleToolbarSecondary"
                     android:text="@string/desa_tenrigangkae"
                     app:layout_constraintStart_toStartOf="@+id/textTitleAplikasiTopBar"
                     app:layout_constraintTop_toBottomOf="@+id/textTitleAplikasiTopBar" />

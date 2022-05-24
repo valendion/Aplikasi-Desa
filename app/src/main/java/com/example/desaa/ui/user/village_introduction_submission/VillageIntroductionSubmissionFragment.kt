@@ -180,7 +180,6 @@ class VillageIntroductionSubmissionFragment : Fragment() {
             constraintAddPhoto.setOnClickListener {
                 ImagePicker.with(this@VillageIntroductionSubmissionFragment)
                     .cameraOnly()
-                    .crop()                    //Crop image(Optional), Check Customization for more option
                     .compress(1024)            //Final image size will be less than 1 MB(Optional)
                     .maxResultSize(
                         1080,

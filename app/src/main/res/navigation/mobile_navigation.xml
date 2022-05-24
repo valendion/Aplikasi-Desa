@@ -73,5 +73,10 @@
         android:name="com.example.desaa.ui.user.letter_submission_status.LetterSubmissiionFragment"
         android:label="fragment_letter_submissiion"
         tools:layout="@layout/fragment_letter_submissiion" />
+    <fragment
+        android:id="@+id/nav_village_statistics"
+        android:name="com.example.desaa.ui.user.statistics.StatisticFragment"
+        android:label="fragment_statistic"
+        tools:layout="@layout/fragment_statistic" />
 
 </navigation>

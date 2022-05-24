@@ -30,7 +30,7 @@
         style="@style/TextTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Dion"
+        android:text="@string/dion"
         app:layout_constraintBottom_toTopOf="@+id/textVillage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textVillageRulesHeadman" />
@@ -68,5 +68,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageNoData"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/ic_empty_data"
+        app:layout_constraintBottom_toTopOf="@+id/textNoData"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/recyclerviewVillageRule"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textNoData"
+        style="@style/TextRegular2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/data_kosong"
+        android:fontFamily="@font/interregular"
+        android:textSize="@dimen/textSizeHeader"
+        app:layout_constraintBottom_toBottomOf="@+id/recyclerviewVillageRule"
+        app:layout_constraintEnd_toEndOf="@id/recyclerviewVillageRule"
+        app:layout_constraintStart_toStartOf="@+id/recyclerviewVillageRule"
+        app:layout_constraintTop_toBottomOf="@+id/imageNoData" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/grup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="textNoData, imageNoData"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

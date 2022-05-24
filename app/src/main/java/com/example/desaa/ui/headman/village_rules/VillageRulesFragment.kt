@@ -64,7 +64,14 @@ class VillageRulesFragment : Fragment() {
                     adapter = adapterVillageRule
 
                     villageRule.observe(viewLifecycleOwner) {
-                        adapterVillageRule.setList(it)
+                        if (it != null) {
+                            grup.visibility = View.INVISIBLE
+                            recyclerviewVillageRule.visibility = View.VISIBLE
+                            adapterVillageRule.setList(it)
+                        } else {
+                            grup.visibility = View.VISIBLE
+                            recyclerviewVillageRule.visibility = View.INVISIBLE
+                        }
                     }
 
                     textNameHeadman.text = sharePreferenceApp.getData(KEY_NAME_APARATURE, "")

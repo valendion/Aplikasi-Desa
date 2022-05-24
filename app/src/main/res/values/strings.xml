@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DesaApp</string>
+    <string name="app_name">DeSUN\nTenrigangkae</string>
     <string name="www_sunistheworld_com">www.sunistheworld.com</string>
     <string name="pt_synergy_utility_network">&#169; PT. Synergy Utility Network</string>
     <string name="desa_tenrigangkae">Tenrigangkae</string>
@@ -18,7 +18,7 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="masyarakat">Masyarakat</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="pengajuan_pengantar_dusun">Pengajuan Pengantar Dusun</string>
     <string name="status_pengajuan_surat">Status Pengajuan Surat</string>
@@ -102,5 +102,7 @@
     <string name="bantuan_sosial">Bantuan Sosial</string>
     <string name="surat_keterangan_pengantar_desa_padaelo">Surat Keterangan Pengantar Desa Padaelo</string>
     <string name="untuk_pengurusan_bantuan_sosial_dan_pencairan_dana_bantuan_silahkan_menghubungi_aparatur_desa_tenrigangkae_atau_datang_langsung_ke_kantor_desa_tenrigangkae">Untuk pengurusan bantuan sosial dan pencairan dana bantuan silahkan menghubungi aparatur Desa Tenrigangkae atau datang langsung ke Kantor Desa Tenrigangkae.</string>
+    <string name="data_kosong">Data belum ada</string>
+    <string name="dion">Dion</string>
 
 </resources>

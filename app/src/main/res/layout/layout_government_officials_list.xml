@@ -20,11 +20,12 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imagePhoto"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_width="80dp"
+            android:layout_height="75dp"
             android:layout_marginVertical="@dimen/distance_16"
             android:layout_marginHorizontal="@dimen/distance_24"
             android:src="@color/grey"
+            android:scaleType="fitXY"
             app:layout_constraintBottom_toTopOf="@+id/btnDownload"
             app:layout_constraintEnd_toStartOf="@+id/textName"
             app:layout_constraintStart_toStartOf="parent"

@@ -63,7 +63,16 @@ class VillageGovernmentOfficialsFragment : Fragment() {
                     adapter = adapterVillageGovernment
 
                     villageGovernment.observe(viewLifecycleOwner) {
-                        adapterVillageGovernment.setList(it)
+
+                        if (it != null) {
+                            grup.visibility = View.INVISIBLE
+                            listGovernmentOfficials.visibility = View.VISIBLE
+                            adapterVillageGovernment.setList(it)
+                        } else {
+                            grup.visibility = View.VISIBLE
+                            listGovernmentOfficials.visibility = View.INVISIBLE
+                        }
+
                     }
 
                     textNameHeadman.text =

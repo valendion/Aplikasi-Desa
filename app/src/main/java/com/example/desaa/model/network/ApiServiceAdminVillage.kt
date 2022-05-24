@@ -79,4 +79,9 @@ interface ApiServiceAdminVillage {
         @Part("keterangan") keterangan: RequestBody,
         @Part image: MultipartBody.Part
     ): Response<ResponseStatus>
+
+    @GET("statistik_desa_user")
+    suspend fun getStatisticVillage(): ResponseVillageStatsInfo
+
+
 }

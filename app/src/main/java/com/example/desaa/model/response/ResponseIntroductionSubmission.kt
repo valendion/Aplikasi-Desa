@@ -6,4 +6,6 @@ import java.util.ArrayList
 data class ResponseIntroductionSubmission(
     @SerializedName("data")
     var data: ArrayList<ModelDataIntroductionSubmission>,
+
+
 )

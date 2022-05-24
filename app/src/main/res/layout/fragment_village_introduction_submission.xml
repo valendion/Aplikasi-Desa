@@ -86,32 +86,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/inputDescription" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintAddPhoto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/distance_24"
-        android:background="@drawable/layout_bg_radius"
-        android:padding="@dimen/distance_8"
-        app:layout_constraintCircleRadius="@dimen/distance_24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageValue">
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/constraintAddPhoto"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/distance_8"
-            android:fontFamily="@font/interregular"
-            android:text="Take photo"
+            android:background="@color/grey"
+            android:text="Ambil gambar KTP"
             android:textColor="@color/black"
-            android:textSize="@dimen/textSizeSmall"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintCircleRadius="@dimen/distance_24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imagePhoto" />
+            app:layout_constraintTop_toBottomOf="@+id/imageValue"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textDescritionPhoto"
@@ -146,6 +133,7 @@
         android:layout_marginTop="@dimen/distance_8"
         android:background="@color/primaryGreen"
         android:text="@string/kirim_data"
+        android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@+id/textDescritionAgree" />
 
         <com.google.android.material.progressindicator.CircularProgressIndicator

@@ -66,7 +66,17 @@ class VillageHeadDeciionFragment : Fragment() {
                     adapter = adapterVillageHeadman
 
                     villageHeadman.observe(viewLifecycleOwner) {
-                        adapterVillageHeadman.setList(it)
+
+                            if (it != null) {
+                                grup.visibility = View.INVISIBLE
+                                listVillageHeadman.visibility = View.VISIBLE
+                                adapterVillageHeadman.setList(it)
+                            } else {
+                                grup.visibility = View.VISIBLE
+                                listVillageHeadman.visibility = View.INVISIBLE
+                            }
+
+
                     }
 
                     textNameHeadman.text =

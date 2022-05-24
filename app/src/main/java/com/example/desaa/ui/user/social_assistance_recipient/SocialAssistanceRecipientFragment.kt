@@ -76,7 +76,7 @@ class SocialAssistanceRecipientFragment : Fragment() {
 
                         val help = arrayListOf<String>()
 
-                            addDataHelpPrograms(dataListProgram.data)
+                        addDataHelpPrograms(dataListProgram.data)
 
 
                         btnDetailSocialAssistance.setOnClickListener {
@@ -96,12 +96,15 @@ class SocialAssistanceRecipientFragment : Fragment() {
 
                         }
 
-                        listHelpProgram.observe(viewLifecycleOwner) {
-                            it.forEach { helpData ->
-                                helpData.namaProgram?.let { it1 -> help.add(it1) }
-                            }
-                        }
+
                         withContext(Dispatchers.Main) {
+
+                            listHelpProgram.observe(viewLifecycleOwner) {
+                                it.forEach { helpData ->
+                                    helpData.namaProgram?.let { it1 -> help.add(it1) }
+                                }
+                            }
+
 
                             val adapter = ArrayAdapter(
                                 requireContext(),
@@ -119,6 +122,7 @@ class SocialAssistanceRecipientFragment : Fragment() {
 
                             inputSocialAssistance.visibility = View.VISIBLE
                         }
+                    }
 
                         if (inputSocialAssistance.editText?.text?.isNotEmpty() == true) {
 
@@ -186,7 +190,7 @@ class SocialAssistanceRecipientFragment : Fragment() {
 
                             }
                         }
-                    }
+
                 }
 
             }
