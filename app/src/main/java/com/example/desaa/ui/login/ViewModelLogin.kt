@@ -1,7 +1,8 @@
 package com.example.desaa.ui.login
 
 import android.content.Context
-import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.desaa.model.response.ResponseStatus
 import com.example.desaa.utils.NetworkConfig
@@ -15,18 +16,22 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class ViewModelLogin(private var context: Context, private val loading: CircularProgressIndicator) : ViewModel() {
+class ViewModelLogin(private var context: Context, private val loading: CircularProgressIndicator) :
+    ViewModel() {
     private var _email: String = ""
     private var _password: String = ""
 
     private var sharePreferenceApp = SharePreferenceApp.getInstance(this.context)
+
+    private var _role: MutableLiveData<String> = MutableLiveData()
+    val role: LiveData<String> = _role
 
     fun getEmailPass(email: String, password: String) {
         _email = email
         _password = password
     }
 
-     fun getToken() {
+    fun getToken() {
         CoroutineScope(Dispatchers.IO).launch {
             val dataToken =
                 NetworkConfig.apiServiceAdminVillage.getToken(_email, _password)
@@ -41,7 +46,7 @@ class ViewModelLogin(private var context: Context, private val loading: Circular
                     }
                 }
             } else {
-                withContext(Dispatchers.Main){
+                withContext(Dispatchers.Main) {
                     val errorMessage = Gson().fromJson(
                         dataToken.errorBody()?.string(),
                         ResponseStatus::class.java
@@ -51,13 +56,12 @@ class ViewModelLogin(private var context: Context, private val loading: Circular
                         ResponseMessage.alert(it, StatusResponse.FAILED, context)
                         ResponseMessage.loading(false, loading)
                     }
-
                 }
             }
         }
     }
 
-    private  fun getRole(token: String) {
+    private fun getRole(token: String) {
         CoroutineScope(Dispatchers.IO).launch {
 
             val dataRole = NetworkConfig.apiServiceAdminVillage.getAparatureRole(
@@ -67,6 +71,7 @@ class ViewModelLogin(private var context: Context, private val loading: Circular
                 if (dataRole.isSuccessful) {
                     val data = dataRole.body()
                     data?.data?.role?.let {
+                        _role.postValue(it)
                         getProfile(it)
                         sharePreferenceApp.editData(SharePreferenceApp.KEY_ROLE, it)
                     }
@@ -77,8 +82,10 @@ class ViewModelLogin(private var context: Context, private val loading: Circular
                     dataRole.errorBody()?.string(),
                     ResponseStatus::class.java
                 )
-                errorMessage.message?.let { ResponseMessage.alert(it, StatusResponse.FAILED, context)
-                    ResponseMessage.loading(false, loading)}
+                errorMessage.message?.let {
+                    ResponseMessage.alert(it, StatusResponse.FAILED, context)
+                    ResponseMessage.loading(false, loading)
+                }
             }
 
         }
@@ -105,14 +112,23 @@ class ViewModelLogin(private var context: Context, private val loading: Circular
                                 SharePreferenceApp.KEY_NAME_APARATURE,
                                 namaAparatur
                             )
-                            sharePreferenceApp.editData(SharePreferenceApp.KEY_NAME_VILLAGE, namaDesa)
+                            sharePreferenceApp.editData(
+                                SharePreferenceApp.KEY_NAME_VILLAGE,
+                                namaDesa
+                            )
                         } else {
                             sharePreferenceApp.editData(
                                 SharePreferenceApp.KEY_NAME_APARATURE,
                                 namaAparatur
                             )
-                            sharePreferenceApp.editData(SharePreferenceApp.KEY_NAME_VILLAGE, namaDesa)
-                            sharePreferenceApp.editData(SharePreferenceApp.KEY_NAME_BACKWOOD, namaDusun)
+                            sharePreferenceApp.editData(
+                                SharePreferenceApp.KEY_NAME_VILLAGE,
+                                namaDesa
+                            )
+                            sharePreferenceApp.editData(
+                                SharePreferenceApp.KEY_NAME_BACKWOOD,
+                                namaDusun
+                            )
                         }
                     }
                 }
@@ -121,8 +137,10 @@ class ViewModelLogin(private var context: Context, private val loading: Circular
                     dataProfile.errorBody()?.string(),
                     ResponseStatus::class.java
                 )
-                errorMessage.message?.let { ResponseMessage.alert(it, StatusResponse.FAILED, context)
-                    ResponseMessage.loading(false, loading)}
+                errorMessage.message?.let {
+                    ResponseMessage.alert(it, StatusResponse.FAILED, context)
+                    ResponseMessage.loading(false, loading)
+                }
             }
         }
     }

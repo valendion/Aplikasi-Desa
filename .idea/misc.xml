@@ -8,6 +8,7 @@
         <entry key="..\:/file/DesaApp/app/src/main/res/drawable/ic_baseline_back.xml" value="0.1605" />
         <entry key="..\:/file/DesaApp/app/src/main/res/drawable/ic_brake_warning.xml" value="0.2555" />
         <entry key="..\:/file/DesaApp/app/src/main/res/drawable/ic_document.xml" value="0.2555" />
+        <entry key="..\:/file/DesaApp/app/src/main/res/drawable/ic_email_24.xml" value="0.18" />
         <entry key="..\:/file/DesaApp/app/src/main/res/drawable/ic_image_34.xml" value="0.1" />
         <entry key="..\:/file/DesaApp/app/src/main/res/drawable/ic_logout.xml" value="0.2555" />
         <entry key="..\:/file/DesaApp/app/src/main/res/drawable/ic_news_paper.xml" value="0.2555" />
@@ -18,10 +19,11 @@
         <entry key="..\:/file/DesaApp/app/src/main/res/drawable/layout_bg_radius_green.xml" value="0.1445" />
         <entry key="..\:/file/DesaApp/app/src/main/res/drawable/layout_border_black.xml" value="0.152" />
         <entry key="..\:/file/DesaApp/app/src/main/res/drawable/rounded_border.xml" value="0.1335" />
+        <entry key="..\:/file/DesaApp/app/src/main/res/layout-night/activity_login.xml" value="0.6" />
         <entry key="..\:/file/DesaApp/app/src/main/res/layout/activity_backwood.xml" value="0.264" />
         <entry key="..\:/file/DesaApp/app/src/main/res/layout/activity_home.xml" value="0.2" />
         <entry key="..\:/file/DesaApp/app/src/main/res/layout/activity_home_headman.xml" value="0.4" />
-        <entry key="..\:/file/DesaApp/app/src/main/res/layout/activity_login.xml" value="0.264" />
+        <entry key="..\:/file/DesaApp/app/src/main/res/layout/activity_login.xml" value="0.6" />
         <entry key="..\:/file/DesaApp/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/file/DesaApp/app/src/main/res/layout/activity_splash.xml" value="0.264" />
         <entry key="..\:/file/DesaApp/app/src/main/res/layout/activity_tab.xml" value="0.1" />

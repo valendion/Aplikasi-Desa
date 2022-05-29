@@ -1,22 +1,18 @@
 package com.example.desaa.ui.login
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import cn.pedant.SweetAlert.SweetAlertDialog
 import com.example.desaa.databinding.ActivityLoginBinding
 import com.example.desaa.ui.backwood.BackwoodActivity
 import com.example.desaa.ui.headman.HomeHeadmanActivity
-import com.example.desaa.utils.ResponseMessage
-import com.example.desaa.utils.SharePreferenceApp
-import com.example.desaa.utils.SharePreferenceApp.Companion.KEY_ROLE
+import com.example.desaa.utils.*
 import com.example.desaa.utils.SharePreferenceApp.Companion.getInstance
-import com.example.desaa.utils.StatusResponse
-import com.example.desaa.utils.Validation
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -37,6 +33,8 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
 
         binding.apply {
             loadingLoginActivity.visibility = View.GONE
@@ -67,8 +65,9 @@ class LoginActivity : AppCompatActivity() {
                     viewModelLogin.getEmailPass(email, password)
                     lifecycleScope.launch {
                         viewModelLogin.getToken()
-                        delay(1000)
-                        moveActivity(sharePreferenceApp.getData(KEY_ROLE, ""))
+                        viewModelLogin.role.observe(this@LoginActivity){
+                            moveActivity(it)
+                        }
                     }
                 }
             }

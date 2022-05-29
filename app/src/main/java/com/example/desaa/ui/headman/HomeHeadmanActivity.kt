@@ -5,6 +5,7 @@ import android.content.IntentFilter
 import android.net.ConnectivityManager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -15,6 +16,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog
 import com.example.desaa.R
 import com.example.desaa.databinding.ActivityHomeHeadmanBinding
 import com.example.desaa.ui.user.HomeUserActivity
+import com.example.desaa.utils.ChangeTheme
 import com.example.desaa.utils.NetworkConfig
 import com.example.desaa.utils.NetworkConnection
 import com.example.desaa.utils.SharePreferenceApp
@@ -33,6 +35,12 @@ class HomeHeadmanActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val changeTheme = ChangeTheme(this)
+
+        if (changeTheme.isDarkTheme){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
 
         binding = ActivityHomeHeadmanBinding.inflate(layoutInflater)
         setContentView(binding.root)

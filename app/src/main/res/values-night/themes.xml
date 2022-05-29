@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.DesaA" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.DesaA" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primaryGreen</item>
         <item name="colorPrimaryVariant">@color/darkGreen</item>
@@ -12,5 +12,79 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+    </style>
+
+    <style name="Theme.DesaA.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.DesaA.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.DesaA.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="TextTitle" >
+        <item name="android:fontFamily">@font/interbold</item>
+        <item name="android:textSize">@dimen/textSizeNormal</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextTitle2" >
+        <item name="android:fontFamily">@font/interbold</item>
+        <item name="android:textSize">@dimen/textSizeNormal</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="TextTitleBLarge" >
+        <item name="android:fontFamily">@font/interbold</item>
+        <item name="android:textSize">@dimen/textSizeHeaderLarge</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="TextSmall" >
+        <item name="android:fontFamily">@font/interregular</item>
+        <item name="android:textSize">@dimen/textSizeSmall</item>
+    </style>
+
+    <style name="TextRegular" >
+        <item name="android:fontFamily">@font/interregular</item>
+        <item name="android:textSize">@dimen/textSizeNormal</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="TextRegular2" >
+        <item name="android:fontFamily">@font/interregular</item>
+        <item name="android:textSize">@dimen/textSizeNormal</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextTitleToolbarPrimary" >
+        <item name="android:fontFamily">@font/intersemibold</item>
+        <item name="android:textSize">@dimen/textSizeHeader</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="TextTitleToolbarSecondary" >
+        <item name="android:fontFamily">@font/intersemibold</item>
+        <item name="android:textSize">@dimen/textSizeSmall</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="ButtonPrimary" >
+        <item name="android:fontFamily">@font/interregular</item>
+        <item name="android:textSize">@dimen/textSizeNormal</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@color/primaryGreen</item>
+    </style>
+
+    <style name="ButtonSecondary" >
+        <item name="android:fontFamily">@font/interregular</item>
+        <item name="android:textSize">@dimen/textSizeNormal</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@color/darkGreen</item>
+    </style>
+
+    <style name="ThemeOverlay.titleColor" parent="">
+        <item name="android:textColorSecondary">@color/black</item>
     </style>
 </resources>

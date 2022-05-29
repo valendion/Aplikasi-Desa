@@ -2,10 +2,13 @@ package com.example.desaa
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.desaa.ui.backwood.BackwoodActivity
 import com.example.desaa.ui.headman.HomeHeadmanActivity
 import com.example.desaa.ui.user.HomeUserActivity
+import com.example.desaa.utils.ChangeTheme
 import com.example.desaa.utils.SharePreferenceApp
 import com.example.desaa.utils.SharePreferenceApp.Companion.KEY_ROLE
 import com.example.desaa.utils.SharePreferenceApp.Companion.getInstance
@@ -19,6 +22,12 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+
+        val changeTheme = ChangeTheme(this)
+
+        if (changeTheme.isDarkTheme){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
 
         sharePreferenceApp = getInstance(this)
 

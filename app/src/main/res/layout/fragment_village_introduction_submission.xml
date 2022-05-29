@@ -92,7 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/distance_8"
             android:background="@color/grey"
-            android:text="Ambil gambar KTP"
+            android:text="@string/ambil_gambar_ktp"
             android:textColor="@color/black"
             app:layout_constraintCircleRadius="@dimen/distance_24"
             app:layout_constraintEnd_toEndOf="parent"

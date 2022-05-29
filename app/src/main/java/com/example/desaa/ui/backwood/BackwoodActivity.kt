@@ -5,6 +5,7 @@ import android.content.IntentFilter
 import android.net.ConnectivityManager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -13,6 +14,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog
 import com.example.desaa.R
 import com.example.desaa.databinding.ActivityBackwoodBinding
 import com.example.desaa.ui.user.HomeUserActivity
+import com.example.desaa.utils.ChangeTheme
 import com.example.desaa.utils.NetworkConfig
 import com.example.desaa.utils.NetworkConnection
 import com.example.desaa.utils.SharePreferenceApp
@@ -31,6 +33,12 @@ class BackwoodActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityBackwoodBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val changeTheme = ChangeTheme(this)
+
+        if (changeTheme.isDarkTheme){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
 
         sharePreferenceApp = getInstance(this)
 
