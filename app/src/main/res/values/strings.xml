@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DeSUN\nTenrigangkae</string>
+    <string name="app_name">Tenrigangkae.id</string>
     <string name="www_sunistheworld_com">www.sunistheworld.com</string>
     <string name="pt_synergy_utility_network">&#169; PT. Synergy Utility Network</string>
     <string name="desa_tenrigangkae">Tenrigangkae</string>
@@ -105,5 +105,7 @@
     <string name="data_kosong">Data belum ada</string>
     <string name="dion">Dion</string>
     <string name="ambil_gambar_ktp">Ambil gambar KTP</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
 
 </resources>

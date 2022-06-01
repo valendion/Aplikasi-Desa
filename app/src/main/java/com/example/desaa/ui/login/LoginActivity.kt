@@ -27,14 +27,10 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var viewModelFactory: FactoryLogin
 
-    private val TAG = "LoginActivity"
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
 
         binding.apply {
             loadingLoginActivity.visibility = View.GONE
@@ -81,14 +77,6 @@ class LoginActivity : AppCompatActivity() {
 
                 when {
                     role == "kepala_desa" -> {
-                        ResponseMessage.alert(
-                            "Berhasil Login",
-                            StatusResponse.SUCCESS,
-                            this@LoginActivity
-                        )
-                        viewModelLogin.getProfile(role)
-
-                        delay(1000)
 
                         startActivity(
                             Intent(
@@ -102,15 +90,7 @@ class LoginActivity : AppCompatActivity() {
 
                     role.contains("kepala_dusun") -> {
 
-                        ResponseMessage.alert(
-                            "Berhasil Login",
-                            StatusResponse.SUCCESS,
-                            this@LoginActivity
-                        )
-
                         viewModelLogin.getProfile(role)
-
-                        delay(1000)
 
                         startActivity(
                             Intent(

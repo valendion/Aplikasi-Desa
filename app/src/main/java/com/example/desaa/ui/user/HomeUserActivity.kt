@@ -2,10 +2,8 @@ package com.example.desaa.ui.user
 
 import android.content.IntentFilter
 import android.net.ConnectivityManager
-import android.net.ConnectivityManager.CONNECTIVITY_ACTION
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.net.ConnectivityManagerCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration

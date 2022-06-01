@@ -28,7 +28,6 @@ class BackwoodActivity : AppCompatActivity() {
     lateinit var sharePreferenceApp: SharePreferenceApp
     private lateinit var networkChange: NetworkConnection
 
-    //    private val viewModelDashboard: DashBoardBackwoodViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBackwoodBinding.inflate(layoutInflater)
@@ -75,9 +74,6 @@ class BackwoodActivity : AppCompatActivity() {
                         .setConfirmClickListener {
                             it.dismissWithAnimation()
                             sharePreferenceApp.clearDate()
-
-                            launch { delay(2000) }
-
                             startActivity(
                                 Intent(
                                     this@BackwoodActivity,

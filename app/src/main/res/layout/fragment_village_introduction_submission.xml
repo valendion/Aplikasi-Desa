@@ -35,6 +35,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/textSizeNormal"
             android:inputType="text" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -53,6 +54,7 @@
             android:id="@+id/autoCompleTypeLetter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/textSizeNormal"
             android:inputType="none" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -71,6 +73,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="text|textMultiLine"
+            android:textSize="@dimen/textSizeNormal"
             android:lines="3" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -81,7 +84,18 @@
             android:padding="@dimen/distance_8"
             android:layout_marginTop="@dimen/distance_16"
             android:src="@drawable/ic_image_34"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputDescription" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageValue2"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:padding="@dimen/distance_8"
+            android:layout_marginTop="@dimen/distance_16"
             android:scaleType="fitXY"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/inputDescription" />

@@ -15,7 +15,7 @@ import java.io.*
 
 
 object Convert {
-    @SuppressLint("Range")
+    @SuppressLint("Range", "Recycle")
     @Throws(Exception::class)
     fun getFileFromUri(context: Context, uri: Uri): File? {
         var path: String? = null
@@ -78,7 +78,7 @@ object Convert {
             }
             File(path)
         } else {
-            val cursor: Cursor? = context.getContentResolver().query(uri, null, null, null, null)
+            val cursor: Cursor? = context.contentResolver.query(uri, null, null, null, null)
             File(cursor?.getString(cursor.getColumnIndex("_data")) ?: "")
         }
     }

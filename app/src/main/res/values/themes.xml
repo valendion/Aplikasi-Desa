@@ -31,7 +31,7 @@
 
     <style name="TextTitle2" >
         <item name="android:fontFamily">@font/interbold</item>
-        <item name="android:textSize">@dimen/textSizeNormal</item>
+        <item name="android:textSize">@dimen/textSizeSmall</item>
         <item name="android:textColor">@color/white</item>
     </style>
 
@@ -48,7 +48,7 @@
 
     <style name="TextRegular" >
         <item name="android:fontFamily">@font/interregular</item>
-        <item name="android:textSize">@dimen/textSizeNormal</item>
+        <item name="android:textSize">@dimen/textSizeSmall</item>
         <item name="android:textColor">@color/white</item>
     </style>
 

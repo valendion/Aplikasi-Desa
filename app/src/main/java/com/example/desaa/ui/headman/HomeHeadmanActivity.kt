@@ -84,13 +84,7 @@ class HomeHeadmanActivity : AppCompatActivity() {
                             .setConfirmText("Ya")
                             .setConfirmClickListener { sDialog ->
                                 sDialog.dismissWithAnimation()
-                                SweetAlertDialog(
-                                    this@HomeHeadmanActivity,
-                                    SweetAlertDialog.SUCCESS_TYPE
-                                )
-                                    .setTitleText(dataLogout.message)
-                                    .show()
-                                launch { delay(2000) }
+
                                 sharePreferenceApp.clearDate()
                                 startActivity(
                                     Intent(

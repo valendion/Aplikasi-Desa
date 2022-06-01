@@ -24,31 +24,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/intersemibold"
-        android:text="@string/aplikasi"
+        android:text="@string/app_name"
         android:textColor="@color/black"
         android:textSize="@dimen/textSizeHeaderBig"
+        android:layout_marginBottom="@dimen/distance_40"
         android:textStyle="normal"
         android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/textTitleDesaTenrigangkae"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageLogo" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textTitleDesaTenrigangkae"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/intermedium"
-        android:text="@string/desa_tenrigangkae"
-        android:textColor="@color/black"
-        android:textSize="@dimen/textSizeHeaderBig"
-        android:textStyle="normal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textTitleAplikasi" />
-
-   <include
-       layout="@layout/layout_develop_by"/>
+    <include
+        layout="@layout/layout_develop_by"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

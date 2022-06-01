@@ -49,6 +49,7 @@ class HomeFragment : Fragment() {
         _binding = null
     }
 
+   @SuppressLint("SetJavaScriptEnabled")
    private suspend fun loadWebView(){
         binding.apply {
             webViewHome.settings.javaScriptEnabled = true

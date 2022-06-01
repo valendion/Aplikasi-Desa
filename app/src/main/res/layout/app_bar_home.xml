@@ -42,19 +42,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/distance_12"
-                    android:text="@string/aplikasi"
+                    android:text="@string/app_name"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageLogo"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/imageLogo"
                     app:layout_constraintTop_toTopOf="@+id/imageLogo" />
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/textTitleDesaTenrigangkaeTopBar"
-                    style="@style/TextTitleToolbarSecondary"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/desa_tenrigangkae"
-                    app:layout_constraintStart_toStartOf="@+id/textTitleAplikasiTopBar"
-                    app:layout_constraintTop_toBottomOf="@+id/textTitleAplikasiTopBar" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

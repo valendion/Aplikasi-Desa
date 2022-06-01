@@ -52,8 +52,6 @@ class VillageIntroductionSubmissionFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-//        factoryVillageIntroduction = VillageIntroductionSubmissionFactory()
-//        viewModelVillageIntroduction = ViewModelProvider(this, factoryVillageIntroduction)[VillageIntroductionSubmissionViewModel::class.java]
 
         binding.apply {
 
@@ -142,13 +140,6 @@ class VillageIntroductionSubmissionFragment : Fragment() {
                                 withContext(Dispatchers.Main) {
 
                                     if (response!!.isSuccessful) {
-                                        SweetAlertDialog(
-                                            requireActivity(),
-                                            SweetAlertDialog.SUCCESS_TYPE
-                                        )
-                                            .setTitleText("Berhasil")
-                                            .setContentText(response.body()?.message ?: "")
-                                            .show()
 
                                         val action =
                                             VillageIntroductionSubmissionFragmentDirections.actionNavVillageToSuccessSendFragment()
@@ -198,7 +189,13 @@ class VillageIntroductionSubmissionFragment : Fragment() {
             uri = data?.data!!
 
             // Use Uri object instead of File to avoid storage permissions
-            binding.imageValue.setImageURI(uri)
+            binding.apply {
+                imageValue2.visibility = View.VISIBLE
+                imageValue2.setImageURI(uri)
+
+                imageValue.visibility = View.INVISIBLE
+            }
+
 
 
         } else if (resultCode == ImagePicker.RESULT_ERROR) {
