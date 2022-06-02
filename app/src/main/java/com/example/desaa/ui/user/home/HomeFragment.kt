@@ -7,23 +7,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.desaa.databinding.FragmentHomeBinding
+import com.example.desaa.utils.CustomWebView
 import kotlinx.coroutines.*
 import kotlin.system.measureNanoTime
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
-
     private val binding get() = _binding!!
+
+    private lateinit var customWebView:  CustomWebView
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-
         return binding.root
     }
 
@@ -33,13 +33,19 @@ class HomeFragment : Fragment() {
 
         binding.apply {
 
-            loadingHomeUserActivity.visibility = View.VISIBLE
-            webViewHome.visibility = View.GONE
+            customWebView = CustomWebView(loadingHomeUserActivity)
+            webViewHome.webViewClient = customWebView
 
-            CoroutineScope(Dispatchers.Main).launch{
-                loadWebView()
-                loadingHomeUserActivity.visibility = View.GONE
-                webViewHome.visibility = View.VISIBLE
+            webViewHome.settings.javaScriptEnabled = true
+            webViewHome.settings.domStorageEnabled = true
+            webViewHome.loadUrl("https://tenrigangkae.id/");
+
+            swipeHomeUser.setOnRefreshListener {
+                CoroutineScope(Dispatchers.Main).launch {
+                    delay(2000)
+                    swipeHomeUser.isRefreshing = false
+                    webViewHome.loadUrl("https://tenrigangkae.id/");
+                }
             }
         }
     }
@@ -47,19 +53,5 @@ class HomeFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-   @SuppressLint("SetJavaScriptEnabled")
-   private suspend fun loadWebView(){
-        binding.apply {
-            webViewHome.settings.javaScriptEnabled = true
-            val time = measureNanoTime {
-                CoroutineScope(Dispatchers.Main).launch {
-                    val load = async { webViewHome.loadUrl("https://tenrigangkae.id/") }
-                    load.await()
-                }
-            }
-            delay(3000)
-        }
     }
 }
