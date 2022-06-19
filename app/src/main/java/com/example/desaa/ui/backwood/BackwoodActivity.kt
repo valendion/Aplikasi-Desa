@@ -4,6 +4,7 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.net.ConnectivityManager
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.findNavController
@@ -28,68 +29,75 @@ class BackwoodActivity : AppCompatActivity() {
     lateinit var sharePreferenceApp: SharePreferenceApp
     private lateinit var networkChange: NetworkConnection
 
+    companion object {
+        val TAG = BackwoodActivity::class.java.simpleName
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBackwoodBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val changeTheme = ChangeTheme(this)
+        try {
+            val changeTheme = ChangeTheme(this)
 
-        if (changeTheme.isDarkTheme){
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        }
+            if (changeTheme.isDarkTheme){
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
 
-        sharePreferenceApp = getInstance(this)
+            sharePreferenceApp = getInstance(this)
 
-        setSupportActionBar(binding.toolbar)
+            setSupportActionBar(binding.toolbar)
 
-        networkChange = NetworkConnection(this)
+            networkChange = NetworkConnection(this)
 
-        appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.nav_approve_fragment,
-                R.id.nav_detail_backwood_Fragment,
-                R.id.nav_dashboard_backwood_fragment,
-            )
-        )
-
-        val navController = findNavController(R.id.nav_host_fragment_content_backwood)
-
-        setupActionBarWithNavController(navController)
-
-        binding.imageLogout.setOnClickListener {
-            CoroutineScope(Dispatchers.IO).launch {
-                val dataLogout = NetworkConfig.apiServiceAdminVillage.logout(
-                    "Bearer ${
-                        sharePreferenceApp.getData(
-                            SharePreferenceApp.KEY_TOKEN, ""
-                        )
-                    }"
+            appBarConfiguration = AppBarConfiguration(
+                setOf(
+                    R.id.nav_approve_fragment,
+                    R.id.nav_detail_backwood_Fragment,
+                    R.id.nav_dashboard_backwood_fragment,
                 )
+            )
 
-                withContext(Dispatchers.Main) {
-                    SweetAlertDialog(this@BackwoodActivity, SweetAlertDialog.WARNING_TYPE)
-                        .setTitleText("Apakah anda ingin keluar ?")
-                        .setConfirmText("Ya")
-                        .setConfirmClickListener {
-                            it.dismissWithAnimation()
-                            sharePreferenceApp.clearDate()
-                            startActivity(
-                                Intent(
-                                    this@BackwoodActivity,
-                                    HomeUserActivity::class.java
-                                )
+            val navController = findNavController(R.id.nav_host_fragment_content_backwood)
+
+            setupActionBarWithNavController(navController)
+
+            binding.imageLogout.setOnClickListener {
+                CoroutineScope(Dispatchers.IO).launch {
+                    val dataLogout = NetworkConfig.apiServiceAdminVillage.logout(
+                        "Bearer ${
+                            sharePreferenceApp.getData(
+                                SharePreferenceApp.KEY_TOKEN, ""
                             )
-                            finishAffinity()
-                        }
-                        .setCancelButton(
-                            "Tidak"
-                        ) { sDialog -> sDialog.dismissWithAnimation() }
-                        .show()
+                        }"
+                    )
+
+                    withContext(Dispatchers.Main) {
+                        SweetAlertDialog(this@BackwoodActivity, SweetAlertDialog.WARNING_TYPE)
+                            .setTitleText("Apakah anda ingin keluar ?")
+                            .setConfirmText("Ya")
+                            .setConfirmClickListener {
+                                it.dismissWithAnimation()
+                                sharePreferenceApp.clearDate()
+                                startActivity(
+                                    Intent(
+                                        this@BackwoodActivity,
+                                        HomeUserActivity::class.java
+                                    )
+                                )
+                                finishAffinity()
+                            }
+                            .setCancelButton(
+                                "Tidak"
+                            ) { sDialog -> sDialog.dismissWithAnimation() }
+                            .show()
+                    }
                 }
             }
+        }catch (e: Exception){
+            Log.d(TAG, e.message.toString())
         }
-
     }
 
     override fun onSupportNavigateUp(): Boolean {

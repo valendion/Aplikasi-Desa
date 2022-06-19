@@ -2,6 +2,7 @@ package com.example.desaa.ui.user.statistics
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,6 +25,10 @@ class StatisticFragment : Fragment() {
 
     private lateinit var customWebView: CustomWebView
 
+    companion object {
+        val TAG = StatisticFragment::class.java.simpleName
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,18 +42,23 @@ class StatisticFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.apply {
+        try {
 
-            loadDataStatistic()
+            binding.apply {
 
-            swipeStatisticUser.setOnRefreshListener {
-                CoroutineScope(Dispatchers.Main).launch {
-                    delay(2000)
-                    swipeStatisticUser.isRefreshing = false
-                    loadDataStatistic()
+                loadDataStatistic()
+
+                swipeStatisticUser.setOnRefreshListener {
+                    CoroutineScope(Dispatchers.Main).launch {
+                        delay(2000)
+                        swipeStatisticUser.isRefreshing = false
+                        loadDataStatistic()
+                    }
                 }
-            }
 
+            }
+        } catch (e: Exception) {
+            Log.d(TAG, e.message.toString())
         }
     }
 

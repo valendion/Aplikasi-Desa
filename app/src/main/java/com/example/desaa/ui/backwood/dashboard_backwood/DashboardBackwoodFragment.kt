@@ -41,6 +41,10 @@ class DashboardBackwoodFragment : Fragment() {
         AdapterIntroductionNotAccept()
     }
 
+    companion object {
+        val TAG = DashboardBackwoodFragment::class.java.simpleName
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,103 +56,103 @@ class DashboardBackwoodFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        sharePreferenceApp = getInstance(requireActivity())
+        try {
+            sharePreferenceApp = getInstance(requireActivity())
 
-        binding.apply {
-            loadingDashboardBackwoodFragment.visibility = View.VISIBLE
-            listNotAcceptBackwoods.visibility = View.INVISIBLE
-            listAcceptBackwoods.visibility = View.INVISIBLE
+            binding.apply {
+                loadingDashboardBackwoodFragment.visibility = View.VISIBLE
+                listNotAcceptBackwoods.visibility = View.INVISIBLE
+                listAcceptBackwoods.visibility = View.INVISIBLE
 
-            textVillage.text = sharePreferenceApp.getData(KEY_NAME_BACKWOOD, "")
-            textNameBackwood.text = sharePreferenceApp.getData(KEY_NAME_APARATURE, "")
-
-            viewModelDashboard.apply {
-
-                CoroutineScope(Dispatchers.Main).launch {
+                textVillage.text = sharePreferenceApp.getData(KEY_NAME_BACKWOOD, "")
+                textNameBackwood.text = sharePreferenceApp.getData(KEY_NAME_APARATURE, "")
 
 
-                    val dataIntruductionSubmissionAcc =
-                        NetworkConfig.apiServiceAdminVillage.getIntroductionSubmissionAcc(
-                            "Bearer ${
-                                sharePreferenceApp.getData(
-                                    SharePreferenceApp.KEY_TOKEN,
-                                    ""
-                                )
-                            }",
-                            Validation.validationBackwood(
-                                sharePreferenceApp.getData(
-                                    KEY_NAME_BACKWOOD,
-                                    ""
-                                )
-                            )
-                        )
+                viewModelDashboard.apply {
 
-                    val dataIntruductionSubmissionNotAcc =
-                        NetworkConfig.apiServiceAdminVillage.getIntroductionSubmissionNotAcc(
-                            "Bearer ${
-                                sharePreferenceApp.getData(
-                                    SharePreferenceApp.KEY_TOKEN,
-                                    ""
-                                )
-                            }",
-                            Validation.validationBackwood(
-                                sharePreferenceApp.getData(
-                                    KEY_NAME_BACKWOOD,
-                                    ""
+                    CoroutineScope(Dispatchers.Main).launch {
+
+
+                        val dataIntruductionSubmissionAcc =
+                            NetworkConfig.apiServiceAdminVillage.getIntroductionSubmissionAcc(
+                                "Bearer ${
+                                    sharePreferenceApp.getData(
+                                        SharePreferenceApp.KEY_TOKEN,
+                                        ""
+                                    )
+                                }",
+                                Validation.validationBackwood(
+                                    sharePreferenceApp.getData(
+                                        KEY_NAME_BACKWOOD,
+                                        ""
+                                    )
                                 )
                             )
-                        )
-                    withContext(Dispatchers.IO) {
-                        dataIntruductionSubmissionAcc.apply {
-                            addDataAccept(data)
-                        }
 
-                        dataIntruductionSubmissionNotAcc.apply {
-                            addDataNotAccept(data)
-                        }
-                    }
-
-                    listAcceptBackwoods.apply {
-                        layoutManager = LinearLayoutManager(activity)
-                        adapter = adapterAccept
-                        acceptDatas.observe(viewLifecycleOwner) {
-                            if (it.isEmpty()) {
-                                listAcceptBackwoods.visibility = View.INVISIBLE
-                                grupNoData1.visibility = View.VISIBLE
-                            } else {
-                                adapterAccept.setList(it)
-                                listAcceptBackwoods.visibility = View.VISIBLE
-                                grupNoData1.visibility = View.INVISIBLE
+                        val dataIntruductionSubmissionNotAcc =
+                            NetworkConfig.apiServiceAdminVillage.getIntroductionSubmissionNotAcc(
+                                "Bearer ${
+                                    sharePreferenceApp.getData(
+                                        SharePreferenceApp.KEY_TOKEN,
+                                        ""
+                                    )
+                                }",
+                                Validation.validationBackwood(
+                                    sharePreferenceApp.getData(
+                                        KEY_NAME_BACKWOOD,
+                                        ""
+                                    )
+                                )
+                            )
+                        withContext(Dispatchers.IO) {
+                            dataIntruductionSubmissionAcc.apply {
+                                addDataAccept(data)
                             }
 
-                        }
-                    }
-
-                    listNotAcceptBackwoods.apply {
-                        layoutManager = LinearLayoutManager(activity)
-                        adapter = adapterNotAccpet
-
-                        notAcceptDatas.observe(viewLifecycleOwner) {
-                            if (it.isEmpty()) {
-                                listNotAcceptBackwoods.visibility = View.INVISIBLE
-                                grupNoData2.visibility = View.VISIBLE
-                            } else {
-                                Log.e("not_accept", it.toString())
-                                adapterNotAccpet.setList(it)
-
-                                listNotAcceptBackwoods.visibility = View.VISIBLE
-                                grupNoData2.visibility = View.INVISIBLE
+                            dataIntruductionSubmissionNotAcc.apply {
+                                addDataNotAccept(data)
                             }
-
-
                         }
 
+                        listAcceptBackwoods.apply {
+                            layoutManager = LinearLayoutManager(activity)
+                            adapter = adapterAccept
+                            acceptDatas.observe(viewLifecycleOwner) {
+                                if (it.isEmpty()) {
+                                    listAcceptBackwoods.visibility = View.INVISIBLE
+                                    grupNoData1.visibility = View.VISIBLE
+                                } else {
+                                    adapterAccept.setList(it)
+                                    listAcceptBackwoods.visibility = View.VISIBLE
+                                    grupNoData1.visibility = View.INVISIBLE
+                                }
 
+                            }
+                        }
+
+                        listNotAcceptBackwoods.apply {
+                            layoutManager = LinearLayoutManager(activity)
+                            adapter = adapterNotAccpet
+
+                            notAcceptDatas.observe(viewLifecycleOwner) {
+                                if (it.isEmpty()) {
+                                    listNotAcceptBackwoods.visibility = View.INVISIBLE
+                                    grupNoData2.visibility = View.VISIBLE
+                                } else {
+                                    Log.e("not_accept", it.toString())
+                                    adapterNotAccpet.setList(it)
+
+                                    listNotAcceptBackwoods.visibility = View.VISIBLE
+                                    grupNoData2.visibility = View.INVISIBLE
+                                }
+                            }
+                        }
+                        loadingDashboardBackwoodFragment.visibility = View.INVISIBLE
                     }
-                    loadingDashboardBackwoodFragment.visibility = View.INVISIBLE
                 }
-
             }
+        } catch (e: Exception) {
+            Log.d(TAG, e.message.toString())
         }
         super.onViewCreated(view, savedInstanceState)
     }

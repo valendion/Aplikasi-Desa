@@ -25,6 +25,10 @@ class ItemFragment(private val village: Int) : Fragment() {
 
     private val viewModelLetterSubmissionStatus: LetterSubmissionStatusViewModel by activityViewModels()
 
+    companion object {
+        val TAG = ItemFragment::class.java.simpleName
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,96 +40,99 @@ class ItemFragment(private val village: Int) : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        try {
+            binding.apply {
+                grup.visibility = View.VISIBLE
+                listCertificate.visibility = View.INVISIBLE
 
-        binding.apply {
-            grup.visibility = View.VISIBLE
-            listCertificate.visibility = View.INVISIBLE
 
+                listCertificate.apply {
+                    layoutManager = LinearLayoutManager(activity)
+                    adapter = adapterVillage
 
-            listCertificate.apply {
-                layoutManager = LinearLayoutManager(activity)
-                adapter = adapterVillage
+                    viewModelLetterSubmissionStatus.apply {
 
-                viewModelLetterSubmissionStatus.apply {
+                        CoroutineScope(Dispatchers.Main).launch {
+                            when (village) {
+                                1 -> {
+                                    listAssistanceBombongi.observe(viewLifecycleOwner) {
+                                        if (it.isNotEmpty()) {
+                                            grup.visibility = View.INVISIBLE
+                                            listCertificate.visibility = View.VISIBLE
+                                            adapterVillage.setList(it)
+                                            Log.e("1", it.toString())
+                                        } else {
+                                            grup.visibility = View.VISIBLE
+                                            listCertificate.visibility = View.INVISIBLE
+                                        }
+                                    }
 
-                    CoroutineScope(Dispatchers.Main).launch {
-                        when (village) {
-                            1 -> {
-                                listAssistanceBombongi.observe(viewLifecycleOwner) {
-                                    if (it.isNotEmpty()) {
-                                        grup.visibility = View.INVISIBLE
-                                        listCertificate.visibility = View.VISIBLE
-                                        adapterVillage.setList(it)
-                                        Log.e("1", it.toString())
-                                    } else {
-                                        grup.visibility = View.VISIBLE
-                                        listCertificate.visibility = View.INVISIBLE
+                                }
+
+                                2 -> {
+                                    listAssistanceTinggitto.observe(viewLifecycleOwner) {
+                                        if (it.isNotEmpty()) {
+                                            grup.visibility = View.INVISIBLE
+                                            listCertificate.visibility = View.VISIBLE
+                                            adapterVillage.setList(it)
+                                            Log.e("2", it.toString())
+                                        } else {
+                                            grup.visibility = View.VISIBLE
+                                            listCertificate.visibility = View.INVISIBLE
+                                        }
                                     }
                                 }
 
-                            }
+                                3 -> {
+                                    listAssistanceMakkaraeng.observe(viewLifecycleOwner) {
 
-                            2 -> {
-                                listAssistanceTinggitto.observe(viewLifecycleOwner) {
-                                    if (it.isNotEmpty()) {
-                                        grup.visibility = View.INVISIBLE
-                                        listCertificate.visibility = View.VISIBLE
-                                        adapterVillage.setList(it)
-                                        Log.e("2", it.toString())
-                                    } else {
-                                        grup.visibility = View.VISIBLE
-                                        listCertificate.visibility = View.INVISIBLE
+                                        if (it.isNotEmpty()) {
+                                            grup.visibility = View.INVISIBLE
+                                            listCertificate.visibility = View.VISIBLE
+                                            adapterVillage.setList(it)
+                                            Log.e("3", it.toString())
+                                        } else {
+                                            grup.visibility = View.VISIBLE
+                                            listCertificate.visibility = View.INVISIBLE
+                                        }
+                                    }
+                                }
+
+                                4 -> {
+                                    listAssistancePadaelo.observe(viewLifecycleOwner) {
+                                        if (it.isNotEmpty()) {
+                                            grup.visibility = View.INVISIBLE
+                                            listCertificate.visibility = View.VISIBLE
+                                            adapterVillage.setList(it)
+                                            Log.e("4", it.toString())
+                                        } else {
+                                            grup.visibility = View.VISIBLE
+                                            listCertificate.visibility = View.INVISIBLE
+                                        }
+                                    }
+                                }
+
+                                5 -> {
+                                    listAssistanceBugis.observe(viewLifecycleOwner) {
+                                        if (it.isNotEmpty()) {
+                                            grup.visibility = View.INVISIBLE
+                                            listCertificate.visibility = View.VISIBLE
+                                            adapterVillage.setList(it)
+                                            Log.e("5", it.toString())
+                                        } else {
+                                            grup.visibility = View.VISIBLE
+                                            listCertificate.visibility = View.INVISIBLE
+                                        }
                                     }
                                 }
                             }
 
-                            3 -> {
-                                listAssistanceMakkaraeng.observe(viewLifecycleOwner) {
-
-                                    if (it.isNotEmpty()) {
-                                        grup.visibility = View.INVISIBLE
-                                        listCertificate.visibility = View.VISIBLE
-                                        adapterVillage.setList(it)
-                                        Log.e("3", it.toString())
-                                    } else {
-                                        grup.visibility = View.VISIBLE
-                                        listCertificate.visibility = View.INVISIBLE
-                                    }
-                                }
-                            }
-
-                            4 -> {
-                                listAssistancePadaelo.observe(viewLifecycleOwner) {
-                                    if (it.isNotEmpty()) {
-                                        grup.visibility = View.INVISIBLE
-                                        listCertificate.visibility = View.VISIBLE
-                                        adapterVillage.setList(it)
-                                        Log.e("4", it.toString())
-                                    } else {
-                                        grup.visibility = View.VISIBLE
-                                        listCertificate.visibility = View.INVISIBLE
-                                    }
-                                }
-                            }
-
-                            5 -> {
-                                listAssistanceBugis.observe(viewLifecycleOwner) {
-                                    if (it.isNotEmpty()) {
-                                        grup.visibility = View.INVISIBLE
-                                        listCertificate.visibility = View.VISIBLE
-                                        adapterVillage.setList(it)
-                                        Log.e("5", it.toString())
-                                    } else {
-                                        grup.visibility = View.VISIBLE
-                                        listCertificate.visibility = View.INVISIBLE
-                                    }
-                                }
-                            }
                         }
-
                     }
                 }
             }
+        } catch (e: Exception) {
+            Log.d(TAG, e.message.toString())
         }
 
     }

@@ -1,6 +1,7 @@
 package com.example.desaa.ui.user.letter_submission_status
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,6 +22,10 @@ class LetterSubmissiionFragment : Fragment() {
 
     private val viewModelLetterSubmissionStatus: LetterSubmissionStatusViewModel by activityViewModels()
 
+    companion object {
+        val TAG = LetterSubmissiionFragment::class.java.simpleName
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,31 +36,34 @@ class LetterSubmissiionFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        try {
+            binding.apply {
 
-        binding.apply {
+                viewModelLetterSubmissionStatus.apply {
+                    isLoading.observe(viewLifecycleOwner) { setLoading(it) }
 
-            viewModelLetterSubmissionStatus.apply {
-                isLoading.observe(viewLifecycleOwner){ setLoading(it) }
+                    getDataSubmissionStatus()
 
-                getDataSubmissionStatus()
+                    val adapter = ViewPagerAdapter(parentFragmentManager, lifecycle)
+                    viewPager2.adapter = adapter
 
-                val adapter = ViewPagerAdapter(parentFragmentManager, lifecycle)
-                viewPager2.adapter = adapter
-
-                TabLayoutMediator(tabLayout, viewPager2) { tab, position ->
-                    tab.text = Constant.NAME_TABS[position]
-                }.attach()
-            }
-
-            swipeSubmissionLetterUser.setOnRefreshListener {
-                CoroutineScope(Dispatchers.Main).launch {
-                    delay(2000)
-                    swipeSubmissionLetterUser.isRefreshing = false
-
-                    viewModelLetterSubmissionStatus.getDataSubmissionStatus()
+                    TabLayoutMediator(tabLayout, viewPager2) { tab, position ->
+                        tab.text = Constant.NAME_TABS[position]
+                    }.attach()
                 }
-            }
 
+                swipeSubmissionLetterUser.setOnRefreshListener {
+                    CoroutineScope(Dispatchers.Main).launch {
+                        delay(2000)
+                        swipeSubmissionLetterUser.isRefreshing = false
+
+                        viewModelLetterSubmissionStatus.getDataSubmissionStatus()
+                    }
+                }
+
+            }
+        }catch (e: Exception){
+            Log.d(TAG, e.message.toString())
         }
 
     }

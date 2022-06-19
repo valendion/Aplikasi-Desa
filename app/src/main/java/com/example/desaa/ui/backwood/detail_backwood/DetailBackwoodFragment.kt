@@ -14,6 +14,7 @@ import coil.load
 import com.example.desaa.R
 import com.example.desaa.databinding.FragmentDetailBackwoodBinding
 import com.example.desaa.model.response.ModelDataIntroductionSubmission
+import com.example.desaa.ui.backwood.dashboard_backwood.DashboardBackwoodFragment
 import com.example.desaa.utils.NetworkConfig
 import com.example.desaa.utils.SharePreferenceApp
 import com.example.desaa.utils.SharePreferenceApp.Companion.KEY_NAME_BACKWOOD
@@ -36,6 +37,10 @@ class DetailBackwoodFragment : Fragment() {
 
     private lateinit var dataDetail: ModelDataIntroductionSubmission
 
+    companion object {
+        val TAG = DetailBackwoodFragment::class.java.simpleName
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -54,51 +59,57 @@ class DetailBackwoodFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        sharePreferenceApp = getInstance(requireActivity())
-        binding.apply {
-            textValueDetailNik.text = dataDetail.nik
-            textValueDetailApplicantName.text = dataDetail.namaPenduduk
-            textValueDetailManagedMail.text = dataDetail.jenisSuratAkanDibuat
-            textValueDetailDescription.text = dataDetail.keterangan
-            imageKTP.load(dataDetail.fotoKtp) {
-                crossfade(true)
-                placeholder(R.drawable.ic_image_34)
-            }
 
-            imageKTP.setOnClickListener {
-                addDialog()
-            }
+        try {
+            sharePreferenceApp = getInstance(requireActivity())
+            binding.apply {
+                textValueDetailNik.text = dataDetail.nik
+                textValueDetailApplicantName.text = dataDetail.namaPenduduk
+                textValueDetailManagedMail.text = dataDetail.jenisSuratAkanDibuat
+                textValueDetailDescription.text = dataDetail.keterangan
+                imageKTP.load(dataDetail.fotoKtp) {
+                    crossfade(true)
+                    placeholder(R.drawable.ic_image_34)
+                }
 
-            btnConfirm.setOnClickListener {
+                imageKTP.setOnClickListener {
+                    addDialog()
+                }
 
-                CoroutineScope(Dispatchers.Main).launch {
-                    val dataMessage =
-                        dataDetail.nik?.let { it1 ->
-                            dataDetail.jenisSuratAkanDibuat?.let { it2 ->
-                                NetworkConfig.apiServiceAdminVillage.getMessageApprove(
-                                    "Bearer ${
-                                        sharePreferenceApp.getData(
-                                            KEY_TOKEN,
-                                            ""
-                                        )
-                                    }",
-                                    Validation.validationBackwood(
-                                        sharePreferenceApp.getData(
-                                            KEY_NAME_BACKWOOD,
-                                            ""
-                                        )
-                                    ),
-                                    it1,
-                                    it2
-                                )
+                btnConfirm.setOnClickListener {
+
+                    CoroutineScope(Dispatchers.Main).launch {
+                        val dataMessage =
+                            dataDetail.nik?.let { it1 ->
+                                dataDetail.jenisSuratAkanDibuat?.let { it2 ->
+                                    NetworkConfig.apiServiceAdminVillage.getMessageApprove(
+                                        "Bearer ${
+                                            sharePreferenceApp.getData(
+                                                KEY_TOKEN,
+                                                ""
+                                            )
+                                        }",
+                                        Validation.validationBackwood(
+                                            sharePreferenceApp.getData(
+                                                KEY_NAME_BACKWOOD,
+                                                ""
+                                            )
+                                        ),
+                                        it1,
+                                        it2
+                                    )
+                                }
                             }
-                        }
-                    val message = dataMessage?.message
-                    val action = DetailBackwoodFragmentDirections.actionNavDetailBackwoodFragmentToNavApproveFragment(message)
-                    Navigation.findNavController(binding.root).navigate(action)
+                        val message = dataMessage?.message
+                        val action = DetailBackwoodFragmentDirections.actionNavDetailBackwoodFragmentToNavApproveFragment(message)
+                        Navigation.findNavController(binding.root).navigate(action)
+                    }
                 }
             }
+        }catch (e: Exception){
+            Log.d(TAG, e.message.toString())
         }
+
         super.onViewCreated(view, savedInstanceState)
     }
 

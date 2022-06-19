@@ -4,6 +4,7 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.net.ConnectivityManager
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.drawerlayout.widget.DrawerLayout
@@ -33,74 +34,87 @@ class HomeHeadmanActivity : AppCompatActivity() {
     private lateinit var networkChange: NetworkConnection
     private lateinit var sharePreferenceApp: SharePreferenceApp
 
+    companion object {
+        val TAG = HomeHeadmanActivity::class.java.simpleName
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val changeTheme = ChangeTheme(this)
+        try {
 
-        if (changeTheme.isDarkTheme){
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        }
+            val changeTheme = ChangeTheme(this)
 
-        binding = ActivityHomeHeadmanBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+            if (changeTheme.isDarkTheme) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
 
-        networkChange = NetworkConnection(this)
+            binding = ActivityHomeHeadmanBinding.inflate(layoutInflater)
+            setContentView(binding.root)
 
-        sharePreferenceApp = getInstance(this)
+            networkChange = NetworkConnection(this)
 
-        setSupportActionBar(binding.appBarHomeHeadman.toolbar)
+            sharePreferenceApp = getInstance(this)
 
-        val drawerLayout: DrawerLayout = binding.drawerLayoutHeadman
-        val navView: NavigationView = binding.navViewHeadman
-        val navControllerHeadman = findNavController(R.id.nav_host_fragment_content_home_headman)
+            setSupportActionBar(binding.appBarHomeHeadman.toolbar)
 
-        appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.nav_village_government_officials_fragment,
-                R.id.nav_village_head_decision_fragment,
-                R.id.nav_dashboard_headman,
-                R.id.nav_village_rules_fragment,
+            val drawerLayout: DrawerLayout = binding.drawerLayoutHeadman
+            val navView: NavigationView = binding.navViewHeadman
+            val navControllerHeadman =
+                findNavController(R.id.nav_host_fragment_content_home_headman)
 
-                ), drawerLayout
-        )
-        setupActionBarWithNavController(navControllerHeadman, appBarConfiguration)
-        navView.setupWithNavController(navControllerHeadman)
+            appBarConfiguration = AppBarConfiguration(
+                setOf(
+                    R.id.nav_village_government_officials_fragment,
+                    R.id.nav_village_head_decision_fragment,
+                    R.id.nav_dashboard_headman,
+                    R.id.nav_village_rules_fragment,
 
-        binding.appBarHomeHeadman.apply {
-            btnLogout.setOnClickListener {
-                CoroutineScope(Dispatchers.IO).launch {
-                    val dataLogout = NetworkConfig.apiServiceAdminVillage.logout(
-                        "Bearer ${
-                            sharePreferenceApp.getData(
-                                KEY_TOKEN, ""
-                            )
-                        }"
-                    )
-                    withContext(Dispatchers.Main) {
+                    ), drawerLayout
+            )
+            setupActionBarWithNavController(navControllerHeadman, appBarConfiguration)
+            navView.setupWithNavController(navControllerHeadman)
 
-                        SweetAlertDialog(this@HomeHeadmanActivity, SweetAlertDialog.WARNING_TYPE)
-                            .setTitleText("Apakah anda ingin keluar ?")
-                            .setConfirmText("Ya")
-                            .setConfirmClickListener { sDialog ->
-                                sDialog.dismissWithAnimation()
-
-                                sharePreferenceApp.clearDate()
-                                startActivity(
-                                    Intent(
-                                        this@HomeHeadmanActivity,
-                                        HomeUserActivity::class.java
-                                    )
+            binding.appBarHomeHeadman.apply {
+                btnLogout.setOnClickListener {
+                    CoroutineScope(Dispatchers.IO).launch {
+                        val dataLogout = NetworkConfig.apiServiceAdminVillage.logout(
+                            "Bearer ${
+                                sharePreferenceApp.getData(
+                                    KEY_TOKEN, ""
                                 )
-                                finishAffinity()
-                            }
-                            .setCancelButton(
-                                "Tidak"
-                            ) { sDialog -> sDialog.dismissWithAnimation() }
-                            .show()
+                            }"
+                        )
+                        withContext(Dispatchers.Main) {
+
+                            SweetAlertDialog(
+                                this@HomeHeadmanActivity,
+                                SweetAlertDialog.WARNING_TYPE
+                            )
+                                .setTitleText("Apakah anda ingin keluar ?")
+                                .setConfirmText("Ya")
+                                .setConfirmClickListener { sDialog ->
+                                    sDialog.dismissWithAnimation()
+
+                                    sharePreferenceApp.clearDate()
+                                    startActivity(
+                                        Intent(
+                                            this@HomeHeadmanActivity,
+                                            HomeUserActivity::class.java
+                                        )
+                                    )
+                                    finishAffinity()
+                                }
+                                .setCancelButton(
+                                    "Tidak"
+                                ) { sDialog -> sDialog.dismissWithAnimation() }
+                                .show()
+                        }
                     }
                 }
             }
+        }catch (e: Exception){
+            Log.d(TAG, e.message.toString())
         }
     }
 

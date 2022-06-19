@@ -1,6 +1,7 @@
 package com.example.desaa.ui.headman.village_government_officials
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,6 +29,10 @@ class VillageGovernmentOfficialsFragment : Fragment() {
         AdapterVillageGovernmentOfficials()
     }
 
+    companion object {
+        val TAG = VillageGovernmentOfficialsFragment::class.java.simpleName
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,55 +44,62 @@ class VillageGovernmentOfficialsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        binding.apply {
-            loadingVillageGovernmentFragment.visibility = View.VISIBLE
-            listGovernmentOfficials.visibility = View.GONE
-            textNameHeadman.visibility = View.GONE
-            textVillage.visibility = View.GONE
-
-            sharePreferenceApp = getInstance(requireActivity())
-
-            factoryVillageGovernment = FactoryGovermentHeadman(requireActivity())
-
-            viewModelVillageGovernment = ViewModelProvider(
-                requireActivity(),
-                factoryVillageGovernment
-            )[VillageGovernmentOfficialsViewModel::class.java]
+        try {
 
 
+            binding.apply {
+                loadingVillageGovernmentFragment.visibility = View.VISIBLE
+                listGovernmentOfficials.visibility = View.GONE
+                textNameHeadman.visibility = View.GONE
+                textVillage.visibility = View.GONE
 
-            viewModelVillageGovernment.apply {
+                sharePreferenceApp = getInstance(requireActivity())
 
-                listGovernmentOfficials.apply {
-                    layoutManager = LinearLayoutManager(activity)
-                    adapter = adapterVillageGovernment
+                factoryVillageGovernment = FactoryGovermentHeadman(requireActivity())
 
-                    villageGovernment.observe(viewLifecycleOwner) {
+                viewModelVillageGovernment = ViewModelProvider(
+                    requireActivity(),
+                    factoryVillageGovernment
+                )[VillageGovernmentOfficialsViewModel::class.java]
 
-                        if (it != null) {
-                            grup.visibility = View.INVISIBLE
-                            listGovernmentOfficials.visibility = View.VISIBLE
-                            adapterVillageGovernment.setList(it)
-                        } else {
-                            grup.visibility = View.VISIBLE
-                            listGovernmentOfficials.visibility = View.INVISIBLE
+
+
+                viewModelVillageGovernment.apply {
+
+                    listGovernmentOfficials.apply {
+                        layoutManager = LinearLayoutManager(activity)
+                        adapter = adapterVillageGovernment
+
+                        villageGovernment.observe(viewLifecycleOwner) {
+
+                            if (it != null) {
+                                grup.visibility = View.INVISIBLE
+                                listGovernmentOfficials.visibility = View.VISIBLE
+                                adapterVillageGovernment.setList(it)
+                            } else {
+                                grup.visibility = View.VISIBLE
+                                listGovernmentOfficials.visibility = View.INVISIBLE
+                            }
+
                         }
 
+                        textNameHeadman.text =
+                            sharePreferenceApp.getData(SharePreferenceApp.KEY_NAME_APARATURE, "")
+                        textVillage.text =
+                            sharePreferenceApp.getData(SharePreferenceApp.KEY_NAME_VILLAGE, "")
+
+                        loadingVillageGovernmentFragment.visibility = View.GONE
+                        listGovernmentOfficials.visibility = View.VISIBLE
+                        textNameHeadman.visibility = View.VISIBLE
+                        textVillage.visibility = View.VISIBLE
+
                     }
-
-                    textNameHeadman.text =
-                        sharePreferenceApp.getData(SharePreferenceApp.KEY_NAME_APARATURE, "")
-                    textVillage.text =
-                        sharePreferenceApp.getData(SharePreferenceApp.KEY_NAME_VILLAGE, "")
-
-                    loadingVillageGovernmentFragment.visibility = View.GONE
-                    listGovernmentOfficials.visibility = View.VISIBLE
-                    textNameHeadman.visibility = View.VISIBLE
-                    textVillage.visibility = View.VISIBLE
-
                 }
             }
+        } catch (e: Exception) {
+            Log.d(TAG, e.message.toString())
         }
+
         super.onViewCreated(view, savedInstanceState)
     }
 

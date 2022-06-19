@@ -21,11 +21,13 @@ class HomeUserActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
     private lateinit var networkChange: NetworkConnection
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         networkChange = NetworkConnection(this)
 

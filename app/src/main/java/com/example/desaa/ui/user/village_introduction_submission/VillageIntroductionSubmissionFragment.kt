@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,7 +40,9 @@ class VillageIntroductionSubmissionFragment : Fragment() {
 
     private var dataTypeLetter = arrayListOf<String>()
 
-    private var TAG = "VillageIntroductionSubmissionFragment"
+    companion object {
+        val TAG = VillageIntroductionSubmissionFragment::class.java.simpleName
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,133 +54,137 @@ class VillageIntroductionSubmissionFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        try {
+
+            binding.apply {
+
+                loadingLoadingVillageIntroductionFragment.visibility = View.VISIBLE
+
+                val adapter = ArrayAdapter(
+                    requireContext(),
+                    R.layout.support_simple_spinner_dropdown_item,
+                    loadTypeLetter()
+                )
+                (inputLetterType.editText as? AutoCompleteTextView)?.setAdapter(
+                    adapter
+                )
+
+                loadingLoadingVillageIntroductionFragment.visibility = View.INVISIBLE
+
+                btnSend.setOnClickListener {
+
+                    CoroutineScope(Dispatchers.Main).launch {
+
+                        val nik = inputNik.editText?.text.toString()
 
 
-        binding.apply {
+                        val jenisSurat = inputLetterType.editText?.text.toString()
+                        val reason = inputDescription.editText?.text.toString()
 
-            loadingLoadingVillageIntroductionFragment.visibility = View.VISIBLE
-
-            val adapter = ArrayAdapter(
-                requireContext(),
-                R.layout.support_simple_spinner_dropdown_item,
-                loadTypeLetter()
-            )
-            (inputLetterType.editText as? AutoCompleteTextView)?.setAdapter(
-                adapter
-            )
-
-            loadingLoadingVillageIntroductionFragment.visibility = View.INVISIBLE
-
-            btnSend.setOnClickListener {
-
-                CoroutineScope(Dispatchers.Main).launch {
-
-                    val nik = inputNik.editText?.text.toString()
-
-
-                    val jenisSurat = inputLetterType.editText?.text.toString()
-                    val reason = inputDescription.editText?.text.toString()
-
-                    when {
-                        nik.isEmpty() -> {
-                            inputNik.error = "Nik anda kosong"
-                            inputNik.requestFocus()
-                        }
-                        jenisSurat.isEmpty() -> {
-                            inputLetterType.error = "Jenis Surat anda kosong"
-                            inputNik.requestFocus()
-                        }
-                        reason.isEmpty() -> {
-                            inputDescription.error = "Alasan anda  kosong"
-                            inputNik.requestFocus()
-                        }
-                        uri == null -> {
-                            SweetAlertDialog(requireContext(), SweetAlertDialog.WARNING_TYPE)
-                                .setTitleText("Perhatian")
-                                .setContentText("Gambar anda kosong")
-                                .show()
-                        }
-                        else -> {
-                            inputNik.error = null
-                            inputLetterType.error = null
-                            inputDescription.error = null
-
-
-                            val file = Convert.getFileFromUri(requireActivity(), uri!!)
-
-                            val requestBody =
-                                file?.let { it1 ->
-                                    RequestBody.create(
-                                        "image/*".toMediaTypeOrNull(),
-                                        it1
-                                    )
-                                }
-
-                            val part = file?.let { it1 ->
-                                requestBody?.let { it2 ->
-                                    MultipartBody.Part.createFormData(
-                                        "foto_ktp", it1.name,
-                                        it2
-                                    )
-                                }
+                        when {
+                            nik.isEmpty() -> {
+                                inputNik.error = "Nik anda kosong"
+                                inputNik.requestFocus()
                             }
+                            jenisSurat.isEmpty() -> {
+                                inputLetterType.error = "Jenis Surat anda kosong"
+                                inputNik.requestFocus()
+                            }
+                            reason.isEmpty() -> {
+                                inputDescription.error = "Alasan anda  kosong"
+                                inputNik.requestFocus()
+                            }
+                            uri == null -> {
+                                SweetAlertDialog(requireContext(), SweetAlertDialog.WARNING_TYPE)
+                                    .setTitleText("Perhatian")
+                                    .setContentText("Gambar anda kosong")
+                                    .show()
+                            }
+                            else -> {
+                                inputNik.error = null
+                                inputLetterType.error = null
+                                inputDescription.error = null
 
-                            val requestNik =
-                                RequestBody.create("text/plain".toMediaTypeOrNull(), nik)
-                            val requestJenisSurat =
-                                RequestBody.create("text/plain".toMediaTypeOrNull(), jenisSurat)
-                            val requestReason =
-                                RequestBody.create("text/plain".toMediaTypeOrNull(), reason)
 
-                            withContext(Dispatchers.IO) {
-                                val response =
-                                    part?.let { it1 ->
-                                        NetworkConfig.apiServiceAdminVillage.postFormUser(
-                                            requestNik, requestJenisSurat, requestReason, it1
+                                val file = Convert.getFileFromUri(requireActivity(), uri!!)
+
+                                val requestBody =
+                                    file?.let { it1 ->
+                                        RequestBody.create(
+                                            "image/*".toMediaTypeOrNull(),
+                                            it1
                                         )
                                     }
 
-                                withContext(Dispatchers.Main) {
-
-                                    if (response!!.isSuccessful) {
-
-                                        val action =
-                                            VillageIntroductionSubmissionFragmentDirections.actionNavVillageToSuccessSendFragment()
-                                        Navigation.findNavController(binding.root).navigate(action)
-                                    } else {
-                                        val errorMessage = Gson().fromJson(
-                                            response.errorBody()?.charStream(),
-                                            ResponseStatus::class.java
+                                val part = file?.let { it1 ->
+                                    requestBody?.let { it2 ->
+                                        MultipartBody.Part.createFormData(
+                                            "foto_ktp", it1.name,
+                                            it2
                                         )
-                                        SweetAlertDialog(
-                                            requireActivity(),
-                                            SweetAlertDialog.WARNING_TYPE
-                                        )
-                                            .setTitleText("Perhatian")
-                                            .setContentText(errorMessage.message)
-                                            .setConfirmText("Perbaharui Data Form")
-                                            .show()
                                     }
                                 }
 
+                                val requestNik =
+                                    RequestBody.create("text/plain".toMediaTypeOrNull(), nik)
+                                val requestJenisSurat =
+                                    RequestBody.create("text/plain".toMediaTypeOrNull(), jenisSurat)
+                                val requestReason =
+                                    RequestBody.create("text/plain".toMediaTypeOrNull(), reason)
+
+                                withContext(Dispatchers.IO) {
+                                    val response =
+                                        part?.let { it1 ->
+                                            NetworkConfig.apiServiceAdminVillage.postFormUser(
+                                                requestNik, requestJenisSurat, requestReason, it1
+                                            )
+                                        }
+
+                                    withContext(Dispatchers.Main) {
+
+                                        if (response!!.isSuccessful) {
+
+                                            val action =
+                                                VillageIntroductionSubmissionFragmentDirections.actionNavVillageToSuccessSendFragment()
+                                            Navigation.findNavController(binding.root)
+                                                .navigate(action)
+                                        } else {
+                                            val errorMessage = Gson().fromJson(
+                                                response.errorBody()?.charStream(),
+                                                ResponseStatus::class.java
+                                            )
+                                            SweetAlertDialog(
+                                                requireActivity(),
+                                                SweetAlertDialog.WARNING_TYPE
+                                            )
+                                                .setTitleText("Perhatian")
+                                                .setContentText(errorMessage.message)
+                                                .setConfirmText("Perbaharui Data Form")
+                                                .show()
+                                        }
+                                    }
+
+                                }
                             }
+
+
                         }
-
-
                     }
                 }
-            }
 
-            constraintAddPhoto.setOnClickListener {
-                ImagePicker.with(this@VillageIntroductionSubmissionFragment)
-                    .cameraOnly()
-                    .compress(1024)            //Final image size will be less than 1 MB(Optional)
-                    .maxResultSize(
-                        1080,
-                        1080
-                    )    //Final image resolution will be less than 1080 x 1080(Optional)
-                    .start()
+                constraintAddPhoto.setOnClickListener {
+                    ImagePicker.with(this@VillageIntroductionSubmissionFragment)
+                        .cameraOnly()
+                        .compress(1024)            //Final image size will be less than 1 MB(Optional)
+                        .maxResultSize(
+                            1080,
+                            1080
+                        )    //Final image resolution will be less than 1080 x 1080(Optional)
+                        .start()
+                }
             }
+        } catch (e: Exception) {
+            Log.d(TAG, e.message.toString())
         }
         super.onViewCreated(view, savedInstanceState)
     }
@@ -195,7 +202,6 @@ class VillageIntroductionSubmissionFragment : Fragment() {
 
                 imageValue.visibility = View.INVISIBLE
             }
-
 
 
         } else if (resultCode == ImagePicker.RESULT_ERROR) {

@@ -1,6 +1,7 @@
 package com.example.desaa.ui.user.social_assistance_recipient
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,6 +19,7 @@ import com.example.desaa.R
 import com.example.desaa.adapter.user.AdapterSocialAssistanceHelpProgramList
 import com.example.desaa.databinding.FragmentSocialAssistanceRecipientBinding
 import com.example.desaa.model.response.ModelDataDetalSocialAssistance
+import com.example.desaa.ui.user.letter_submission_status.LetterSubmissiionFragment
 import com.example.desaa.utils.NetworkConfig
 import com.example.desaa.utils.SharePreferenceApp
 import com.example.desaa.utils.SharePreferenceApp.Companion.getInstance
@@ -43,6 +45,10 @@ class SocialAssistanceRecipientFragment : Fragment() {
 
     private var statusData = false
 
+    companion object {
+        val TAG = SocialAssistanceRecipientFragment::class.java.simpleName
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -54,80 +60,82 @@ class SocialAssistanceRecipientFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        sharePreferenceApp = getInstance(requireActivity())
+        try {
 
-        binding.apply {
+            sharePreferenceApp = getInstance(requireActivity())
 
-            loadingLoadingSocialAssistanceFragment.visibility = View.VISIBLE
-            inputSocialAssistance.visibility = View.INVISIBLE
-            recyclerSocialAssistance.visibility = View.INVISIBLE
-            btnDetailSocialAssistance.isEnabled = false
+            binding.apply {
 
-            recyclerSocialAssistance.apply {
-                layoutManager = LinearLayoutManager(activity)
-                adapter = adapterSocial
+                loadingLoadingSocialAssistanceFragment.visibility = View.VISIBLE
+                inputSocialAssistance.visibility = View.INVISIBLE
+                recyclerSocialAssistance.visibility = View.INVISIBLE
+                btnDetailSocialAssistance.isEnabled = false
 
-
-                viewModelSocialAssistance.apply {
-
-                    CoroutineScope(Dispatchers.IO).launch {
-                        val dataListProgram =
-                            NetworkConfig.apiServiceAdminVillage.getHelpProgramList()
-
-                        val help = arrayListOf<String>()
-
-                        addDataHelpPrograms(dataListProgram.data)
+                recyclerSocialAssistance.apply {
+                    layoutManager = LinearLayoutManager(activity)
+                    adapter = adapterSocial
 
 
-                        btnDetailSocialAssistance.setOnClickListener {
-                            dataListProgram.data[indexSelected - 1].apply {
-                                val dataDetail = ModelDataDetalSocialAssistance(
-                                    describe = keterangan,
-                                    originOfFunds = asalDana,
-                                    helpTarget = sasaranProgram,
-                                    rangeTime = "$rentangWaktuMulai sampai dengan $rentangWaktuSelesai",
-                                    participant = "${adapterSocial.getCountParticipant()} orang"
-                                )
+                    viewModelSocialAssistance.apply {
 
-                                val bundle = bundleOf("detail" to dataDetail)
-                                binding.root.findNavController()
-                                    .navigate(R.id.detailSocialAssitanceFragment, bundle)
-                            }
+                        CoroutineScope(Dispatchers.IO).launch {
+                            val dataListProgram =
+                                NetworkConfig.apiServiceAdminVillage.getHelpProgramList()
 
-                        }
+                            val help = arrayListOf<String>()
+
+                            addDataHelpPrograms(dataListProgram.data)
 
 
-                        withContext(Dispatchers.Main) {
+                            btnDetailSocialAssistance.setOnClickListener {
+                                dataListProgram.data[indexSelected - 1].apply {
+                                    val dataDetail = ModelDataDetalSocialAssistance(
+                                        describe = keterangan,
+                                        originOfFunds = asalDana,
+                                        helpTarget = sasaranProgram,
+                                        rangeTime = "$rentangWaktuMulai sampai dengan $rentangWaktuSelesai",
+                                        participant = "${adapterSocial.getCountParticipant()} orang"
+                                    )
 
-                            listHelpProgram.observe(viewLifecycleOwner) {
-                                it.forEach { helpData ->
-                                    helpData.namaProgram?.let { it1 -> help.add(it1) }
+                                    val bundle = bundleOf("detail" to dataDetail)
+                                    binding.root.findNavController()
+                                        .navigate(R.id.detailSocialAssitanceFragment, bundle)
                                 }
+
                             }
 
 
-                            val adapter = ArrayAdapter(
-                                requireContext(),
-                                R.layout.support_simple_spinner_dropdown_item,
-                                help
-                            )
-                            (inputSocialAssistance.editText as? AutoCompleteTextView)?.apply {
-                                setAdapter(
-                                    adapter
+                            withContext(Dispatchers.Main) {
+
+                                listHelpProgram.observe(viewLifecycleOwner) {
+                                    it.forEach { helpData ->
+                                        helpData.namaProgram?.let { it1 -> help.add(it1) }
+                                    }
+                                }
+
+
+                                val adapter = ArrayAdapter(
+                                    requireContext(),
+                                    R.layout.support_simple_spinner_dropdown_item,
+                                    help
                                 )
-                                setText(help[0], false)
+                                (inputSocialAssistance.editText as? AutoCompleteTextView)?.apply {
+                                    setAdapter(
+                                        adapter
+                                    )
+                                    setText(help[0], false)
+                                }
+
+                                loadingLoadingSocialAssistanceFragment.visibility = View.INVISIBLE
+
+                                inputSocialAssistance.visibility = View.VISIBLE
                             }
-
-                            loadingLoadingSocialAssistanceFragment.visibility = View.INVISIBLE
-
-                            inputSocialAssistance.visibility = View.VISIBLE
                         }
-                    }
 
                         if (inputSocialAssistance.editText?.text?.isNotEmpty() == true) {
 
                             btnDetailSocialAssistance.isEnabled = true
-                            indexSelected +=1
+                            indexSelected += 1
 
                             CoroutineScope(Dispatchers.IO).launch {
                                 val dataHelpPartisipant =
@@ -138,21 +146,21 @@ class SocialAssistanceRecipientFragment : Fragment() {
                                 addDatalistAssistance(dataHelpPartisipant.data)
 
                             }
-                                listAssistance.observe(viewLifecycleOwner) {
-                                    if (it != null) {
-                                        adapterSocial.setList(it)
+                            listAssistance.observe(viewLifecycleOwner) {
+                                if (it != null) {
+                                    adapterSocial.setList(it)
 
-                                        CoroutineScope(Dispatchers.Main).launch {
-                                            recyclerSocialAssistance.visibility = View.VISIBLE
-                                        }
+                                    CoroutineScope(Dispatchers.Main).launch {
+                                        recyclerSocialAssistance.visibility = View.VISIBLE
+                                    }
 
-                                    } else {
+                                } else {
 
-                                        CoroutineScope(Dispatchers.Main).launch {
-                                            recyclerSocialAssistance.visibility = View.VISIBLE
-                                        }
+                                    CoroutineScope(Dispatchers.Main).launch {
+                                        recyclerSocialAssistance.visibility = View.VISIBLE
                                     }
                                 }
+                            }
 
                         }
 
@@ -172,7 +180,7 @@ class SocialAssistanceRecipientFragment : Fragment() {
                                         Validation.validationHelpPrograam(text.toString())
                                     )
 
-                                    addDatalistAssistance(dataHelpPartisipant.data)
+                                addDatalistAssistance(dataHelpPartisipant.data)
 
                                 withContext(Dispatchers.Main) {
                                     listAssistance.observe(viewLifecycleOwner) {
@@ -191,9 +199,12 @@ class SocialAssistanceRecipientFragment : Fragment() {
                             }
                         }
 
-                }
+                    }
 
+                }
             }
+        }catch (e: Exception){
+            Log.d(TAG, e.message.toString())
         }
     }
 
