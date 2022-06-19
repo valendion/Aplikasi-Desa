@@ -1,434 +1,440 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/swipeStatisticUser"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="@dimen/distance_16"
     tools:context=".ui.user.statistics.StatisticFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textTitleDashboard"
-            style="@style/TextTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/distance_12"
-            android:text="@string/statistik_desa"
-            android:textSize="@dimen/textSizeHeader"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/boxTotalPopulation"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/distance_16"
-            android:background="@drawable/rounded_border"
-            android:paddingHorizontal="@dimen/distance_12"
-            android:paddingTop="@dimen/distance_8"
-            android:paddingBottom="@dimen/distance_24"
-            app:layout_constraintEnd_toStartOf="@+id/boxNumberofAdults"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textTitleDashboard">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textTitle"
-                style="@style/TextRegular"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/jumlah_npenduduk"
-                android:textAlignment="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textValue"
-                style="@style/TextTitleBLarge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/distance_8"
-                android:text="@string/_2500"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textTitle" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/boxNumberofAdults"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/distance_24"
-            android:layout_marginTop="@dimen/distance_16"
-            android:background="@drawable/rounded_border"
-            android:paddingHorizontal="@dimen/distance_12"
-            android:paddingTop="@dimen/distance_8"
-            android:paddingBottom="@dimen/distance_24"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toEndOf="@+id/boxTotalPopulation"
-            app:layout_constraintTop_toBottomOf="@+id/textTitleDashboard">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textTitleNumberofAdults"
-                style="@style/TextRegular"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/jumlah_npenduduk_dewasa"
-                android:textAlignment="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textValueNumberofAdults"
-                style="@style/TextTitleBLarge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/distance_8"
-                android:text="@string/_1200"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textTitleNumberofAdults" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <!--  Batas  -->
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/boxNumberofMalePopulation"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/distance_16"
-            android:background="@drawable/rounded_border"
-            android:paddingHorizontal="@dimen/distance_12"
-            android:paddingTop="@dimen/distance_8"
-            android:paddingBottom="@dimen/distance_24"
-            app:layout_constraintEnd_toStartOf="@+id/boxNumberofFemalePopulation"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/boxTotalPopulation">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textTitleNumberofMalePopulation"
-                style="@style/TextRegular"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/jumlah_npenduduk_laki_laki"
-                android:textAlignment="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textValueNumberofMalePopulation"
-                style="@style/TextTitleBLarge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/distance_8"
-                android:text="@string/_700"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textTitleNumberofMalePopulation" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/boxNumberofFemalePopulation"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/distance_24"
-            android:layout_marginTop="@dimen/distance_16"
-            android:background="@drawable/rounded_border"
-            android:paddingHorizontal="@dimen/distance_12"
-            android:paddingTop="@dimen/distance_8"
-            android:paddingBottom="@dimen/distance_24"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toEndOf="@+id/boxNumberofMalePopulation"
-            app:layout_constraintTop_toBottomOf="@+id/boxNumberofAdults">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textTitleNumberofFemalePopulation"
-                style="@style/TextRegular"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/jumlah_npenduduk_perempuan"
-                android:textAlignment="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textValueNumberofFemalePopulation"
-                style="@style/TextTitleBLarge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/distance_8"
-                android:text="@string/_350"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textTitleNumberofFemalePopulation" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <!--  Batas  -->
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/boxTotalPopulation_A_BloodType"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/distance_16"
-            android:background="@drawable/rounded_border"
-            android:paddingHorizontal="@dimen/distance_12"
-            android:paddingTop="@dimen/distance_8"
-            android:paddingBottom="@dimen/distance_24"
-            app:layout_constraintEnd_toStartOf="@+id/boxTotalPopulation_B_BloodType"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/boxNumberofMalePopulation">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textTitleTotalPopulation_A_BloodType"
-                style="@style/TextRegular"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/jumlah_penduduk_ngol_darah_a"
-                android:textAlignment="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textValueTotalPopulation_A_BloodType"
-                style="@style/TextTitleBLarge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/distance_8"
-                android:text="@string/_125"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textTitleTotalPopulation_A_BloodType" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/boxTotalPopulation_B_BloodType"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/distance_24"
-            android:layout_marginTop="@dimen/distance_16"
-            android:background="@drawable/rounded_border"
-            android:paddingHorizontal="@dimen/distance_12"
-            android:paddingTop="@dimen/distance_8"
-            android:paddingBottom="@dimen/distance_24"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toEndOf="@+id/boxTotalPopulation_A_BloodType"
-            app:layout_constraintTop_toBottomOf="@+id/boxNumberofFemalePopulation">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textTitleboxTotalPopulation_B_BloodType"
-                style="@style/TextRegular"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/jumlah_penduduk_gol_darah_b"
-                android:textAlignment="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textValueboxTotalPopulation_B_BloodType"
-                style="@style/TextTitleBLarge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/distance_8"
-                android:text="@string/_125"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textTitleboxTotalPopulation_B_BloodType"
-                />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <!--  Batas  -->
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/boxTotalPopulation_O_BloodType"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/distance_16"
-            android:background="@drawable/rounded_border"
-            android:paddingHorizontal="@dimen/distance_12"
-            android:paddingTop="@dimen/distance_8"
-            android:paddingBottom="@dimen/distance_24"
-            app:layout_constraintEnd_toStartOf="@+id/boxTotalPopulation_AB_BloodType"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/boxTotalPopulation_A_BloodType">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textTitleTotalPopulation_O_BloodType"
-                style="@style/TextRegular"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/jumlah_penduduk_gol_darah_o"
-                android:textAlignment="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textValueTotalPopulation_O_BloodType"
-                style="@style/TextTitleBLarge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/distance_8"
-                android:text="@string/_125"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textTitleTotalPopulation_O_BloodType" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/boxTotalPopulation_AB_BloodType"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/distance_24"
-            android:layout_marginTop="@dimen/distance_16"
-            android:background="@drawable/rounded_border"
-            android:paddingHorizontal="@dimen/distance_12"
-            android:paddingTop="@dimen/distance_8"
-            android:paddingBottom="@dimen/distance_24"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toEndOf="@+id/boxTotalPopulation_O_BloodType"
-            app:layout_constraintTop_toBottomOf="@+id/boxTotalPopulation_B_BloodType">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textTitleTotalPopulation_AB_BloodType"
-                style="@style/TextRegular"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/jumlah_penduduk_gol_darah_ab"
-                android:textAlignment="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textValueTotalPopulation_AB_BloodType"
-                style="@style/TextTitleBLarge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/distance_8"
-                android:text="@string/_125"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textTitleTotalPopulation_AB_BloodType" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textVillageArea"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/boxTotalPopulation_O_BloodType"
-            app:layout_constraintStart_toStartOf="parent"
-            android:text="@string/wilayah_desa"
-            style="@style/TextTitle"
-            android:layout_marginTop="@dimen/distance_40"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
-        <WebView
-            android:id="@+id/webViewVillageArea"
             android:layout_width="match_parent"
-            android:layout_height="222dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="@dimen/distance_16"
-            app:layout_constraintTop_toBottomOf="@+id/textVillageArea"/>
+            android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textVillageWebsite"
-            style="@style/TextTitle"
-            android:layout_width="wrap_content"
-            android:layout_marginTop="@dimen/distance_24"
-            android:layout_height="wrap_content"
-            android:text="@string/website_desa"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/webViewVillageArea" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textTitleDashboard"
+                style="@style/TextTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/distance_12"
+                android:text="@string/statistik_desa"
+                android:textSize="@dimen/textSizeHeader"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textVillageWebsiteValue"
-            style="@style/TextRegular2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/www_tenrigangkae_id"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textVillageWebsite" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/boxTotalPopulation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/distance_16"
+                android:background="@drawable/rounded_border"
+                android:paddingHorizontal="@dimen/distance_12"
+                android:paddingTop="@dimen/distance_8"
+                android:paddingBottom="@dimen/distance_24"
+                app:layout_constraintEnd_toStartOf="@+id/boxNumberofAdults"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textTitleDashboard">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textTitle"
+                    style="@style/TextRegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/jumlah_npenduduk"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textValue"
+                    style="@style/TextTitleBLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/distance_8"
+                    android:text="@string/_2500"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textTitle" />
 
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textVillagePhoneNumber"
-            style="@style/TextTitle"
-            android:layout_width="wrap_content"
-            android:layout_marginTop="@dimen/distance_24"
-            android:layout_height="wrap_content"
-            android:text="@string/telepon_desa"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textVillageWebsiteValue" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textVillagePhoneNumberValue"
-            style="@style/TextRegular2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/_086346236725"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textVillagePhoneNumber" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/boxNumberofAdults"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/distance_24"
+                android:layout_marginTop="@dimen/distance_16"
+                android:background="@drawable/rounded_border"
+                android:paddingHorizontal="@dimen/distance_12"
+                android:paddingTop="@dimen/distance_8"
+                android:paddingBottom="@dimen/distance_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toEndOf="@+id/boxTotalPopulation"
+                app:layout_constraintTop_toBottomOf="@+id/textTitleDashboard">
 
-        <com.google.android.material.progressindicator.CircularProgressIndicator
-            android:id="@+id/loadingDashboardFragment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:indeterminate="true"
-            android:elevation="2dp"
-            android:visibility="visible"
-            app:indicatorColor="@color/primaryGreen"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textTitleNumberofAdults"
+                    style="@style/TextRegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/jumlah_npenduduk_dewasa"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textValueNumberofAdults"
+                    style="@style/TextTitleBLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/distance_8"
+                    android:text="@string/_1200"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textTitleNumberofAdults" />
 
-</androidx.core.widget.NestedScrollView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!--  Batas  -->
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/boxNumberofMalePopulation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/distance_16"
+                android:background="@drawable/rounded_border"
+                android:paddingHorizontal="@dimen/distance_12"
+                android:paddingTop="@dimen/distance_8"
+                android:paddingBottom="@dimen/distance_24"
+                app:layout_constraintEnd_toStartOf="@+id/boxNumberofFemalePopulation"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/boxTotalPopulation">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textTitleNumberofMalePopulation"
+                    style="@style/TextRegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/jumlah_npenduduk_laki_laki"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textValueNumberofMalePopulation"
+                    style="@style/TextTitleBLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/distance_8"
+                    android:text="@string/_700"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textTitleNumberofMalePopulation" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/boxNumberofFemalePopulation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/distance_24"
+                android:layout_marginTop="@dimen/distance_16"
+                android:background="@drawable/rounded_border"
+                android:paddingHorizontal="@dimen/distance_12"
+                android:paddingTop="@dimen/distance_8"
+                android:paddingBottom="@dimen/distance_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toEndOf="@+id/boxNumberofMalePopulation"
+                app:layout_constraintTop_toBottomOf="@+id/boxNumberofAdults">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textTitleNumberofFemalePopulation"
+                    style="@style/TextRegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/jumlah_npenduduk_perempuan"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textValueNumberofFemalePopulation"
+                    style="@style/TextTitleBLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/distance_8"
+                    android:text="@string/_350"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textTitleNumberofFemalePopulation" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!--  Batas  -->
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/boxTotalPopulation_A_BloodType"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/distance_16"
+                android:background="@drawable/rounded_border"
+                android:paddingHorizontal="@dimen/distance_12"
+                android:paddingTop="@dimen/distance_8"
+                android:paddingBottom="@dimen/distance_24"
+                app:layout_constraintEnd_toStartOf="@+id/boxTotalPopulation_B_BloodType"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/boxNumberofMalePopulation">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textTitleTotalPopulation_A_BloodType"
+                    style="@style/TextRegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/jumlah_penduduk_ngol_darah_a"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textValueTotalPopulation_A_BloodType"
+                    style="@style/TextTitleBLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/distance_8"
+                    android:text="@string/_125"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textTitleTotalPopulation_A_BloodType" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/boxTotalPopulation_B_BloodType"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/distance_24"
+                android:layout_marginTop="@dimen/distance_16"
+                android:background="@drawable/rounded_border"
+                android:paddingHorizontal="@dimen/distance_12"
+                android:paddingTop="@dimen/distance_8"
+                android:paddingBottom="@dimen/distance_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toEndOf="@+id/boxTotalPopulation_A_BloodType"
+                app:layout_constraintTop_toBottomOf="@+id/boxNumberofFemalePopulation">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textTitleboxTotalPopulation_B_BloodType"
+                    style="@style/TextRegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/jumlah_penduduk_gol_darah_b"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textValueboxTotalPopulation_B_BloodType"
+                    style="@style/TextTitleBLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/distance_8"
+                    android:text="@string/_125"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textTitleboxTotalPopulation_B_BloodType" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!--  Batas  -->
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/boxTotalPopulation_O_BloodType"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/distance_16"
+                android:background="@drawable/rounded_border"
+                android:paddingHorizontal="@dimen/distance_12"
+                android:paddingTop="@dimen/distance_8"
+                android:paddingBottom="@dimen/distance_24"
+                app:layout_constraintEnd_toStartOf="@+id/boxTotalPopulation_AB_BloodType"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/boxTotalPopulation_A_BloodType">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textTitleTotalPopulation_O_BloodType"
+                    style="@style/TextRegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/jumlah_penduduk_gol_darah_o"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textValueTotalPopulation_O_BloodType"
+                    style="@style/TextTitleBLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/distance_8"
+                    android:text="@string/_125"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textTitleTotalPopulation_O_BloodType" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/boxTotalPopulation_AB_BloodType"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/distance_24"
+                android:layout_marginTop="@dimen/distance_16"
+                android:background="@drawable/rounded_border"
+                android:paddingHorizontal="@dimen/distance_12"
+                android:paddingTop="@dimen/distance_8"
+                android:paddingBottom="@dimen/distance_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toEndOf="@+id/boxTotalPopulation_O_BloodType"
+                app:layout_constraintTop_toBottomOf="@+id/boxTotalPopulation_B_BloodType">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textTitleTotalPopulation_AB_BloodType"
+                    style="@style/TextRegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/jumlah_penduduk_gol_darah_ab"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textValueTotalPopulation_AB_BloodType"
+                    style="@style/TextTitleBLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/distance_8"
+                    android:text="@string/_125"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textTitleTotalPopulation_AB_BloodType" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textVillageArea"
+                style="@style/TextTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/distance_40"
+                android:text="@string/wilayah_desa"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/boxTotalPopulation_O_BloodType" />
+
+            <WebView
+                android:id="@+id/webViewVillageArea"
+                android:layout_width="match_parent"
+                android:layout_height="222dp"
+                android:layout_marginTop="@dimen/distance_16"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textVillageArea" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textVillageWebsite"
+                style="@style/TextTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/distance_24"
+                android:text="@string/website_desa"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/webViewVillageArea" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textVillageWebsiteValue"
+                style="@style/TextRegular2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/www_tenrigangkae_id"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textVillageWebsite" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textVillagePhoneNumber"
+                style="@style/TextTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/distance_24"
+                android:text="@string/telepon_desa"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textVillageWebsiteValue" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textVillagePhoneNumberValue"
+                style="@style/TextRegular2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/_086346236725"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textVillagePhoneNumber" />
+
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/loadingDashboardFragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="2dp"
+                android:indeterminate="true"
+                android:visibility="visible"
+                app:indicatorColor="@color/primaryGreen"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+

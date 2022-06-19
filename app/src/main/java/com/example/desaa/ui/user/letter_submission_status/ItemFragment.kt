@@ -38,7 +38,6 @@ class ItemFragment(private val village: Int) : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
-            loadingLoadingLetterSubmissionFragment.visibility = View.VISIBLE
             grup.visibility = View.VISIBLE
             listCertificate.visibility = View.INVISIBLE
 
@@ -64,7 +63,6 @@ class ItemFragment(private val village: Int) : Fragment() {
                                     }
                                 }
 
-                                loadingLoadingLetterSubmissionFragment.visibility = View.INVISIBLE
                             }
 
                             2 -> {
@@ -124,8 +122,6 @@ class ItemFragment(private val village: Int) : Fragment() {
                                 }
                             }
                         }
-
-                        loadingLoadingLetterSubmissionFragment.visibility = View.INVISIBLE
 
                     }
                 }

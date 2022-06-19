@@ -1,5 +1,6 @@
 package com.example.desaa.ui.user.statistics
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,25 +11,33 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class StatisticViewModel() : ViewModel() {
-//    private var sharePreferenceApp = SharePreferenceApp.getInstance(this.context)
+
 
     private var _statistic = MutableLiveData<ModelDataInfoVillage>()
-
     val statistic: LiveData<ModelDataInfoVillage> get() = _statistic
-
     fun addValueStatistic(dataStatistic: ModelDataInfoVillage) {
         _statistic.postValue(dataStatistic)
     }
 
-    init {
-        getStatistic()
+    private var _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> get() = _isLoading
+    private fun setLoading(status: Boolean){
+        _isLoading.postValue(status)
     }
 
-    private fun getStatistic() {
+    fun getStatistic() {
         CoroutineScope(Dispatchers.IO).launch {
-            val dataStatistic = NetworkConfig.apiServiceAdminVillage.getStatisticVillage()
+            try {
+                setLoading(true)
 
-            addValueStatistic(dataStatistic.data)
+                val dataStatistic = NetworkConfig.apiServiceAdminVillage.getStatisticVillage()
+                addValueStatistic(dataStatistic.data)
+
+                setLoading(false)
+            }catch (e: Exception){
+                setLoading(false)
+                Log.e("Statistic User", e.message.toString())
+            }
         }
     }
 

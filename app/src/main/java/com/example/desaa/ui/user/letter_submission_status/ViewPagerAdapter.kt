@@ -21,6 +21,5 @@ class ViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
             else -> ItemFragment(5)
         }
 
-
     }
 }
