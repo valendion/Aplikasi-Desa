@@ -22,10 +22,6 @@ class LetterSubmissiionFragment : Fragment() {
 
     private val viewModelLetterSubmissionStatus: LetterSubmissionStatusViewModel by activityViewModels()
 
-    companion object {
-        val TAG = LetterSubmissiionFragment::class.java.simpleName
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,34 +32,31 @@ class LetterSubmissiionFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        try {
-            binding.apply {
 
-                viewModelLetterSubmissionStatus.apply {
-                    isLoading.observe(viewLifecycleOwner) { setLoading(it) }
+        binding.apply {
 
-                    getDataSubmissionStatus()
+            viewModelLetterSubmissionStatus.apply {
+                isLoading.observe(viewLifecycleOwner){ setLoading(it) }
 
-                    val adapter = ViewPagerAdapter(parentFragmentManager, lifecycle)
-                    viewPager2.adapter = adapter
+                getDataSubmissionStatus()
 
-                    TabLayoutMediator(tabLayout, viewPager2) { tab, position ->
-                        tab.text = Constant.NAME_TABS[position]
-                    }.attach()
-                }
+                val adapter = ViewPagerAdapter(childFragmentManager, lifecycle)
+                viewPager2.adapter = adapter
 
-                swipeSubmissionLetterUser.setOnRefreshListener {
-                    CoroutineScope(Dispatchers.Main).launch {
-                        delay(2000)
-                        swipeSubmissionLetterUser.isRefreshing = false
-
-                        viewModelLetterSubmissionStatus.getDataSubmissionStatus()
-                    }
-                }
-
+                TabLayoutMediator(tabLayout, viewPager2) { tab, position ->
+                    tab.text = Constant.NAME_TABS[position]
+                }.attach()
             }
-        }catch (e: Exception){
-            Log.d(TAG, e.message.toString())
+
+            swipeSubmissionLetterUser.setOnRefreshListener {
+                CoroutineScope(Dispatchers.Main).launch {
+                    delay(2000)
+                    swipeSubmissionLetterUser.isRefreshing = false
+
+                    viewModelLetterSubmissionStatus.getDataSubmissionStatus()
+                }
+            }
+
         }
 
     }

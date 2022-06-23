@@ -14,7 +14,9 @@
         android:roundIcon="@drawable/logo_maros"
         android:supportsRtl="true"
         android:theme="@style/Theme.DesaA">
-
+        <activity
+            android:name=".AnimationActivity"
+            android:exported="false" />
         <activity
             android:name=".TestLayoutActivity"
             android:exported="false" />

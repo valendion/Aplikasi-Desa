@@ -25,9 +25,9 @@ class SplashActivity : AppCompatActivity() {
 
         val changeTheme = ChangeTheme(this)
 
-        if (changeTheme.isDarkTheme){
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        }
+//        if (changeTheme.isDarkTheme){
+//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+//        }
 
         sharePreferenceApp = getInstance(this)
 

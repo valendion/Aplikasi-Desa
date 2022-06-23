@@ -2,6 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.DesaA" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
+        <item name="android:forceDarkAllowed">false</item>
         <item name="colorPrimary">@color/primaryGreen</item>
         <item name="colorPrimaryVariant">@color/darkGreen</item>
         <item name="colorOnPrimary">@color/white</item>

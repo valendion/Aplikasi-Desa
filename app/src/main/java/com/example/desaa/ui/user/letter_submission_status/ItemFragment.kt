@@ -14,7 +14,17 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class ItemFragment(private val village: Int) : Fragment() {
+class ItemFragment() : Fragment() {
+
+    fun newInstance(village: Int): ItemFragment {
+        val fragment = ItemFragment()
+        val args = Bundle()
+        args.putInt("village", village)
+        fragment.arguments = args
+        return fragment
+    }
+
+    var village: Int =0
 
     private val adapterVillage: AdapterLetter by lazy {
         AdapterLetter()
@@ -41,6 +51,7 @@ class ItemFragment(private val village: Int) : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         try {
+            village = arguments?.get("village") as Int
             binding.apply {
                 grup.visibility = View.VISIBLE
                 listCertificate.visibility = View.INVISIBLE

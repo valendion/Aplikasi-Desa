@@ -28,7 +28,6 @@ class HomeUserActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         networkChange = NetworkConnection(this)
 
         setSupportActionBar(binding.appBarHome.toolbar)
